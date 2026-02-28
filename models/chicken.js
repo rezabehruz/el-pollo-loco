@@ -3,9 +3,18 @@ class Chicken extends MovableObject{
     width = 50;
     height = 40;
     constructor(){
-        super().loadImage("../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
-
+        super().loadImages(ImagHub.CHICKEN_WALKING);
         this.x = 90 + Math.random() * 150;
+
+        this.animate();
+    }
+
+    animate(){
+        setInterval(() => {
+            let i = this.currentImg % ImagHub.CHICKEN_WALKING.length;
+            this.img = this.imageCache[ImagHub.CHICKEN_WALKING[i]];
+            this.currentImg++;
+        }, 300);
     }
 
 }
