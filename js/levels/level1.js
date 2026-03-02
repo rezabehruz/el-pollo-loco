@@ -26,5 +26,5 @@ const level1 = new Level(
     new BackgroundObject(ImagHub.BACKGROUND.FIRST_LAYER[0], -719 * 3),
   ],
   [new Cloud()],
-  [new Chicken(), new Chicken(), new Chicken()],
+  [new Chicken(), new Chicken(), new Chicken(), new EndBoss()],
 );

@@ -1,9 +1,6 @@
 class World {
   character = new Character();
   level = level1;
-  // enemies = level1.enemies;
-  // clouds = level1.clouds;
-  // backgrounds = level1.backgrounds;
   canvas;
   ctx;
   keyboard;
