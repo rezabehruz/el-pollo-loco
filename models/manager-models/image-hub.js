@@ -1,12 +1,25 @@
 class ImagHub {
-  static CHARACTER_WALKING = [
-    "../img/2_character_pepe/2_walk/W-21.png",
-    "../img/2_character_pepe/2_walk/W-22.png",
-    "../img/2_character_pepe/2_walk/W-23.png",
-    "../img/2_character_pepe/2_walk/W-24.png",
-    "../img/2_character_pepe/2_walk/W-25.png",
-    "../img/2_character_pepe/2_walk/W-26.png",
-  ];
+  static CHARACTER = {
+    CHARACTER_WALKING: [
+      "../img/2_character_pepe/2_walk/W-21.png",
+      "../img/2_character_pepe/2_walk/W-22.png",
+      "../img/2_character_pepe/2_walk/W-23.png",
+      "../img/2_character_pepe/2_walk/W-24.png",
+      "../img/2_character_pepe/2_walk/W-25.png",
+      "../img/2_character_pepe/2_walk/W-26.png",
+    ],
+    CHARACTER_JUMPING: [
+      "img/2_character_pepe/3_jump/J-31.png",
+      "img/2_character_pepe/3_jump/J-32.png",
+      "img/2_character_pepe/3_jump/J-33.png",
+      "img/2_character_pepe/3_jump/J-34.png",
+      "img/2_character_pepe/3_jump/J-35.png",
+      "img/2_character_pepe/3_jump/J-36.png",
+      "img/2_character_pepe/3_jump/J-37.png",
+      "img/2_character_pepe/3_jump/J-38.png",
+      "img/2_character_pepe/3_jump/J-39.png",
+    ],
+  };
 
   static CHICKEN_WALKING = [
     "../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
