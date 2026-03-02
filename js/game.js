@@ -10,7 +10,6 @@ function init() {
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowRight") {
     keyboard.RIGHT = true;
-    console.log(keyboard.RIGHT);
   }
 
   if (event.key == "ArrowLeft") {
@@ -19,7 +18,6 @@ window.addEventListener("keydown", (event) => {
 
   if (event.key == "ArrowUp") {
     keyboard.UP = true;
-    console.log(keyboard.UP);
   }
 
   if (event.key == "ArrowDown") {

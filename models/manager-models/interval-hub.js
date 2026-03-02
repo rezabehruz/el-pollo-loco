@@ -12,10 +12,4 @@ class IntervalHub {
   };
 }
 
-// class IntervalWithHub {
-//   constructor(func, timer) {
-//     IntervalHub.startInterval(func, timer);
-//   }
-// }
-
 
