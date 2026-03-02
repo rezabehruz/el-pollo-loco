@@ -28,10 +28,16 @@ class MovableObject {
     //   this.x -= this.speed;
     // }, 1000 / 60);
 
-    IntervalHub.startInterval(() => this.x -= this.speed , 1000 / 60);
+    IntervalHub.startInterval(() => (this.x -= this.speed), 1000 / 60);
   }
 
   moveRight() {
     console.log("Move to right!");
+  }
+
+  playAnimation(images) {
+      let i = this.currentImg % images.length;
+      this.img = this.imageCache[images[i]];
+      this.currentImg++;
   }
 }
