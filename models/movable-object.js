@@ -20,7 +20,7 @@ class MovableObject {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
-    }, 1000/25);
+    }, 1000 / 25);
   }
 
   isAboveGround() {
@@ -51,5 +51,17 @@ class MovableObject {
     let i = this.currentImg % images.length;
     this.img = this.imageCache[images[i]];
     this.currentImg++;
+  }
+
+  draw(ctx) {
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
+
+  drawFrame(ctx) {
+    ctx.beginPath();
+    ctx.lineWidth = "5";
+    ctx.strokeStyle = "blue";
+    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.stroke();
   }
 }

@@ -33,30 +33,34 @@ class World {
     this.character.world = this;
   }
 
-  addObjectToMap(object) {
-    object.forEach((obj) => {
-      this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
+  addObjectToMap(objectArr) {
+    objectArr.forEach((obj) => {
+      this.addToMap(obj);
     });
   }
 
   addToMap(object) {
     if (object.otherDirection) {
-      this.ctx.save();
-      this.ctx.translate(object.width, 0);
-      this.ctx.scale(-1, 1);
-      object.x = object.x * -1;
+      this.flipImage(object);
     }
-    this.ctx.drawImage(
-      object.img,
-      object.x,
-      object.y,
-      object.width,
-      object.height,
-    );
+
+    object.draw(this.ctx);
+    object.drawFrame(this.ctx);
 
     if (object.otherDirection) {
-      object.x = object.x * -1;
-      this.ctx.restore();
+      this.flipImageBack(object);
     }
+  }
+
+  flipImage(object) {
+    this.ctx.save();
+    this.ctx.translate(object.width, 0);
+    this.ctx.scale(-1, 1);
+    object.x = object.x * -1;
+  }
+
+  flipImageBack(object) {
+    object.x = object.x * -1;
+    this.ctx.restore();
   }
 }
