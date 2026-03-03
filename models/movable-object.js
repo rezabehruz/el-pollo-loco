@@ -58,10 +58,21 @@ class MovableObject {
   }
 
   drawFrame(ctx) {
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "blue";
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.stroke();
+    if (this instanceof Character || this instanceof Chicken) {
+      ctx.beginPath();
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
+  }
+
+  isColliding(obj) {
+    return (
+      this.x + this.width > obj.x &&
+      this.y + this.height > obj.y &&
+      this.x < obj.x + obj.width &&
+      this.y < obj.y + obj.height
+    );
   }
 }
