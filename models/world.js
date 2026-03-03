@@ -20,7 +20,9 @@ class World {
     IntervalHub.startInterval(() => {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy))
-          console.log(`Character is colliding with - ${enemy}`);
+          {this.character.hit();
+          console.log(`Charater remain Energy: ${this.character.energy}`);
+          }
       });
     }, 1000);
   }
