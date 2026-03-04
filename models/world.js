@@ -7,6 +7,7 @@ class World {
 
   camera_x = 0;
   statusBar = new StatusBar();
+  throwableObjects = [];
 
   constructor(canvas_, keyboard_) {
     this.canvas = canvas_;
@@ -15,17 +16,33 @@ class World {
     this.draw();
     this.setWorld();
     this.checkCollision();
+    this.run();
+  }
+
+  run() {
+    IntervalHub.startInterval(() => {
+      this.checkCollision();
+      this.checkThrowObjects();
+    }, 200);
+  }
+
+  checkThrowObjects() {
+    if(this.keyboard.D == true){
+    let bottle = new ThrowableObject(
+      this.character.x + 50,
+      this.character.y + 50,
+    );
+    this.throwableObjects.push(bottle);
+    }
   }
 
   checkCollision() {
-    IntervalHub.startInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-        }
-      });
-    }, 1000);
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    });
   }
 
   draw() {
@@ -34,10 +51,11 @@ class World {
     this.addObjectToMap(this.level.backgrounds);
     this.addObjectToMap(this.level.clouds);
     this.addObjectToMap(this.level.enemies);
+    this.addObjectToMap(this.throwableObjects);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);
-    // objects with fixed place
+    // objects in fixed Position
     this.addToMap(this.statusBar);
     this.ctx.translate(+this.camera_x, 0);
 

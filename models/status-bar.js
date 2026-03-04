@@ -9,8 +9,6 @@ class StatusBar extends DrawableObject {
     super();
     this.loadImages(ImagHub.STATUS_BAR.STATUS_BAR_HEALTH);
     this.setPercentage(100);
-
-   
   }
 
   setPercentage(percentage) {
