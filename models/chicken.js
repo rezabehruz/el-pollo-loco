@@ -3,8 +3,8 @@ class Chicken extends MovableObject {
   width = 60;
   height = 80;
   constructor() {
-    super().loadImages(ImagHub.CHICKEN_WALKING);
-    this.x = 300 + Math.random() * 150;
+    super().loadImages(ImageHub.CHICKEN_WALKING);
+    this.x = 500 + Math.random() * 1800 ;
     this.speed = 0.15 + Math.random() * 0.25;
 
     this.animate();
@@ -14,7 +14,7 @@ class Chicken extends MovableObject {
     IntervalHub.startInterval(() => this.moveLeft(), 1000 / 60);
 
     IntervalHub.startInterval(
-      () => this.playAnimation(ImagHub.CHICKEN_WALKING),
+      () => this.playAnimation(ImageHub.CHICKEN_WALKING),
       300,
     );
   }

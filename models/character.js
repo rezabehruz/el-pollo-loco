@@ -8,10 +8,10 @@ class Character extends MovableObject {
 
   constructor() {
     super().loadImage("../img/2_character_pepe/2_walk/W-21.png");
-    this.loadImages(ImagHub.CHARACTER.CHARACTER_HURT);
-    this.loadImages(ImagHub.CHARACTER.CHARACTER_DEAD);
-    this.loadImages(ImagHub.CHARACTER.CHARACTER_JUMPING);
-    this.loadImages(ImagHub.CHARACTER.CHARACTER_WALKING);
+    this.loadImages(ImageHub.CHARACTER.CHARACTER_HURT);
+    this.loadImages(ImageHub.CHARACTER.CHARACTER_DEAD);
+    this.loadImages(ImageHub.CHARACTER.CHARACTER_JUMPING);
+    this.loadImages(ImageHub.CHARACTER.CHARACTER_WALKING);
 
     this.applyGravity();
 
@@ -38,14 +38,14 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     IntervalHub.startInterval(() => {
-      if (this.isHurt()) this.playAnimation(ImagHub.CHARACTER.CHARACTER_HURT);
+      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.CHARACTER_HURT);
       else if (this.isDead())
-        this.playAnimation(ImagHub.CHARACTER.CHARACTER_DEAD);
+        this.playAnimation(ImageHub.CHARACTER.CHARACTER_DEAD);
       else if (this.isAboveGround())
-        this.playAnimation(ImagHub.CHARACTER.CHARACTER_JUMPING);
+        this.playAnimation(ImageHub.CHARACTER.CHARACTER_JUMPING);
       else {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT)
-          this.playAnimation(ImagHub.CHARACTER.CHARACTER_WALKING);
+          this.playAnimation(ImageHub.CHARACTER.CHARACTER_WALKING);
       }
     }, 50);
   }

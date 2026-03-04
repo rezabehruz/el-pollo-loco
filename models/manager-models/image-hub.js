@@ -1,4 +1,6 @@
-class ImagHub {
+class ImageHub {
+  static COIN = ["../img/8_coin/coin_1.png", "../img/8_coin/coin_2.png"];
+
   static STATUS_BAR = {
     STATUS_BAR_HEALTH: [
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
@@ -6,7 +8,7 @@ class ImagHub {
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
-      "../img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png"
+      "../img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png",
     ],
   };
 

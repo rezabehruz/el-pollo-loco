@@ -35,4 +35,10 @@ class DrawableObject {
       ctx.stroke();
     }
   }
+
+    playAnimation(images) {
+    let i = this.currentImg % images.length;
+    this.img = this.imageCache[images[i]];
+    this.currentImg++;
+  }
 }

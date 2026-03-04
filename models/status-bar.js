@@ -7,13 +7,13 @@ class StatusBar extends DrawableObject {
 
   constructor() {
     super();
-    this.loadImages(ImagHub.STATUS_BAR.STATUS_BAR_HEALTH);
+    this.loadImages(ImageHub.STATUS_BAR.STATUS_BAR_HEALTH);
     this.setPercentage(100);
   }
 
   setPercentage(percentage) {
     this.percentage = percentage;
-    let path = ImagHub.STATUS_BAR.STATUS_BAR_HEALTH[this.resolveImageIndex()];
+    let path = ImageHub.STATUS_BAR.STATUS_BAR_HEALTH[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
 

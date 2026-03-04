@@ -22,7 +22,18 @@ class World {
     IntervalHub.startInterval(() => {
       this.checkCollision();
       this.checkThrowObjects();
+      this.collectCoins();
     }, 200);
+  }
+
+  collectCoins() {
+    for (let i = 0; i < this.level.coins.length; i++) {
+      if (this.character.isColliding(this.level.coins[i])) {
+        this.level.coins.splice(i, 1);
+        this.character.energy += 20;
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    }
   }
 
   checkThrowObjects() {
@@ -51,6 +62,7 @@ class World {
     this.addObjectToMap(this.level.clouds);
     this.addObjectToMap(this.level.enemies);
     this.addObjectToMap(this.throwableObjects);
+    this.addObjectToMap(this.level.coins);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);
