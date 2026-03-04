@@ -1,13 +1,13 @@
 class World {
-  character = new Character();
-  level = level1;
   canvas;
   ctx;
   keyboard;
-
-  camera_x = 0;
+  level = level1;
+  character = new Character();
   statusBar = new StatusBar();
   throwableObjects = [];
+
+  camera_x = 0;
 
   constructor(canvas_, keyboard_) {
     this.canvas = canvas_;
@@ -15,7 +15,6 @@ class World {
     this.ctx = canvas_.getContext("2d");
     this.draw();
     this.setWorld();
-    this.checkCollision();
     this.run();
   }
 
@@ -27,12 +26,12 @@ class World {
   }
 
   checkThrowObjects() {
-    if(this.keyboard.D == true){
-    let bottle = new ThrowableObject(
-      this.character.x + 50,
-      this.character.y + 50,
-    );
-    this.throwableObjects.push(bottle);
+    if (this.keyboard.D == true) {
+      let bottle = new ThrowableObject(
+        this.character.x + 50,
+        this.character.y + 50,
+      );
+      this.throwableObjects.push(bottle);
     }
   }
 

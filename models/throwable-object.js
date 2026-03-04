@@ -1,6 +1,6 @@
 class ThrowableObject extends MovableObject {
-  x = 100;
-  y = 100;
+  x;
+  y;
   width = 50;
   height = 60;
   speedY;
@@ -17,6 +17,6 @@ class ThrowableObject extends MovableObject {
     this.speedY = 30;
     this.applyGravity();
 
-    IntervalHub.startInterval(() => (this.x += 5), 25);
+    IntervalHub.startInterval(() => (this.x += 8), 25);
   }
 }
