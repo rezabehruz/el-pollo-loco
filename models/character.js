@@ -1,5 +1,4 @@
 class Character extends MovableObject {
-  
   speed = 5;
   x = 20;
   y = 140;
@@ -8,10 +7,11 @@ class Character extends MovableObject {
 
   constructor() {
     super().loadImage("../img/2_character_pepe/2_walk/W-21.png");
-    this.loadImages(ImageHub.CHARACTER.CHARACTER_HURT);
-    this.loadImages(ImageHub.CHARACTER.CHARACTER_DEAD);
-    this.loadImages(ImageHub.CHARACTER.CHARACTER_JUMPING);
-    this.loadImages(ImageHub.CHARACTER.CHARACTER_WALKING);
+    this.loadImages(ImageHub.CHARACTER.HURT);
+    this.loadImages(ImageHub.CHARACTER.DEAD);
+    this.loadImages(ImageHub.CHARACTER.JUMPING);
+    this.loadImages(ImageHub.CHARACTER.WALKING);
+    this.loadImages(ImageHub.CHARACTER.IDLE);
 
     this.applyGravity();
 
@@ -31,22 +31,23 @@ class Character extends MovableObject {
       }
 
       if (this.world.keyboard.UP) {
-        this.speedY = 20;
+        this.jump();
       }
 
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
     IntervalHub.startInterval(() => {
-      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.CHARACTER_HURT);
-      else if (this.isDead())
-        this.playAnimation(ImageHub.CHARACTER.CHARACTER_DEAD);
-      else if (this.isAboveGround())
-        this.playAnimation(ImageHub.CHARACTER.CHARACTER_JUMPING);
-      else {
-        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT)
-          this.playAnimation(ImageHub.CHARACTER.CHARACTER_WALKING);
-      }
-    }, 50);
+      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.HURT);
+      else if (this.isDead()) {
+        if (this.animationFlag == false) {
+          this.animationFlag = this.playDeadAnimation(ImageHub.CHARACTER.DEAD);
+        }
+      } else if (this.isAboveGround())
+        this.playAnimation(ImageHub.CHARACTER.JUMPING);
+      else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT)
+        this.playAnimation(ImageHub.CHARACTER.WALKING);
+      else this.playAnimation(ImageHub.CHARACTER.IDLE);
+    }, 1000 / 25);
   }
 }

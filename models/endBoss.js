@@ -3,6 +3,7 @@ class EndBoss extends MovableObject {
   width = 200;
   x = 2400;
   y = 230;
+  
   constructor() {
     super().loadImages(ImageHub.ENDBOSS.ALERT);
 

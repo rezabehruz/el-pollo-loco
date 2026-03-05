@@ -7,6 +7,7 @@ class DrawableObject {
   img = new Image();
   imageCache = {};
   currentImg = 0;
+  animationFlag = false;
 
   otherDirection = false;
 
@@ -36,9 +37,18 @@ class DrawableObject {
     }
   }
 
-    playAnimation(images) {
+  playAnimation(images) {
     let i = this.currentImg % images.length;
     this.img = this.imageCache[images[i]];
     this.currentImg++;
+  }
+
+  playDeadAnimation(images) {
+    let i = this.currentImg % images.length;
+    this.img = this.imageCache[images[i]];
+    this.currentImg++;
+
+    if (i == images.length - 1) return true;
+    else return false;
   }
 }

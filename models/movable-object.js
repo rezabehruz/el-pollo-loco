@@ -5,10 +5,12 @@ class MovableObject extends DrawableObject {
   energy = 100;
   lastHit = 0;
 
+
   hit() {
     this.energy -= 5;
-    if (this.energy < 0) this.energy = 0;
-    else this.lastHit = new Date().getTime();
+    if (this.energy < 0) {
+      this.energy = 0;
+    } else this.lastHit = new Date().getTime();
   }
 
   isHurt() {
@@ -46,8 +48,6 @@ class MovableObject extends DrawableObject {
     this.x += this.speed;
   }
 
-
-
   isColliding(obj) {
     return (
       this.x + this.width > obj.x &&
@@ -55,5 +55,9 @@ class MovableObject extends DrawableObject {
       this.x < obj.x + obj.width &&
       this.y < obj.y + obj.height
     );
+  }
+
+  jump() {
+    this.speedY = 20;
   }
 }

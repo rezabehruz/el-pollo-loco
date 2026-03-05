@@ -14,6 +14,6 @@ class Coin extends DrawableObject {
   }
 
   animate(){
-    IntervalHub.startInterval(()=> this.playAnimation(ImageHub.COIN) , 1000 / 60)
+    IntervalHub.startInterval(()=> this.playAnimation(ImageHub.COIN) , 400)
   }
 }

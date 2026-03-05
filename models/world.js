@@ -22,11 +22,11 @@ class World {
     IntervalHub.startInterval(() => {
       this.checkCollision();
       this.checkThrowObjects();
-      this.collectCoins();
+      this.checkCoinCollection();
     }, 200);
   }
 
-  collectCoins() {
+  checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
         this.level.coins.splice(i, 1);

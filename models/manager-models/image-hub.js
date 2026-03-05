@@ -2,7 +2,7 @@ class ImageHub {
   static COIN = ["../img/8_coin/coin_1.png", "../img/8_coin/coin_2.png"];
 
   static STATUS_BAR = {
-    STATUS_BAR_HEALTH: [
+    HEALTH: [
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
@@ -13,7 +13,19 @@ class ImageHub {
   };
 
   static CHARACTER = {
-    CHARACTER_WALKING: [
+    IDLE: [
+      "../img/2_character_pepe/1_idle/idle/I-1.png",
+      "../img/2_character_pepe/1_idle/idle/I-2.png",
+      "../img/2_character_pepe/1_idle/idle/I-3.png",
+      "../img/2_character_pepe/1_idle/idle/I-4.png",
+      "../img/2_character_pepe/1_idle/idle/I-5.png",
+      "../img/2_character_pepe/1_idle/idle/I-6.png",
+      "../img/2_character_pepe/1_idle/idle/I-7.png",
+      "../img/2_character_pepe/1_idle/idle/I-8.png",
+      "../img/2_character_pepe/1_idle/idle/I-9.png",
+      "../img/2_character_pepe/1_idle/idle/I-10.png",
+    ],
+    WALKING: [
       "../img/2_character_pepe/2_walk/W-21.png",
       "../img/2_character_pepe/2_walk/W-22.png",
       "../img/2_character_pepe/2_walk/W-23.png",
@@ -21,7 +33,7 @@ class ImageHub {
       "../img/2_character_pepe/2_walk/W-25.png",
       "../img/2_character_pepe/2_walk/W-26.png",
     ],
-    CHARACTER_JUMPING: [
+    JUMPING: [
       "../img/2_character_pepe/3_jump/J-31.png",
       "../img/2_character_pepe/3_jump/J-32.png",
       "../img/2_character_pepe/3_jump/J-33.png",
@@ -32,7 +44,7 @@ class ImageHub {
       "../img/2_character_pepe/3_jump/J-38.png",
       "../img/2_character_pepe/3_jump/J-39.png",
     ],
-    CHARACTER_DEAD: [
+    DEAD: [
       "../img/2_character_pepe/5_dead/D-51.png",
       "../img/2_character_pepe/5_dead/D-52.png",
       "../img/2_character_pepe/5_dead/D-53.png",
@@ -41,18 +53,20 @@ class ImageHub {
       "../img/2_character_pepe/5_dead/D-56.png",
       "../img/2_character_pepe/5_dead/D-57.png",
     ],
-    CHARACTER_HURT: [
+    HURT: [
       "../img/2_character_pepe/4_hurt/H-41.png",
       "../img/2_character_pepe/4_hurt/H-42.png",
       "../img/2_character_pepe/4_hurt/H-43.png",
     ],
   };
 
-  static CHICKEN_WALKING = [
-    "../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
-    "../img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
-    "../img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
-  ];
+  static CHICKEN = {
+    WALKING: [
+      "../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
+      "../img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
+      "../img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
+    ],
+  };
 
   static ENDBOSS = {
     ALERT: [
@@ -80,10 +94,11 @@ class ImageHub {
       "../img/5_background/layers/3_third_layer/1.png",
       "../img/5_background/layers/3_third_layer/2.png",
     ],
-    CLOUDS: [
-      "../img/5_background/layers/4_clouds/1.png",
-      "../img/5_background/layers/4_clouds/2.png",
-    ],
     AIR: "../img/5_background/layers/air.png",
   };
+
+  static CLOUDS = [
+    "../img/5_background/layers/4_clouds/1.png",
+    "../img/5_background/layers/4_clouds/2.png",
+  ];
 }
