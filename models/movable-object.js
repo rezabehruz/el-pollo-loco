@@ -1,11 +1,16 @@
 class MovableObject extends DrawableObject {
+
+  // #region Properties
   speed = 0.15;
   speedY = 0;
   acceleration = 2;
   energy = 100;
   lastHit = 0;
 
+  // #endregion
 
+
+  // #region Methods
   hit() {
     this.energy -= 5;
     if (this.energy < 0) {
@@ -58,6 +63,8 @@ class MovableObject extends DrawableObject {
   }
 
   jump() {
-    this.speedY = 20;
+    this.speedY = 25;
   }
+
+  // #endregion
 }

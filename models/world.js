@@ -1,16 +1,16 @@
 class World {
+  // #region Properties
   canvas;
   ctx;
   level = level1;
   character = new Character();
-  healthStatus = new StatusBar(40, 0, 100, ImageHub.STATUS_BAR.HEALTH);
-  bottleStatus = new StatusBar(40, 40, 40, ImageHub.STATUS_BAR.BOTTLE);
-  coinStatus = new StatusBar(40, 80, 40, ImageHub.STATUS_BAR.COIN);
 
   throwableObjects = [];
-
   camera_x = 0;
 
+  // #endregion
+
+  // #region Constructor
   constructor(canvas_) {
     this.canvas = canvas_;
     this.keyboard;
@@ -20,12 +20,21 @@ class World {
     this.run();
   }
 
+  // #endregion
+
+  // #region Methods
   run() {
     IntervalHub.startInterval(() => {
       this.checkCollision();
       this.checkThrowObjects();
       this.checkCoinCollection();
+      this.checkBottleCollection();
+
     }, 200);
+  }
+
+  checkBottleCollection(){
+    
   }
 
   checkCoinCollection() {
@@ -33,7 +42,7 @@ class World {
       if (this.character.isColliding(this.level.coins[i])) {
         this.level.coins.splice(i, 1);
         this.character.energy += 20;
-        this.healthStatus.setPercentage(this.character.energy);
+        this.level.healthStatus.setPercentage(this.character.energy);
       }
     }
   }
@@ -52,7 +61,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
-        this.healthStatus.setPercentage(this.character.energy);
+        this.level.healthStatus.setPercentage(this.character.energy);
       }
     });
   }
@@ -65,13 +74,14 @@ class World {
     this.addObjectToMap(this.level.enemies);
     this.addObjectToMap(this.throwableObjects);
     this.addObjectToMap(this.level.coins);
+    this.addObjectToMap(this.level.bottles);
     this.addToMap(this.character);
 
     this.ctx.translate(-this.camera_x, 0);
     // objects in fixed Position
-    this.addToMap(this.healthStatus);
-    this.addToMap(this.bottleStatus);
-    this.addToMap(this.coinStatus);
+    this.addToMap(this.level.healthStatus);
+    this.addToMap(this.level.bottleStatus);
+    this.addToMap(this.level.coinStatus);
     this.ctx.translate(+this.camera_x, 0);
 
     this.ctx.translate(-this.camera_x, 0);
@@ -113,4 +123,6 @@ class World {
     object.x = object.x * -1;
     this.ctx.restore();
   }
+
+  // #endregion
 }

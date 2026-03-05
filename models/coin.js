@@ -1,9 +1,13 @@
 class Coin extends DrawableObject {
+  // #region Properties
   x;
   y = 200;
   width = 100;
   height = 100;
 
+  // #endregion
+
+  // #region Constructor
   constructor() {
     super();
     this.loadImages(ImageHub.COIN);
@@ -13,7 +17,13 @@ class Coin extends DrawableObject {
     this.animate();
   }
 
-  animate(){
-    IntervalHub.startInterval(()=> this.playAnimation(ImageHub.COIN) , 400)
+  // #endregion
+
+  // #region Methods
+  animate() {
+    IntervalHub.startInterval(() => this.playAnimation(ImageHub.COIN), 400);
   }
+
+  // #endregion
 }
+

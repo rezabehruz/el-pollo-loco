@@ -1,4 +1,6 @@
 class DrawableObject {
+
+  // #region Properties
   x = 20;
   y = 240;
   width = 100;
@@ -11,6 +13,9 @@ class DrawableObject {
 
   otherDirection = false;
 
+  // #endregion
+
+  // #region Methods
   loadImage(path) {
     this.img.src = path;
   }
@@ -51,4 +56,6 @@ class DrawableObject {
     if (i == images.length - 1) return true;
     else return false;
   }
+
+  // #endregion
 }

@@ -1,8 +1,15 @@
 class ImageHub {
+  static BOTTLE = {
+    onGround: [
+      "../img/6_salsa_bottle/1_salsa_bottle_on_ground.png",
+      "../img/6_salsa_bottle/2_salsa_bottle_on_ground.png",
+    ],
+  };
+
   static COIN = ["../img/8_coin/coin_1.png", "../img/8_coin/coin_2.png"];
 
   static STATUS_BAR = {
-    HEALTH: [
+    health: [
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
@@ -10,7 +17,7 @@ class ImageHub {
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
       "../img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png",
     ],
-    BOTTLE: [
+    bottle: [
       "../img/7_statusbars/1_statusbar/3_statusbar_bottle/green/0.png",
       "../img/7_statusbars/1_statusbar/3_statusbar_bottle/green/20.png",
       "../img/7_statusbars/1_statusbar/3_statusbar_bottle/green/40.png",
@@ -18,7 +25,7 @@ class ImageHub {
       "../img/7_statusbars/1_statusbar/3_statusbar_bottle/green/80.png",
       "../img/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png",
     ],
-    COIN: [
+    coin: [
       "../img/7_statusbars/1_statusbar/1_statusbar_coin/green/0.png",
       "../img/7_statusbars/1_statusbar/1_statusbar_coin/green/20.png",
       "../img/7_statusbars/1_statusbar/1_statusbar_coin/green/40.png",
