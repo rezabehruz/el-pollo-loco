@@ -20,17 +20,17 @@ class Character extends MovableObject {
 
   animate() {
     IntervalHub.startInterval(() => {
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      if (Keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
       }
 
-      if (this.world.keyboard.LEFT && this.x > 0) {
+      if (Keyboard.LEFT && this.x > 0) {
         this.moveLeft();
         this.otherDirection = true;
       }
 
-      if (this.world.keyboard.UP) {
+      if (Keyboard.UP) {
         this.jump();
       }
 
@@ -45,7 +45,7 @@ class Character extends MovableObject {
         }
       } else if (this.isAboveGround())
         this.playAnimation(ImageHub.CHARACTER.JUMPING);
-      else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT)
+      else if (Keyboard.RIGHT || Keyboard.LEFT)
         this.playAnimation(ImageHub.CHARACTER.WALKING);
       else this.playAnimation(ImageHub.CHARACTER.IDLE);
     }, 1000 / 25);

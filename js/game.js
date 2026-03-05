@@ -1,60 +1,67 @@
 let canvas;
 let world;
-let keyboard = new Keyboard();
 
 function init() {
   canvas = document.getElementById("canvas");
-  world = new World(canvas, keyboard);
+  world = new World(canvas);
 }
 
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowRight") {
-    keyboard.RIGHT = true;
+    Keyboard.RIGHT = true;
   }
 
   if (event.key == "ArrowLeft") {
-    keyboard.LEFT = true;
+    Keyboard.LEFT = true;
   }
 
   if (event.key == "ArrowUp") {
-    keyboard.UP = true;
+    Keyboard.UP = true;
   }
 
   if (event.key == "ArrowDown") {
-    keyboard.DOWN = true;
+    Keyboard.DOWN = true;
   }
 
   if (event.key == "Space") {
-    keyboard.SPACE = true;
+    Keyboard.SPACE = true;
   }
 
   if (event.key == "d") {
-    keyboard.D = true;
+    Keyboard.D = true;
+  }
+
+  if (event.key == "f") {
+    Keyboard.F = true;
   }
 });
 
 window.addEventListener("keyup", (event) => {
   if (event.key == "ArrowRight") {
-    keyboard.RIGHT = false;
+    Keyboard.RIGHT = false;
   }
 
   if (event.key == "ArrowLeft") {
-    keyboard.LEFT = false;
+    Keyboard.LEFT = false;
   }
 
   if (event.key == "ArrowUp") {
-    keyboard.UP = false;
+    Keyboard.UP = false;
   }
 
   if (event.key == "ArrowDown") {
-    keyboard.DOWN = false;
+    Keyboard.DOWN = false;
   }
 
   if (event.key == "Space") {
-    keyboard.SPACE = false;
+    Keyboard.SPACE = false;
   }
 
   if (event.key == "d") {
-    keyboard.D = false;
+    Keyboard.D = false;
+  }
+
+  if (event.key == "f") {
+    Keyboard.F = false;
   }
 });

@@ -1,7 +1,6 @@
 class World {
   canvas;
   ctx;
-  keyboard;
   level = level1;
   character = new Character();
   healthStatus = new StatusBar(40, 0, 100, ImageHub.STATUS_BAR.HEALTH);
@@ -34,13 +33,13 @@ class World {
       if (this.character.isColliding(this.level.coins[i])) {
         this.level.coins.splice(i, 1);
         this.character.energy += 20;
-        this.statusBar.setPercentage(this.character.energy);
+        this.healthStatus.setPercentage(this.character.energy);
       }
     }
   }
 
   checkThrowObjects() {
-    if (this.keyboard.D == true) {
+    if (Keyboard.D == true) {
       let bottle = new ThrowableObject(
         this.character.x + 50,
         this.character.y + 50,
@@ -53,7 +52,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
-        // this.statusBar.setPercentage(this.character.energy);
+        this.healthStatus.setPercentage(this.character.energy);
       }
     });
   }
