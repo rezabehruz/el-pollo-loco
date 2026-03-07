@@ -1,4 +1,8 @@
-class Chicken extends MovableObject {
+import { MovableObject } from "./movable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class Chicken extends MovableObject {
 
   // #region Properties
   y = 340;
@@ -10,8 +14,8 @@ class Chicken extends MovableObject {
 
   // #region Constructor
   constructor() {
-    super().loadImages(ImageHub.CHICKEN.WALKING);
-    this.x = 500 + Math.random() * 1800 ;
+    super().loadImages(ImageHub.CHICKEN.walking);
+    this.x = 100 + Math.random() * 1800 ;
     this.speed = 0.15 + Math.random() * 0.25;
 
     this.animate();
@@ -25,7 +29,7 @@ class Chicken extends MovableObject {
     IntervalHub.startInterval(() => this.moveLeft(), 1000 / 60);
 
     IntervalHub.startInterval(
-      () => this.playAnimation(ImageHub.CHICKEN.WALKING),
+      () => this.playAnimation(ImageHub.CHICKEN.walking),
       300,
     );
   }

@@ -1,4 +1,8 @@
-class Cloud extends MovableObject {
+import { MovableObject } from "./movable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class Cloud extends MovableObject {
   // #region Properties
   y = 10;
   width = 190;

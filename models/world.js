@@ -1,4 +1,9 @@
-class World {
+import { level1 } from "../js/levels/level1.js";
+import { Character } from "./character.js";
+import { Chicken } from "./chicken.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class World {
   // #region Properties
   canvas;
   ctx;
@@ -13,7 +18,6 @@ class World {
   // #region Constructor
   constructor(canvas_) {
     this.canvas = canvas_;
-    this.keyboard;
     this.ctx = canvas_.getContext("2d");
     this.draw();
     this.setWorld();
@@ -29,13 +33,10 @@ class World {
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
-
     }, 200);
   }
 
-  checkBottleCollection(){
-    
-  }
+  checkBottleCollection() {}
 
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
@@ -72,7 +73,7 @@ class World {
     this.addObjectToMap(this.level.backgrounds);
     this.addObjectToMap(this.level.clouds);
     this.addObjectToMap(this.level.enemies);
-    this.addObjectToMap(this.throwableObjects);
+    // this.addObjectToMap(this.throwableObjects);
     this.addObjectToMap(this.level.coins);
     this.addObjectToMap(this.level.bottles);
     this.addToMap(this.character);
@@ -105,7 +106,10 @@ class World {
     }
 
     object.draw(this.ctx);
-    object.drawFrame(this.ctx);
+
+    if (object instanceof Character || object instanceof Chicken) {
+      object.drawFrame(this.ctx);
+    }
 
     if (object.otherDirection) {
       this.flipImageBack(object);

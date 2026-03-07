@@ -1,4 +1,8 @@
-class Coin extends DrawableObject {
+import { DrawableObject } from "./drawable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class Coin extends DrawableObject {
   // #region Properties
   x;
   y = 200;

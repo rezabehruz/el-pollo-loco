@@ -1,4 +1,8 @@
-class Character extends MovableObject {
+import { MovableObject } from "./movable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class Character extends MovableObject {
   // #region Properties
   speed = 3;
   x = 20;
@@ -11,11 +15,11 @@ class Character extends MovableObject {
   // #region Constructor
   constructor() {
     super().loadImage("../img/2_character_pepe/2_walk/W-21.png");
-    this.loadImages(ImageHub.CHARACTER.HURT);
-    this.loadImages(ImageHub.CHARACTER.DEAD);
-    this.loadImages(ImageHub.CHARACTER.JUMPING);
-    this.loadImages(ImageHub.CHARACTER.WALKING);
-    this.loadImages(ImageHub.CHARACTER.IDLE);
+    this.loadImages(ImageHub.CHARACTER.hurt);
+    this.loadImages(ImageHub.CHARACTER.dead);
+    this.loadImages(ImageHub.CHARACTER.jumping);
+    this.loadImages(ImageHub.CHARACTER.walking);
+    this.loadImages(ImageHub.CHARACTER.idle);
 
     this.applyGravity();
 
@@ -45,16 +49,16 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     IntervalHub.startInterval(() => {
-      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.HURT);
+      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.hurt);
       else if (this.isDead()) {
         if (this.animationFlag == false) {
-          this.animationFlag = this.playDeadAnimation(ImageHub.CHARACTER.DEAD);
+          this.animationFlag = this.playDeadAnimation(ImageHub.CHARACTER.dead);
         }
       } else if (this.isAboveGround())
-        this.playAnimation(ImageHub.CHARACTER.JUMPING);
+        this.playAnimation(ImageHub.CHARACTER.jumping);
       else if (Keyboard.RIGHT || Keyboard.LEFT)
-        this.playAnimation(ImageHub.CHARACTER.WALKING);
-      else this.playAnimation(ImageHub.CHARACTER.IDLE);
+        this.playAnimation(ImageHub.CHARACTER.walking);
+      else this.playAnimation(ImageHub.CHARACTER.idle);
     }, 120);
   }
 

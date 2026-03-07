@@ -1,11 +1,11 @@
-class Level {
+export class Level {
   // #region Properties
   backgrounds;
   clouds;
   enemies;
   coins;
   bottles_;
-  level_end_x = 2267;
+  level_end_x;
 
   // #endregion
 
@@ -19,6 +19,7 @@ class Level {
     healthStatus_,
     bottleStatus_,
     coinStatus_,
+    levelEndX_
   ) {
     this.backgrounds = backgrounds_;
     this.clouds = clouds_;
@@ -28,6 +29,7 @@ class Level {
     this.healthStatus = healthStatus_;
     this.bottleStatus = bottleStatus_;
     this.coinStatus = coinStatus_;
+    this.level_end_x = levelEndX_;
   }
 
   // #endregion

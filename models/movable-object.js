@@ -1,4 +1,7 @@
-class MovableObject extends DrawableObject {
+import { DrawableObject } from "./drawable-object.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class MovableObject extends DrawableObject {
 
   // #region Properties
   speed = 0.15;
@@ -38,11 +41,11 @@ class MovableObject extends DrawableObject {
   }
 
   isAboveGround() {
-    if (this instanceof ThrowableObject) {
-      return true;
-    } else {
+    // if (this instanceof ThrowableObject) {
+    //   return true;
+    // } else {
       return this.y < 240;
-    }
+    // }
   }
 
   moveLeft() {

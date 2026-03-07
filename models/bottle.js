@@ -1,4 +1,7 @@
-class Bottle extends DrawableObject {
+import { DrawableObject } from "./drawable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+
+export class Bottle extends DrawableObject {
   // #region Properties
   y = 350;
   width = 70;

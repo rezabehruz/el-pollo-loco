@@ -1,4 +1,9 @@
-class EndBoss extends MovableObject {
+import { MovableObject } from "./movable-object.js";
+import { ImageHub } from "./manager-models/image-hub.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+
+export class EndBoss extends MovableObject {
   // #region Properties
   height = 200;
   width = 200;
@@ -9,7 +14,7 @@ class EndBoss extends MovableObject {
 
   // #region Constructor
   constructor() {
-    super().loadImages(ImageHub.ENDBOSS.ALERT);
+    super().loadImages(ImageHub.ENDBOSS.alert);
 
     this.animate();
   }
@@ -19,7 +24,7 @@ class EndBoss extends MovableObject {
   // #region Methods
   animate() {
     IntervalHub.startInterval(
-      () => this.playAnimation(ImageHub.ENDBOSS.ALERT),
+      () => this.playAnimation(ImageHub.ENDBOSS.alert),
       300,
     );
   }

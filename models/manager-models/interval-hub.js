@@ -1,4 +1,4 @@
-class IntervalHub {
+export class IntervalHub {
 
   // #region Properties
   static ALL_INTERVALS = [];

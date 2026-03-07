@@ -1,4 +1,4 @@
-class ImageHub {
+export class ImageHub {
   static BOTTLE = {
     onGround: [
       "../img/6_salsa_bottle/1_salsa_bottle_on_ground.png",
@@ -36,7 +36,7 @@ class ImageHub {
   };
 
   static CHARACTER = {
-    IDLE: [
+    idle: [
       "../img/2_character_pepe/1_idle/idle/I-1.png",
       "../img/2_character_pepe/1_idle/idle/I-2.png",
       "../img/2_character_pepe/1_idle/idle/I-3.png",
@@ -48,7 +48,7 @@ class ImageHub {
       "../img/2_character_pepe/1_idle/idle/I-9.png",
       "../img/2_character_pepe/1_idle/idle/I-10.png",
     ],
-    WALKING: [
+    walking: [
       "../img/2_character_pepe/2_walk/W-21.png",
       "../img/2_character_pepe/2_walk/W-22.png",
       "../img/2_character_pepe/2_walk/W-23.png",
@@ -56,7 +56,7 @@ class ImageHub {
       "../img/2_character_pepe/2_walk/W-25.png",
       "../img/2_character_pepe/2_walk/W-26.png",
     ],
-    JUMPING: [
+    jumping: [
       "../img/2_character_pepe/3_jump/J-31.png",
       "../img/2_character_pepe/3_jump/J-32.png",
       "../img/2_character_pepe/3_jump/J-33.png",
@@ -67,7 +67,7 @@ class ImageHub {
       "../img/2_character_pepe/3_jump/J-38.png",
       "../img/2_character_pepe/3_jump/J-39.png",
     ],
-    DEAD: [
+    dead: [
       "../img/2_character_pepe/5_dead/D-51.png",
       "../img/2_character_pepe/5_dead/D-52.png",
       "../img/2_character_pepe/5_dead/D-53.png",
@@ -76,7 +76,7 @@ class ImageHub {
       "../img/2_character_pepe/5_dead/D-56.png",
       "../img/2_character_pepe/5_dead/D-57.png",
     ],
-    HURT: [
+    hurt: [
       "../img/2_character_pepe/4_hurt/H-41.png",
       "../img/2_character_pepe/4_hurt/H-42.png",
       "../img/2_character_pepe/4_hurt/H-43.png",
@@ -84,7 +84,7 @@ class ImageHub {
   };
 
   static CHICKEN = {
-    WALKING: [
+    walking: [
       "../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
       "../img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
       "../img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
@@ -92,7 +92,7 @@ class ImageHub {
   };
 
   static ENDBOSS = {
-    ALERT: [
+    alert: [
       "../img/4_enemie_boss_chicken/2_alert/G5.png",
       "../img/4_enemie_boss_chicken/2_alert/G6.png",
       "../img/4_enemie_boss_chicken/2_alert/G7.png",
@@ -105,19 +105,19 @@ class ImageHub {
   };
 
   static BACKGROUND = {
-    FIRST_LAYER: [
+    firstLayer: [
       "../img/5_background/layers/1_first_layer/1.png",
       "../img/5_background/layers/1_first_layer/2.png",
     ],
-    SECOND_LAYER: [
+    secondLayer: [
       "../img/5_background/layers/2_second_layer/1.png",
       "../img/5_background/layers/2_second_layer/2.png",
     ],
-    THIRD_LAYER: [
+    thirdLayer: [
       "../img/5_background/layers/3_third_layer/1.png",
       "../img/5_background/layers/3_third_layer/2.png",
     ],
-    AIR: "../img/5_background/layers/air.png",
+    air: "../img/5_background/layers/air.png",
   };
 
   static CLOUDS = [

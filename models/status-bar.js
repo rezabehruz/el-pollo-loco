@@ -1,4 +1,6 @@
-class StatusBar extends DrawableObject {
+import { DrawableObject } from "./drawable-object.js";
+
+export class StatusBar extends DrawableObject {
 
   // #region Properties
   width = 200;
