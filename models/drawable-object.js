@@ -43,17 +43,7 @@ export class DrawableObject {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
-  drawFrame(ctx) {
-    this.getRealFram();
-
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "blue";
-    ctx.rect(this.rX, this.rY, this.rWidth, this.rHeight);
-    ctx.stroke();
-  }
-
-  getRealFram() {
+  getRealFrame() {
     this.rX = this.x + this.offset.left;
     this.rY = this.y + this.offset.top;
     this.rWidth = this.width - this.offset.left - this.offset.right;

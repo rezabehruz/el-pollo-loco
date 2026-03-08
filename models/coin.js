@@ -20,7 +20,7 @@ export class Coin extends DrawableObject {
   constructor() {
     super();
     this.loadImages(ImageHub.COIN);
-    this.x = 1000 + Math.random() * 1200;
+    this.x = 600 + Math.random() * 1200;
     this.y = 100 + Math.random() * 200;
 
     this.animate();

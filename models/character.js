@@ -17,11 +17,13 @@ export class Character extends MovableObject {
     left: 20,
   };
 
+  coins = 0;
+
   // #endregion
 
   // #region Constructor
   constructor() {
-    super().loadImage("../img/2_character_pepe/2_walk/W-21.png");
+    super().loadImage("./img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(ImageHub.CHARACTER.hurt);
     this.loadImages(ImageHub.CHARACTER.dead);
     this.loadImages(ImageHub.CHARACTER.jumping);

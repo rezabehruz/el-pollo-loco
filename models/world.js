@@ -31,7 +31,7 @@ export class World {
   // #region Methods
   run() {
     IntervalHub.startInterval(() => {
-      this.checkCollision();
+      this.checkEnemyCollision();
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
@@ -44,8 +44,8 @@ export class World {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
         this.level.coins.splice(i, 1);
-        this.character.energy += 20;
-        this.level.healthStatus.setPercentage(this.character.energy);
+        this.character.coins += 20;
+        this.level.coinStatus.setPercentage(this.character.coins);
       }
     }
   }
@@ -60,7 +60,7 @@ export class World {
     }
   }
 
-  checkCollision() {
+  checkEnemyCollision() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
@@ -109,17 +109,17 @@ export class World {
 
     object.draw(this.ctx);
 
+    if (object.otherDirection) {
+      this.flipImageBack(object);
+    }
+
     if (
       object instanceof Character ||
       object instanceof Chicken ||
       object instanceof EndBoss ||
       object instanceof Coin
     ) {
-      object.drawFrame(this.ctx);
-    }
-
-    if (object.otherDirection) {
-      this.flipImageBack(object);
+      object.getRealFrame();
     }
   }
 

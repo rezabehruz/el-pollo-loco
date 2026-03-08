@@ -37,7 +37,7 @@ export const level1 = new Level(
   ],
   [new Cloud()],
   [new Chicken(), new Chicken(), new Chicken(), new EndBoss()],
-  [new Coin(), new Coin(), new Coin()],
+  [new Coin(), new Coin(), new Coin(), new Coin(), new Coin()],
   [new Bottle(), new Bottle(), new Bottle()],
   new StatusBar(40, 0, 100, ImageHub.STATUS_BAR.health),
   new StatusBar(40, 40, 0, ImageHub.STATUS_BAR.bottle),

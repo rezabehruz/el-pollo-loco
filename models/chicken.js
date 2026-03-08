@@ -8,7 +8,7 @@ export class Chicken extends MovableObject {
   y = 340;
   width = 60;
   height = 80;
-  speed = 0.15;
+  speed = 2;
 
    offset = {
     top: 10,
@@ -24,7 +24,7 @@ export class Chicken extends MovableObject {
   constructor() {
     super().loadImages(ImageHub.CHICKEN.walking);
     this.x = 100 + Math.random() * 1800 ;
-    this.speed = 0.15 + Math.random() * 0.25;
+    this.speed = this.speed + Math.random() * 0.25;
 
     this.animate();
   }
