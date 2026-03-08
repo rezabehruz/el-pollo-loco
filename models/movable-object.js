@@ -4,7 +4,7 @@ import { IntervalHub } from "./manager-models/interval-hub.js";
 export class MovableObject extends DrawableObject {
 
   // #region Properties
-  speed = 0.15;
+  speed;
   speedY = 0;
   acceleration = 2;
   energy = 100;
@@ -58,10 +58,10 @@ export class MovableObject extends DrawableObject {
 
   isColliding(obj) {
     return (
-      this.x + this.width > obj.x &&
-      this.y + this.height > obj.y &&
-      this.x < obj.x + obj.width &&
-      this.y < obj.y + obj.height
+      this.rX + this.rWidth > obj.rX &&
+      this.rY + this.rHeight > obj.rY &&
+      this.rX < obj.rX + obj.rWidth &&
+      this.rY < obj.rY + obj.rHeight
     );
   }
 

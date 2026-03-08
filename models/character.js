@@ -10,6 +10,13 @@ export class Character extends MovableObject {
   height = 180;
   width = 100;
 
+  offset = {
+    top: 80,
+    right: 30,
+    bottom: 10,
+    left: 20,
+  };
+
   // #endregion
 
   // #region Constructor

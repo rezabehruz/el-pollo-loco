@@ -4,10 +4,15 @@ import { IntervalHub } from "./manager-models/interval-hub.js";
 
 export class Coin extends DrawableObject {
   // #region Properties
-  x;
-  y = 200;
   width = 100;
   height = 100;
+
+    offset = {
+    top: 30,
+    right: 30,
+    bottom: 30,
+    left: 30,
+  };
 
   // #endregion
 

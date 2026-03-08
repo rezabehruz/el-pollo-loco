@@ -1,9 +1,14 @@
 export class DrawableObject {
   // #region Properties
-  x = 20;
-  y = 240;
-  width = 100;
-  height = 300;
+  x;
+  y;
+  width;
+  height;
+
+  rX;
+  rY;
+  rWidth;
+  rHeight;
 
   img = new Image();
   imageCache = {};
@@ -11,6 +16,13 @@ export class DrawableObject {
   animationFlag = false;
 
   otherDirection = false;
+
+  offset = {
+    top: "",
+    right: "",
+    bottom: "",
+    left: "",
+  };
 
   // #endregion
 
@@ -32,11 +44,20 @@ export class DrawableObject {
   }
 
   drawFrame(ctx) {
+    this.getRealFram();
+
     ctx.beginPath();
     ctx.lineWidth = "5";
     ctx.strokeStyle = "blue";
-    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.rect(this.rX, this.rY, this.rWidth, this.rHeight);
     ctx.stroke();
+  }
+
+  getRealFram() {
+    this.rX = this.x + this.offset.left;
+    this.rY = this.y + this.offset.top;
+    this.rWidth = this.width - this.offset.left - this.offset.right;
+    this.rHeight = this.height - this.offset.top - this.offset.bottom;
   }
 
   playAnimation(images) {

@@ -8,6 +8,14 @@ export class Chicken extends MovableObject {
   y = 340;
   width = 60;
   height = 80;
+  speed = 0.15;
+
+   offset = {
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10,
+  };
 
   // #endregion
 

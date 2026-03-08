@@ -1,6 +1,8 @@
 import { level1 } from "../js/levels/level1.js";
 import { Character } from "./character.js";
 import { Chicken } from "./chicken.js";
+import { EndBoss } from "./endBoss.js";
+import { Coin } from "./coin.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
 export class World {
@@ -107,7 +109,12 @@ export class World {
 
     object.draw(this.ctx);
 
-    if (object instanceof Character || object instanceof Chicken) {
+    if (
+      object instanceof Character ||
+      object instanceof Chicken ||
+      object instanceof EndBoss ||
+      object instanceof Coin
+    ) {
       object.drawFrame(this.ctx);
     }
 
