@@ -3,6 +3,7 @@ import { Character } from "./character.js";
 import { Chicken } from "./chicken.js";
 import { EndBoss } from "./endBoss.js";
 import { Coin } from "./coin.js";
+import { Bottle } from "./bottle.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
 export class World {
@@ -38,7 +39,15 @@ export class World {
     }, 200);
   }
 
-  checkBottleCollection() {}
+  checkBottleCollection() {
+    this.level.bottles.forEach((bottle, index) => {
+      if (this.character.isColliding(bottle)) {
+        this.level.bottles.splice(index, 1);
+        this.character.bottles += 20;
+        this.level.bottleStatus.setPercentage(this.character.bottles)
+      }
+    });
+  }
 
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
@@ -117,7 +126,7 @@ export class World {
       object instanceof Character ||
       object instanceof Chicken ||
       object instanceof EndBoss ||
-      object instanceof Coin
+      object instanceof Coin || object instanceof Bottle
     ) {
       object.getRealFrame();
     }

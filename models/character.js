@@ -18,6 +18,7 @@ export class Character extends MovableObject {
   };
 
   coins = 0;
+  bottles = 0;
 
   // #endregion
 
