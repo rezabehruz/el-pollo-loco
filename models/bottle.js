@@ -21,7 +21,7 @@ export class Bottle extends DrawableObject {
     }
 
     this.loadImage(ImageHub.BOTTLE.onGround[Bottle.IMAGE_INDEX]);
-    this.x = 1000 + Math.random() * 1200;
+    this.x = 300 + Math.random() * 1200;
   }
 
   //   #endregion

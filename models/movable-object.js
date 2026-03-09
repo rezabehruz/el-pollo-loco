@@ -13,7 +13,7 @@ export class MovableObject extends DrawableObject {
 
   // #region Methods
   hit() {
-    this.energy -= 5;
+    this.energy -= 20;
     if (this.energy < 0) {
       this.energy = 0;
     } else this.lastHit = new Date().getTime();
@@ -57,6 +57,10 @@ export class MovableObject extends DrawableObject {
       this.rX < obj.rX + obj.rWidth &&
       this.rY < obj.rY + obj.rHeight
     );
+  }
+
+  isKilling(obj) {
+    return obj.rY + obj.rHeight > this.rY + this.rHeight;
   }
 
   jump() {

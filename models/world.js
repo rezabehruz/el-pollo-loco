@@ -37,15 +37,17 @@ export class World {
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
-    }, 200);
+    }, 1000 / 25);
   }
 
   checkBottleCollection() {
     this.level.bottles.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
-        this.level.bottles.splice(index, 1);
-        this.character.bottles += 20;
-        this.level.bottleStatus.setPercentage(this.character.bottles);
+        if (this.character.bottles < 100) {
+          this.level.bottles.splice(index, 1);
+          this.character.bottles += 20;
+          this.level.bottleStatus.setPercentage(this.character.bottles);
+        }
       }
     });
   }
@@ -74,10 +76,16 @@ export class World {
   }
 
   checkEnemyCollision() {
-    this.level.enemies.forEach((enemy) => {
+    this.level.enemies.forEach((enemy, index) => {
       if (this.character.isColliding(enemy)) {
-        this.character.hit();
-        this.level.healthStatus.setPercentage(this.character.energy);
+        if (this.character.isKilling(enemy)) {
+          enemy.energy = 0;
+          this.level.enemies.splice(index, 1);
+          console.log("killing Enemy!");
+        } else {
+          this.character.hit();
+          this.level.healthStatus.setPercentage(this.character.energy);
+        }
       }
     });
   }
@@ -134,6 +142,7 @@ export class World {
       object instanceof Bottle
     ) {
       object.getRealFrame();
+      object.drawFrame(this.ctx);
     }
   }
 

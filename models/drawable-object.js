@@ -50,6 +50,14 @@ export class DrawableObject {
     this.rHeight = this.height - this.offset.top - this.offset.bottom;
   }
 
+  drawFrame(ctx) {
+    ctx.beginPath();
+    ctx.lineWidth = "5";
+    ctx.strokeStyle = "blue";
+    ctx.rect(this.rX, this.rY, this.rWidth, this.rHeight);
+    ctx.stroke();
+  }
+
   playAnimation(images) {
     let i = this.currentImg % images.length;
     this.img = this.imageCache[images[i]];
