@@ -5,6 +5,7 @@ import { EndBoss } from "./endBoss.js";
 import { Coin } from "./coin.js";
 import { Bottle } from "./bottle.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
+import { ThrowableObject } from "./throwable-object.js";
 
 export class World {
   // #region Properties
@@ -44,7 +45,7 @@ export class World {
       if (this.character.isColliding(bottle)) {
         this.level.bottles.splice(index, 1);
         this.character.bottles += 20;
-        this.level.bottleStatus.setPercentage(this.character.bottles)
+        this.level.bottleStatus.setPercentage(this.character.bottles);
       }
     });
   }
@@ -60,12 +61,15 @@ export class World {
   }
 
   checkThrowObjects() {
-    if (Keyboard.D == true) {
+    if (Keyboard.D == true && this.character.bottles > 0) {
       let bottle = new ThrowableObject(
         this.character.x + 50,
         this.character.y + 50,
+        this.character.otherDirection,
       );
       this.throwableObjects.push(bottle);
+      this.character.bottles -= 20;
+      this.level.bottleStatus.setPercentage(this.character.bottles);
     }
   }
 
@@ -84,7 +88,7 @@ export class World {
     this.addObjectToMap(this.level.backgrounds);
     this.addObjectToMap(this.level.clouds);
     this.addObjectToMap(this.level.enemies);
-    // this.addObjectToMap(this.throwableObjects);
+    this.addObjectToMap(this.throwableObjects);
     this.addObjectToMap(this.level.coins);
     this.addObjectToMap(this.level.bottles);
     this.addToMap(this.character);
@@ -126,7 +130,8 @@ export class World {
       object instanceof Character ||
       object instanceof Chicken ||
       object instanceof EndBoss ||
-      object instanceof Coin || object instanceof Bottle
+      object instanceof Coin ||
+      object instanceof Bottle
     ) {
       object.getRealFrame();
     }

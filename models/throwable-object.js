@@ -1,30 +1,43 @@
-class ThrowableObject extends MovableObject {
+import { MovableObject } from "./movable-object.js";
+import { IntervalHub } from "./manager-models/interval-hub.js";
+
+export class ThrowableObject extends MovableObject {
   // #region Properties
-  x;
-  y;
   width = 50;
   height = 60;
-  speedY;
-
+  speed = 8;
   // #endregion
 
   // #region Constructor
-  constructor(x_, y_) {
+  constructor(x_, y_, otherDirection_) {
     super();
     this.x = x_;
     this.y = y_;
-    this.loadImage("./img/6_salsa_bottle/salsa_bottle.png");
-    this.trow();
+    this.otherDirection = otherDirection_;
+    this.loadImage("./assets/img/6_salsa_bottle/salsa_bottle.png");
+    this.throw();
   }
 
   // #endregion
 
   // #region Methods
-  trow() {
+  throw() {
     this.speedY = 30;
     this.applyGravity();
 
-    IntervalHub.startInterval(() => (this.x += 8), 25);
+    if (this.otherDirection) {
+      this.x -= 50;
+    }
+
+    IntervalHub.startInterval(() => {
+      if (this.otherDirection) {
+        this.moveLeft();
+      } else this.moveRight();
+    }, 25);
+  }
+
+  isAboveGround() {
+    return true;
   }
 
   // #endregion
