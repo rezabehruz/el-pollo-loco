@@ -1,3 +1,5 @@
+import { World } from "../world.js";
+
 export class Keyboard {
   static RIGHT = false;
   static LEFT = false;
@@ -43,6 +45,7 @@ export class Keyboard {
 
       if (event.key == "d") {
         Keyboard.D = false;
+        World.OBJ_THROWED = false;
       }
 
       if (event.key == "f") {

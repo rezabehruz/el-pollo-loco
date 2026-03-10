@@ -18,6 +18,10 @@ export class World {
   throwableObjects = [];
   camera_x = 0;
 
+  // #region Flags
+  OBJ_THROWED = false;
+  // #endregion
+
   // #endregion
 
   // #region Constructor
@@ -46,15 +50,14 @@ export class World {
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy, enemyIndex) => {
-        if (enemy.isColliding(obj)){
+        if (enemy.isColliding(obj)) {
           // obj.isCollidiert = true;
           // enemy.energy = 0;
           // this.level.enemies.splice(enemyIndex, 1);
           // this.throwableObjects.splice(objIndex, 1);
           // console.log(this.level.enemies);
           console.log("colliedert");
-          
-        } 
+        }
       });
     });
   }
@@ -82,7 +85,12 @@ export class World {
   }
 
   checkThrowObjects() {
-    if (Keyboard.D == true && this.character.bottles > 0) {
+    if (
+      Keyboard.D == true &&
+      this.character.bottles > 0 &&
+      !World.OBJ_THROWED
+    ) {
+      World.OBJ_THROWED = true;
       let bottle = new ThrowableObject(
         this.character.x + 50,
         this.character.y + 50,
