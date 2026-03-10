@@ -6,6 +6,7 @@ import { Coin } from "./coin.js";
 import { Bottle } from "./bottle.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { ThrowableObject } from "./throwable-object.js";
+import { Keyboard } from "./manager-models/keyboard.js";
 
 export class World {
   // #region Properties
@@ -23,6 +24,7 @@ export class World {
   constructor(canvas_) {
     this.canvas = canvas_;
     this.ctx = canvas_.getContext("2d");
+    Keyboard.addEvents();
     this.draw();
     this.setWorld();
     this.run();
@@ -33,11 +35,28 @@ export class World {
   // #region Methods
   run() {
     IntervalHub.startInterval(() => {
+      this.checkThrowObjEnemyCollision();
       this.checkEnemyCollision();
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
     }, 1000 / 25);
+  }
+
+  checkThrowObjEnemyCollision() {
+    this.throwableObjects.forEach((obj, objIndex) => {
+      this.level.enemies.forEach((enemy, enemyIndex) => {
+        if (enemy.isColliding(obj)){
+          // obj.isCollidiert = true;
+          // enemy.energy = 0;
+          // this.level.enemies.splice(enemyIndex, 1);
+          // this.throwableObjects.splice(objIndex, 1);
+          // console.log(this.level.enemies);
+          console.log("colliedert");
+          
+        } 
+      });
+    });
   }
 
   checkBottleCollection() {
@@ -139,7 +158,8 @@ export class World {
       object instanceof Chicken ||
       object instanceof EndBoss ||
       object instanceof Coin ||
-      object instanceof Bottle
+      object instanceof Bottle ||
+      object instanceof ThrowableObject
     ) {
       object.getRealFrame();
       object.drawFrame(this.ctx);

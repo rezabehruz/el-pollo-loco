@@ -23,7 +23,7 @@ export class Chicken extends MovableObject {
   // #region Constructor
   constructor() {
     super().loadImages(ImageHub.CHICKEN.walking);
-    this.x = 100 + Math.random() * 1800 ;
+    this.x = 700 + Math.random() * 1800 ;
     this.speed = this.speed + Math.random() * 0.25;
 
     this.animate();

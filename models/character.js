@@ -1,6 +1,7 @@
 import { MovableObject } from "./movable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
+import { Keyboard } from "./manager-models/keyboard.js";
 
 export class Character extends MovableObject {
   // #region Properties
