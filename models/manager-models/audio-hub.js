@@ -10,6 +10,21 @@ export class AudioHub {
     snoring: new MyAudio("./assets/audio/character/characterSnoring.mp3"),
   };
 
+  static CHICKEN = {
+    dead: new MyAudio("./assets/audio/chicken/chickenDead.mp3"),
+  };
+
+  static COLLECTIBLE = {
+    collectBottle: new MyAudio(
+      "./assets/audio/collectibles/bottleCollectSound.wav",
+    ),
+    collectCoin: new MyAudio("./assets/audio/collectibles/collectSound.wav"),
+  };
+
+  static THROWABLE = {
+    broken: new MyAudio("./assets/audio/throwable/bottleBreak.mp3"),
+  };
+
   static ALL_SOUNDS = [
     AudioHub.CHARACTER.run,
     AudioHub.CHARACTER.jump,

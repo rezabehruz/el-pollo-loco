@@ -1,6 +1,7 @@
 import { MovableObject } from "./movable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
+import { AudioHub } from "./manager-models/audio-hub.js";
 
 export class Chicken extends MovableObject {
   // #region Properties
@@ -42,6 +43,7 @@ export class Chicken extends MovableObject {
   }
 
   killed() {
+    AudioHub.playSound(AudioHub.CHICKEN.dead, false);
     this.speed = 0;
     this.energy = 0;
     this.y = 350;

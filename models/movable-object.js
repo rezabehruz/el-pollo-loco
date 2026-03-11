@@ -13,9 +13,7 @@ export class MovableObject extends DrawableObject {
   // #endregion
 
   // #region Methods
-  killed() {
-    this.speed = 0;
-  }
+  killed() {}
 
   hit() {
     this.energy -= 2;
@@ -39,7 +37,6 @@ export class MovableObject extends DrawableObject {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
-        
       }
     }, 1000 / 25);
   }

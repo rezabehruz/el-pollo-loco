@@ -7,6 +7,7 @@ import { Bottle } from "./bottle.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { ThrowableObject } from "./throwable-object.js";
 import { Keyboard } from "./manager-models/keyboard.js";
+import { AudioHub } from "./manager-models/audio-hub.js";
 
 export class World {
   // #region Properties
@@ -50,13 +51,18 @@ export class World {
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy) => {
-        if (obj.isColliding(enemy)) {
-          obj.IS_COLLIDE = true;
+        if (obj.isColliding(enemy) && enemy.energy != 0) {
           enemy.killed();
+          obj.IS_COLLIDE = true;
         }
       });
 
-      if (!obj.isAboveGround()) this.throwableObjects.splice(objIndex, 1);
+      if (!obj.isAboveGround()) {
+        if (!obj.IS_COLLIDE)
+          AudioHub.playSound(AudioHub.THROWABLE.broken, false);
+
+        this.throwableObjects.splice(objIndex, 1);
+      }
     });
   }
 
@@ -64,6 +70,7 @@ export class World {
     this.level.bottles.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
         if (this.character.bottles < 100) {
+          AudioHub.playSound(AudioHub.COLLECTIBLE.collectBottle, false);
           this.level.bottles.splice(index, 1);
           this.character.bottles += 20;
           this.level.bottleStatus.setPercentage(this.character.bottles);
@@ -75,6 +82,7 @@ export class World {
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
+        AudioHub.playSound(AudioHub.COLLECTIBLE.collectCoin, false);
         this.level.coins.splice(i, 1);
         this.character.coins += 20;
         this.level.coinStatus.setPercentage(this.character.coins);
