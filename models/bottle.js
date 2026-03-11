@@ -8,6 +8,13 @@ export class Bottle extends DrawableObject {
   height = 70;
   static IMAGE_INDEX = 0;
 
+  offset = {
+    top: 10,
+    right:15,
+    bottom: 10,
+    left: 15,
+  };
+
   //   #endregion
 
   // #region Constructor

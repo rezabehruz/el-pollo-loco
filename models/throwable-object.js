@@ -6,8 +6,21 @@ export class ThrowableObject extends MovableObject {
   // #region Properties
   width = 50;
   height = 60;
-  speed = 10;
-  isCollidiert = false;
+  speed = 6;
+  collide_spdY = -8;
+
+  offset = {
+    top: 10,
+    right: 10,
+    bottom: 10,
+    left: 10,
+  };
+
+  // #region Flags
+  IS_COLLIDE = false;
+
+  // #endregion
+
   // #endregion
 
   // #region Constructor
@@ -29,18 +42,16 @@ export class ThrowableObject extends MovableObject {
 
   animate() {
     IntervalHub.startInterval(() => {
-      if (this.isCollidiert) {
+      if (this.IS_COLLIDE) {
         let i = this.currentImg % ImageHub.BOTTLE.splash.length;
         this.img = this.imageCache[ImageHub.BOTTLE.splash[i]];
         this.currentImg++;
-      }
-
-      if (this.isAboveGround()) {
+      } else {
         let i = this.currentImg % ImageHub.BOTTLE.rotation.length;
         this.img = this.imageCache[ImageHub.BOTTLE.rotation[i]];
         this.currentImg++;
       }
-    }, 100);
+    }, 1000 / 60);
   }
 
   throw() {
@@ -52,22 +63,16 @@ export class ThrowableObject extends MovableObject {
     }
 
     IntervalHub.startInterval(() => {
-      if (this.otherDirection) {
-        this.moveLeft();
-      } else this.moveRight();
-    }, 25);
+      if (this.IS_COLLIDE) this.speedY = this.collide_spdY;
+
+      if (this.otherDirection && !this.IS_COLLIDE) this.moveLeft();
+
+      if (!this.otherDirection && !this.IS_COLLIDE) this.moveRight();
+    }, 1000 / 60);
   }
 
   isAboveGround() {
     return this.y < 380;
-  }
-
-  moveLeft() {
-    if (this.isAboveGround()) this.x -= this.speed;
-  }
-
-  moveRight() {
-    if (this.isAboveGround()) this.x += this.speed;
   }
 
   // #endregion

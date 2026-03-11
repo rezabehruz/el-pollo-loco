@@ -44,21 +44,19 @@ export class World {
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
-    }, 1000 / 25);
+    }, 1000 / 60);
   }
 
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy, enemyIndex) => {
-        if (enemy.isColliding(obj)) {
-          // obj.isCollidiert = true;
-          // enemy.energy = 0;
-          // this.level.enemies.splice(enemyIndex, 1);
-          // this.throwableObjects.splice(objIndex, 1);
-          // console.log(this.level.enemies);
-          console.log("colliedert");
+        if (obj.isColliding(enemy)) {
+          this.level.enemies.splice(enemyIndex, 1);
+          obj.IS_COLLIDE = true;
         }
       });
+
+      if (!obj.isAboveGround()) this.throwableObjects.splice(objIndex, 1);
     });
   }
 
@@ -91,12 +89,12 @@ export class World {
       !World.OBJ_THROWED
     ) {
       World.OBJ_THROWED = true;
-      let bottle = new ThrowableObject(
+      let obj = new ThrowableObject(
         this.character.x + 50,
         this.character.y + 50,
         this.character.otherDirection,
       );
-      this.throwableObjects.push(bottle);
+      this.throwableObjects.push(obj);
       this.character.bottles -= 20;
       this.level.bottleStatus.setPercentage(this.character.bottles);
     }
@@ -170,7 +168,7 @@ export class World {
       object instanceof ThrowableObject
     ) {
       object.getRealFrame();
-      object.drawFrame(this.ctx);
+      // object.drawFrame(this.ctx);
     }
   }
 
