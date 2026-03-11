@@ -2,10 +2,10 @@ import { MovableObject } from "./movable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { Keyboard } from "./manager-models/keyboard.js";
+import { AudioHub } from "./manager-models/audio-hub.js";
 
 export class Character extends MovableObject {
   // #region Properties
-  speed = 3;
   x = 20;
   y = 130;
   height = 180;
@@ -33,7 +33,6 @@ export class Character extends MovableObject {
     this.loadImages(ImageHub.CHARACTER.idle);
 
     this.applyGravity();
-
     this.animate();
   }
 
@@ -53,28 +52,43 @@ export class Character extends MovableObject {
       }
 
       if (Keyboard.SPACE) {
-        if (!this.isAboveGround()) this.jump();
+        if (!this.isAboveGround()) {
+          AudioHub.playSound(AudioHub.CHARACTER.jump, false);
+          this.jump();
+        }
       }
 
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
     IntervalHub.startInterval(() => {
-      if (this.isHurt()) this.playAnimation(ImageHub.CHARACTER.hurt);
-      else if (this.isDead()) {
+      if (this.isHurt()) {
+        AudioHub.playSound(AudioHub.CHARACTER.damage);
+        this.playAnimation(ImageHub.CHARACTER.hurt);
+      } else if (this.isDead()) {
+        AudioHub.playSound(AudioHub.CHARACTER.dead);
         if (this.animationFlag == false) {
           this.animationFlag = this.playDeadAnimation(ImageHub.CHARACTER.dead);
         }
-      } else if (this.isAboveGround())
+      } else if (this.isAboveGround()) {
         this.playAnimation(ImageHub.CHARACTER.jumping);
-      else if (Keyboard.RIGHT || Keyboard.LEFT)
+        AudioHub.stopSound(AudioHub.CHARACTER.run, true);
+      } else if (Keyboard.RIGHT || Keyboard.LEFT) {
+        this.speed = 4;
+        AudioHub.playSound(AudioHub.CHARACTER.run, true);
         this.playAnimation(ImageHub.CHARACTER.walking);
-      else this.playAnimation(ImageHub.CHARACTER.idle);
+      } else {
+        AudioHub.playSound(AudioHub.CHARACTER.snoring);
+        this.playAnimation(ImageHub.CHARACTER.idle);
+      }
     }, 120);
   }
 
   isAboveGround() {
-    return this.y < 235;
+    if (this.y < 235) {
+      this.speed = 2;
+      return true;
+    } else return false;
   }
 
   // #endregion

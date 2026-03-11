@@ -1,4 +1,5 @@
 import { World } from "../world.js";
+import { AudioHub } from "./audio-hub.js";
 
 export class Keyboard {
   static RIGHT = false;
@@ -32,10 +33,12 @@ export class Keyboard {
 
     window.addEventListener("keyup", (event) => {
       if (event.key == "ArrowRight") {
+        AudioHub.stopSound(AudioHub.CHARACTER.run);
         Keyboard.RIGHT = false;
       }
 
       if (event.key == "ArrowLeft") {
+        AudioHub.stopSound(AudioHub.CHARACTER.run);
         Keyboard.LEFT = false;
       }
 

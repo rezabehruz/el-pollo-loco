@@ -1,4 +1,5 @@
 import { DrawableObject } from "./drawable-object.js";
+import { AudioHub } from "./manager-models/audio-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
 export class MovableObject extends DrawableObject {
@@ -15,9 +16,9 @@ export class MovableObject extends DrawableObject {
   killed() {
     this.speed = 0;
   }
-  
+
   hit() {
-    this.energy -= 20;
+    this.energy -= 2;
     if (this.energy < 0) {
       this.energy = 0;
     } else this.lastHit = new Date().getTime();
@@ -38,8 +39,7 @@ export class MovableObject extends DrawableObject {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
-
-        // console.log("from applyGravity()" , this.y);
+        
       }
     }, 1000 / 25);
   }
