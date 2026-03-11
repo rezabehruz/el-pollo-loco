@@ -21,6 +21,8 @@ export class EndBoss extends MovableObject {
   // #region Constructor
   constructor() {
     super().loadImages(ImageHub.ENDBOSS.alert);
+    this.loadImages(ImageHub.ENDBOSS.hurt);
+    this.loadImages(ImageHub.ENDBOSS.dead);
 
     this.animate();
   }
@@ -29,10 +31,16 @@ export class EndBoss extends MovableObject {
 
   // #region Methods
   animate() {
-    IntervalHub.startInterval(
-      () => this.playAnimation(ImageHub.ENDBOSS.alert),
-      300,
-    );
+    IntervalHub.startInterval(() => {
+      if (this.isDead()) this.playAnimation(ImageHub.ENDBOSS.hurt);
+      else this.playAnimation(ImageHub.ENDBOSS.alert);
+    }, 300);
+  }
+
+  killed() {
+    this.speed = 0;
+    this.energy = 0;
+    this.y = 350;
   }
 
   // #endregion

@@ -7,7 +7,7 @@ export class Character extends MovableObject {
   // #region Properties
   speed = 3;
   x = 20;
-  y = 140;
+  y = 130;
   height = 180;
   width = 100;
 
@@ -71,6 +71,10 @@ export class Character extends MovableObject {
         this.playAnimation(ImageHub.CHARACTER.walking);
       else this.playAnimation(ImageHub.CHARACTER.idle);
     }, 120);
+  }
+
+  isAboveGround() {
+    return this.y < 235;
   }
 
   // #endregion

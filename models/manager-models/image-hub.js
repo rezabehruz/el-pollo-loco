@@ -8,7 +8,7 @@ export class ImageHub {
       "./assets/img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png",
       "./assets/img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png",
       "./assets/img/6_salsa_bottle/bottle_rotation/3_bottle_rotation.png",
-      "./assets/img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png"
+      "./assets/img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png",
     ],
     splash: [
       "./assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png",
@@ -17,10 +17,13 @@ export class ImageHub {
       "./assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png",
       "./assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png",
       "./assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
-    ]
+    ],
   };
 
-  static COIN = ["./assets/img/8_coin/coin_1.png", "./assets/img/8_coin/coin_2.png"];
+  static COIN = [
+    "./assets/img/8_coin/coin_1.png",
+    "./assets/img/8_coin/coin_2.png",
+  ];
 
   static STATUS_BAR = {
     health: [
@@ -103,6 +106,7 @@ export class ImageHub {
       "./assets/img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
       "./assets/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
     ],
+    dead: ["./assets/img/3_enemies_chicken/chicken_normal/2_dead/dead.png"],
   };
 
   static ENDBOSS = {
@@ -115,6 +119,16 @@ export class ImageHub {
       "./assets/img/4_enemie_boss_chicken/2_alert/G10.png",
       "./assets/img/4_enemie_boss_chicken/2_alert/G11.png",
       "./assets/img/4_enemie_boss_chicken/2_alert/G12.png",
+    ],
+    hurt: [
+      "./assets/img/4_enemie_boss_chicken/4_hurt/G21.png",
+      "./assets/img/4_enemie_boss_chicken/4_hurt/G22.png",
+      "./assets/img/4_enemie_boss_chicken/4_hurt/G23.png",
+    ],
+    dead: [
+      "./assets/img/4_enemie_boss_chicken/5_dead/G24.png",
+      "./assets/img/4_enemie_boss_chicken/5_dead/G25.png",
+      "./assets/img/4_enemie_boss_chicken/5_dead/G26.png",
     ],
   };
 

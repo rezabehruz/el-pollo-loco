@@ -12,6 +12,10 @@ export class MovableObject extends DrawableObject {
   // #endregion
 
   // #region Methods
+  killed() {
+    this.speed = 0;
+  }
+  
   hit() {
     this.energy -= 20;
     if (this.energy < 0) {
@@ -40,9 +44,7 @@ export class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
-  isAboveGround() {
-    return this.y < 240;
-  }
+  isAboveGround() {}
 
   moveLeft() {
     this.x -= this.speed;
