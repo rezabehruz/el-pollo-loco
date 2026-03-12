@@ -9,10 +9,19 @@
     <title>El Pollo Loco</title>
   </head>
   <body>
-    <h1>El Pollo Loco</h1>
-    <!-- <img id="start" src="./assets/img/9_intro_outro_screens/start/startscreen_1.png" alt="start"> -->
-    <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
-
-    <button id="btn-start" class="btn-start" >Let's Go!</button>
+    <div class="content">
+      <div class="content-canvas">
+        <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
+      </div>
+      <div id="controller" class="d-none">
+        <img
+          id="img-start"
+          class="img-start"
+          src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
+          alt="start Game"
+        />
+        <button id="btn-start" class="btn-start">Let's Go!</button>
+      </div>
+    </div>
   </body>
 </html>

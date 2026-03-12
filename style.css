@@ -1,25 +1,57 @@
+* {
+    position: relative;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+
+}
+
+button {
+    cursor: pointer;
+}
+
 body {
+  .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    .canvas {
+    .content-canvas {
+      position: relative;
+     
+      width: 720px;
+      height: 480px;
+      .canvas {
         background-color: black;
+      }
     }
+    .content-controller {
+      position: absolute;
+      width: 720px;
+      height: 480px;
 
-    .btn-start {
+      .img-start {
         position: absolute;
-        top: 100px;
-        cursor: pointer;
-        font-size: 30px;
-        background-color: rgb(243, 91, 64);
-        border: none;
-        padding: 20px;
-        border-radius: 10px;
-    }
+        top: 0;
+        height: 100%;
+        width: 100%;
+      }
 
-    .d-none {
-        display: none;
+      .btn-start {
+        position: relative;
+        top: 40px;
+        left: 260px;
+        width: 180px;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 30px;
+        background-color: orange;
+      }
     }
+  }
+
+  .d-none {
+    display: none;
+  }
 }

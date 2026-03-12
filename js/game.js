@@ -1,29 +1,36 @@
-import { ImageHub } from "../models/manager-models/image-hub.js";
+import { IntervalHub } from "../models/manager-models/interval-hub.js";
 import { World } from "../models/world.js";
+
+// #region Variables
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const controllerRef = document.getElementById("controller");
+const btnStartRef = document.getElementById("btn-start");
 
 let world;
 
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-let imgStartScreen = new Image();
 
-let btnStartRef;
+// #endregion
+
+
+// #region Function
 
 function init() {
-  imgStartScreen.onload = drawImageWhenLoaded;
-  imgStartScreen.src = ImageHub.START_SCREEN[0];
-
-  btnStartRef = document.getElementById("btn-start");
+  
+  controllerRef.setAttribute("class","content-controller");
+  
   btnStartRef.addEventListener("click", startGame);
+
 }
 
 init();
 
 function startGame() {
   world = new World(canvas);
-  btnStartRef.setAttribute("class", "d-none");
+  controllerRef.setAttribute("class", "d-none");
 }
 
-function drawImageWhenLoaded() {
-  ctx.drawImage(imgStartScreen, 0, 0, canvas.width, canvas.height);
-}
+
+// #endregion
+
