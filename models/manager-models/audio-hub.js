@@ -9,7 +9,6 @@ export class AudioHub {
     jump: new MyAudio("./assets/audio/character/characterJump.wav"),
     damage: new MyAudio("./assets/audio/character/characterDamage.mp3"),
     dead: new MyAudio("./assets/audio/character/characterDead.wav"),
-    snoring: new MyAudio("./assets/audio/character/characterSnoring.mp3"),
   };
 
   static CHICKEN = {
@@ -32,7 +31,6 @@ export class AudioHub {
     AudioHub.CHARACTER.jump,
     AudioHub.CHARACTER.damage,
     AudioHub.CHARACTER.dead,
-    AudioHub.CHARACTER.snoring,
   ];
   // #endregion
 

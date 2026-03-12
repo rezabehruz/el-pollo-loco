@@ -78,7 +78,6 @@ export class Character extends MovableObject {
         AudioHub.playSound(AudioHub.CHARACTER.run, true);
         this.playAnimation(ImageHub.CHARACTER.walking);
       } else {
-        AudioHub.playSound(AudioHub.CHARACTER.snoring);
         this.playAnimation(ImageHub.CHARACTER.idle);
       }
     }, 120);
