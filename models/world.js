@@ -30,6 +30,7 @@ export class World {
     this.canvas = canvas_;
     this.ctx = canvas_.getContext("2d");
     Keyboard.addEvents();
+    AudioHub.playSound(AudioHub.START_GAME, false);
     this.draw();
     this.setWorld();
     this.run();

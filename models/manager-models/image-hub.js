@@ -1,4 +1,8 @@
 export class ImageHub {
+  static START_SCREEN = [
+    "./assets/img/9_intro_outro_screens/start/startscreen_1.png",
+  ];
+
   static BOTTLE = {
     onGround: [
       "./assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png",

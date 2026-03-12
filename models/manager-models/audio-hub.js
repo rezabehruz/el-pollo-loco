@@ -2,6 +2,8 @@ import { MyAudio } from "../myAudio.js";
 export class AudioHub {
   // #region Properties
 
+  static START_GAME = new MyAudio("./assets/audio/game/gameStart.mp3");
+
   static CHARACTER = {
     run: new MyAudio("./assets/audio/character/characterRun.mp3"),
     jump: new MyAudio("./assets/audio/character/characterJump.wav"),
