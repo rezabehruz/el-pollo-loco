@@ -29,6 +29,11 @@ init();
 function startGame() {
   world = new World(canvas);
   controllerRef.setAttribute("class", "d-none");
+
+  IntervalHub.startInterval(()=> {
+console.log("from startGame interval");
+
+  }, 1000/60)
 }
 
 

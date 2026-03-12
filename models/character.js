@@ -66,9 +66,9 @@ export class Character extends MovableObject {
         AudioHub.playSound(AudioHub.CHARACTER.damage);
         this.playAnimation(ImageHub.CHARACTER.hurt);
       } else if (this.isDead()) {
-        AudioHub.playSound(AudioHub.CHARACTER.dead);
-        if (this.animationFlag == false) {
-          this.animationFlag = this.playDeadAnimation(ImageHub.CHARACTER.dead);
+        if (this.DEAD_FLAG == false) {
+          AudioHub.playSound(AudioHub.CHARACTER.dead);
+          this.DEAD_FLAG = this.playDeadAnimation(ImageHub.CHARACTER.dead);
         }
       } else if (this.isAboveGround()) {
         this.playAnimation(ImageHub.CHARACTER.jumping);

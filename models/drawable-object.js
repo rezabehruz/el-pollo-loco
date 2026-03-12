@@ -13,7 +13,7 @@ export class DrawableObject {
   img = new Image();
   imageCache = {};
   currentImg = 0;
-  animationFlag = false;
+  DEAD_FLAG = false;
 
   otherDirection = false;
 
