@@ -13,20 +13,6 @@ export class MovableObject extends DrawableObject {
   // #endregion
 
   // #region Methods
-  killed() {}
-
-  hit() {
-    this.energy -= 2;
-    if (this.energy < 0) {
-      this.energy = 0;
-    } else this.lastHit = new Date().getTime();
-  }
-
-  isHurt() {
-    let timepassed = new Date().getTime() - this.lastHit;
-    timepassed = timepassed / 1000;
-    return timepassed < 2;
-  }
 
   isDead() {
     return this.energy == 0;

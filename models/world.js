@@ -52,8 +52,10 @@ export class World {
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy) => {
-        if (obj.isColliding(enemy) && enemy.energy != 0) {
-          enemy.killed();
+        if (obj.isColliding(enemy) && enemy.energy != 0 && !obj.IS_COLLIDE) {
+          if (enemy instanceof EndBoss) enemy.hit();
+          else enemy.killed();
+
           obj.IS_COLLIDE = true;
         }
       });
@@ -114,7 +116,9 @@ export class World {
       if (this.character.isColliding(enemy)) {
         if (enemy.isDead()) return;
         else if (this.character.isKilling(enemy)) {
-          enemy.killed();
+          if (enemy instanceof EndBoss) {
+            enemy.hit();
+          } else enemy.killed();
         } else {
           this.character.hit();
           this.level.healthStatus.setPercentage(this.character.energy);
