@@ -13,7 +13,7 @@ export class World {
   // #region Properties
   canvas;
   ctx;
-  level = level1;
+  level;
   character = new Character();
 
   throwableObjects = [];
@@ -29,6 +29,7 @@ export class World {
   constructor(canvas_) {
     this.canvas = canvas_;
     this.ctx = canvas_.getContext("2d");
+    this.level = level1();
     Keyboard.addEvents();
     AudioHub.playSound(AudioHub.START_GAME, false);
     this.draw();
