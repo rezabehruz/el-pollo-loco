@@ -37,6 +37,7 @@ body {
 
     .canvas {
       background-color: black;
+      display: block;
     }
     .content-controller {
       position: absolute;
@@ -49,6 +50,7 @@ body {
         top: 0;
         height: 100%;
         width: 100%;
+        object-fit: cover;
       }
 
       .btn-start {
@@ -82,5 +84,53 @@ body {
 
   .d-none {
     display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .content {
+    article {
+      width: 100%;
+
+      h1 {
+        display: none;
+      }
+
+      .canvas {
+        width: 100%;
+      }
+
+      .content-controller {
+        width: 100%;
+        top: 0;
+
+        .btn-start {
+          top: 25px;
+        }
+
+        .btn-sound {
+          top: 15px;
+          left: 600px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 480px) {
+  .content {
+    article {
+      h1 {
+        display: none;
+      }
+
+      .canvas {
+        height: 100vh;
+      }
+
+      .content-controller {
+        height: 100vh;
+      }
+    }
   }
 }
