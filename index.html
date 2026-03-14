@@ -10,37 +10,42 @@
   </head>
   <body>
     <div class="content">
-      <div class="content-canvas">
-        <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
-      </div>
-      <div id="controller" class="d-none">
-        <img
-          id="img-start-game"
-          class="img-control"
-          src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
-          alt="start Game"
-        />
-        
-        <img
-          id="img-win-game"
-          class="d-none"
-          src="./assets/img/You won, you lost/You Win A.png"
-          alt="win game"
-        />
-        <img
-          id="img-lost-game"
-          class="d-none"
-          src="./assets/img/9_intro_outro_screens/game_over/you lost.png"
-          alt="lost game"
-        />
-        <img
-          id="img-game-over"
-          class="d-none"
-          src="./assets/img/9_intro_outro_screens/game_over/game over.png"
-          alt="game over"
-        />
-        <button id="btn-start" class="btn-start">Let's Go!</button>
-      </div>
+      <article>
+        <h1>El Pollo Loco</h1>
+        <div id="content-canvas" class="content-canvas">
+          <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
+        </div>
+        <div id="controller" class="content-controller">
+          <img
+            id="img-start-game"
+            class="img-control"
+            src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
+            alt="start Game"
+          />
+
+          <img
+            id="img-win-game"
+            class="d-none"
+            src="./assets/img/You won, you lost/You Win A.png"
+            alt="win game"
+          />
+          <img
+            id="img-lost-game"
+            class="d-none"
+            src="./assets/img/9_intro_outro_screens/game_over/you lost.png"
+            alt="lost game"
+          />
+          <img
+            id="img-game-over"
+            class="d-none"
+            src="./assets/img/9_intro_outro_screens/game_over/game over.png"
+            alt="game over"
+          />
+          <button id="btn-start" class="btn-start">Let's Go!</button>
+          <button id="btn-mute" class="btn-sound"> <img src="./assets/img/icons/mute-icon.png" alt="mute-icon"> </button>
+          <button id="btn-unmute" class="d-none"> <img src="./assets/img/icons/unmute-icon.png" alt="unmute-icon"> </button>
+        </div>
+      </article>
     </div>
   </body>
 </html>

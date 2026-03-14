@@ -1,15 +1,17 @@
+import { AudioHub } from "../models/manager-models/audio-hub.js";
 import { IntervalHub } from "../models/manager-models/interval-hub.js";
 import { World } from "../models/world.js";
 
 // #region Variables
 
 const canvas = document.getElementById("canvas");
-const controllerRef = document.getElementById("controller");
 const imgStartRef = document.getElementById("img-start-game");
 const imgWinRef = document.getElementById("img-win-game");
 const imgLostRef = document.getElementById("img-lost-game");
 const imgGameOverRef = document.getElementById("img-game-over");
 const btnStartRef = document.getElementById("btn-start");
+const btnMuteSoundRef = document.getElementById("btn-mute");
+const btnUnMuteSoundRef = document.getElementById("btn-unmute");
 
 let world;
 let currentTime;
@@ -27,19 +29,28 @@ let RECORD_TIME;
 
 // #region Functions
 
-function init() {
-  controllerRef.setAttribute("class", "content-controller");
+btnStartRef.addEventListener("click", startGame);
+btnMuteSoundRef.addEventListener("click", unmute);
+btnUnMuteSoundRef.addEventListener("click", mute);
 
-  btnStartRef.addEventListener("click", startGame);
+function mute() {
+  btnUnMuteSoundRef.setAttribute("class", "d-none");
+  btnMuteSoundRef.setAttribute("class", "btn-sound");
+
+  AudioHub.mute();
 }
 
-init();
+function unmute() {
+  btnMuteSoundRef.setAttribute("class", "d-none");
+  btnUnMuteSoundRef.setAttribute("class", "btn-sound");
+
+  AudioHub.unMute();
+}
 
 function startGame() {
   world = new World(canvas);
   currentTime = 0;
 
-  controllerRef.setAttribute("class", "d-none");
   btnStartRef.setAttribute("class", "d-none");
   imgStartRef.setAttribute("class", "d-none");
 
@@ -87,14 +98,12 @@ function youWin() {
   WIN_FLAG = false;
   RESTART_FLAG = true;
   currentTime = new Date().getTime();
-  controllerRef.setAttribute("class", "content-controller");
   imgWinRef.setAttribute("class", "img-control");
 }
 
 function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
-  controllerRef.setAttribute("class", "content-controller");
   imgLostRef.setAttribute("class", "img-control");
 }
 
