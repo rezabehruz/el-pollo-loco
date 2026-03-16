@@ -7,6 +7,7 @@ import { ImageHub } from "../../models/manager-models/image-hub.js";
 import { Coin } from "../../models/coin.js";
 import { Bottle } from "../../models/bottle.js";
 import { StatusBar } from "../../models/status-bar.js";
+import { SmallChicken } from "../../models/small-chicken.js";
 
 export function level1() {
   return new Level(
@@ -38,7 +39,11 @@ export function level1() {
     ],
     [new Cloud()],
     [
-      new Chicken(),
+      new SmallChicken(),
+      new SmallChicken(),
+      new SmallChicken(),
+      new SmallChicken(),
+      new SmallChicken(),
       new Chicken(),
       new Chicken(),
       new Chicken(),

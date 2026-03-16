@@ -90,7 +90,7 @@ export class Character extends MovableObject {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
 
-    if (timepassed > 0.3) {
+    if (timepassed > 0.2) {
       this.energy -= 5;
       if (this.energy <= 0) {
         this.speed = 0;

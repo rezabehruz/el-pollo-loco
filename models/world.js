@@ -8,6 +8,7 @@ import { IntervalHub } from "./manager-models/interval-hub.js";
 import { ThrowableObject } from "./throwable-object.js";
 import { Keyboard } from "./manager-models/keyboard.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
+import { SmallChicken } from "./small-chicken.js";
 
 export class World {
   // #region Properties
@@ -179,10 +180,10 @@ export class World {
       object instanceof EndBoss ||
       object instanceof Coin ||
       object instanceof Bottle ||
-      object instanceof ThrowableObject
+      object instanceof ThrowableObject || object instanceof SmallChicken
     ) {
       object.getRealFrame();
-      // object.drawFrame(this.ctx);
+      object.drawFrame(this.ctx);
     }
   }
 
