@@ -47,8 +47,6 @@ export class Chicken extends MovableObject {
     this.speed = 0;
     this.energy = 0;
     this.y = 350;
-    console.log("from killed()");
-    
   }
 
   // #endregion

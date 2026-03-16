@@ -10,6 +10,7 @@ const imgWinRef = document.getElementById("img-win-game");
 const imgLostRef = document.getElementById("img-lost-game");
 const imgGameOverRef = document.getElementById("img-game-over");
 const btnStartRef = document.getElementById("btn-start");
+const btnRestartRef = document.getElementById("btn-restart");
 const btnMuteSoundRef = document.getElementById("btn-mute");
 const btnUnMuteSoundRef = document.getElementById("btn-unmute");
 const contentActionRef = document.getElementById("content-action");
@@ -32,6 +33,7 @@ let RECORD_TIME;
 // #region Functions
 
 btnStartRef.addEventListener("click", startGame);
+btnRestartRef.addEventListener("click", startGame);
 btnMuteSoundRef.addEventListener("click", unmute);
 btnUnMuteSoundRef.addEventListener("click", mute);
 
@@ -70,6 +72,7 @@ function startGame() {
   currentTime = 0;
 
   btnStartRef.setAttribute("class", "v-hidden");
+  btnRestartRef.setAttribute("class", "v-hidden");
   imgStartRef.setAttribute("class", "d-none");
   contentActionRef.setAttribute("class", "content-action");
 
@@ -106,7 +109,8 @@ function restartGame() {
   imgWinRef.setAttribute("class", "d-none");
   imgGameOverRef.setAttribute("class", "d-none");
   imgStartRef.setAttribute("class", "img-control");
-  btnStartRef.setAttribute("class", "btn-start");
+  btnStartRef.setAttribute("class", "d-none");
+  btnRestartRef.setAttribute("class", "btn-start");
   RESTART_FLAG = false;
   LOST_FLAG = false;
   GAME_OVER_FLAG = false;
