@@ -39,6 +39,7 @@ body {
       background-color: black;
       display: block;
     }
+
     .content-controller {
       display: flex;
       flex-direction: column;
@@ -94,7 +95,7 @@ body {
     }
 
     .content-action {
-      display: flex;
+      display: none;
       justify-content: space-between;
       /* gap: 200px; */
       bottom: 30px;
@@ -128,7 +129,7 @@ body {
         transform: rotate(-90deg);
       }
 
-      .btn-throw{
+      .btn-throw {
         left: 10px;
       }
     }
@@ -170,6 +171,10 @@ body {
           top: 15px;
           left: 90%;
         }
+
+        .content-action {
+          display: flex;
+        }
       }
     }
   }
@@ -189,6 +194,10 @@ body {
 
       .content-controller {
         height: 100vh;
+
+        .content-action {
+          display: flex;
+        }
       }
     }
   }
@@ -207,6 +216,10 @@ body {
 
       .content-controller {
         display: none;
+
+        .content-action {
+          display: flex;
+        }
       }
 
       .content-notice {

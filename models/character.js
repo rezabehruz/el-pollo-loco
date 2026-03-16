@@ -33,13 +33,14 @@ export class Character extends MovableObject {
     this.loadImages(ImageHub.CHARACTER.idle);
 
     this.applyGravity();
-    this.animate();
+    this.animateMoving();
+    this.animateImage();
   }
 
   // #endregion
 
   // #region Methods
-  animate() {
+  animateMoving() {
     IntervalHub.startInterval(() => {
       if (Keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
@@ -52,7 +53,7 @@ export class Character extends MovableObject {
       }
 
       if (Keyboard.SPACE) {
-        if (!this.isAboveGround()) {
+        if (!this.isAboveGround() && this.energy > 0) {
           AudioHub.playSound(AudioHub.CHARACTER.jump, false);
           this.jump();
         }
@@ -60,7 +61,9 @@ export class Character extends MovableObject {
 
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
+  }
 
+  animateImage() {
     IntervalHub.startInterval(() => {
       if (this.isHurt()) {
         AudioHub.playSound(AudioHub.CHARACTER.damage);
@@ -84,10 +87,16 @@ export class Character extends MovableObject {
   }
 
   hit() {
-    this.energy -= 2;
-    if (this.energy < 0) {
-      this.energy = 0;
-    } else this.lastHit = new Date().getTime();
+    let timepassed = new Date().getTime() - this.lastHit;
+    timepassed = timepassed / 1000;
+
+    if (timepassed > 0.3) {
+      this.energy -= 5;
+      if (this.energy <= 0) {
+        this.speed = 0;
+        this.energy = 0;
+      } else this.lastHit = new Date().getTime();
+    }
   }
 
   isHurt() {

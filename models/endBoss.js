@@ -9,7 +9,7 @@ export class EndBoss extends MovableObject {
   width = 200;
   x = 2400;
   y = 240;
-  speed = 0.5;
+  speed = 1.5;
 
   offset = {
     top: 50,

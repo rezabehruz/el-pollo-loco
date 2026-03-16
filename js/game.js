@@ -16,6 +16,7 @@ const contentActionRef = document.getElementById("content-action");
 
 let world;
 let currentTime;
+let IS_MUTE = "mute";
 
 // #region Flags
 let LOST_FLAG = false;
@@ -34,9 +35,24 @@ btnStartRef.addEventListener("click", startGame);
 btnMuteSoundRef.addEventListener("click", unmute);
 btnUnMuteSoundRef.addEventListener("click", mute);
 
+checkSound();
+
+function checkSound() {
+  let sound = window.localStorage.getItem("isMute");
+
+  if (sound != null) {
+    if (sound == "unmute") {
+      btnMuteSoundRef.setAttribute("class", "d-none");
+      btnUnMuteSoundRef.setAttribute("class", "btn-sound");
+      AudioHub.MUTE_FLAG = false;
+    }
+  } else window.localStorage.setItem("isMute", IS_MUTE);
+}
+
 function mute() {
   btnUnMuteSoundRef.setAttribute("class", "d-none");
   btnMuteSoundRef.setAttribute("class", "btn-sound");
+  window.localStorage.setItem("isMute", "mute");
 
   AudioHub.mute();
 }
@@ -44,6 +60,7 @@ function mute() {
 function unmute() {
   btnMuteSoundRef.setAttribute("class", "d-none");
   btnUnMuteSoundRef.setAttribute("class", "btn-sound");
+  window.localStorage.setItem("isMute", "unmute");
 
   AudioHub.unMute();
 }
@@ -101,14 +118,14 @@ function youWin() {
   RESTART_FLAG = true;
   currentTime = new Date().getTime();
   imgWinRef.setAttribute("class", "img-control");
-  contentActionRef.setAttribute("class", "v-hidden");
+  contentActionRef.setAttribute("class", "d-none");
 }
 
 function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
-  contentActionRef.setAttribute("class", "v-hidden");
+  contentActionRef.setAttribute("class", "d-none");
 }
 
 function gameOver() {

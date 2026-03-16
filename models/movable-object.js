@@ -47,7 +47,7 @@ export class MovableObject extends DrawableObject {
   }
 
   isKilling(obj) {
-    return obj.rY + obj.rHeight > this.rY + this.rHeight;
+    return obj.rY + obj.rHeight > this.rY + this.rHeight && this.speedY < 0;
   }
 
   jump() {

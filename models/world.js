@@ -163,13 +163,13 @@ export class World {
   }
 
   addToMap(object) {
-    if (object.otherDirection) {
+    if (object.otherDirection && object.energy > 0) {
       this.flipImage(object);
     }
 
     object.draw(this.ctx);
 
-    if (object.otherDirection) {
+    if (object.otherDirection && object.energy > 0) {
       this.flipImageBack(object);
     }
 
