@@ -12,6 +12,7 @@ const imgGameOverRef = document.getElementById("img-game-over");
 const btnStartRef = document.getElementById("btn-start");
 const btnMuteSoundRef = document.getElementById("btn-mute");
 const btnUnMuteSoundRef = document.getElementById("btn-unmute");
+const contentActionRef = document.getElementById("content-action");
 
 let world;
 let currentTime;
@@ -51,8 +52,9 @@ function startGame() {
   world = new World(canvas);
   currentTime = 0;
 
-  btnStartRef.setAttribute("class", "d-none");
+  btnStartRef.setAttribute("class", "v-hidden");
   imgStartRef.setAttribute("class", "d-none");
+  contentActionRef.setAttribute("class", "content-action");
 
   run();
 }
@@ -99,12 +101,14 @@ function youWin() {
   RESTART_FLAG = true;
   currentTime = new Date().getTime();
   imgWinRef.setAttribute("class", "img-control");
+  contentActionRef.setAttribute("class", "v-hidden");
 }
 
 function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
+  contentActionRef.setAttribute("class", "v-hidden");
 }
 
 function gameOver() {

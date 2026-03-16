@@ -31,6 +31,7 @@ export class World {
     this.ctx = canvas_.getContext("2d");
     this.level = level1();
     Keyboard.addEvents();
+    Keyboard.addTouchEvents();
     AudioHub.playSound(AudioHub.START_GAME, false);
     this.draw();
     this.setWorld();
