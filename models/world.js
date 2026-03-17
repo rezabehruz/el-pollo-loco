@@ -10,6 +10,8 @@ import { Keyboard } from "./manager-models/keyboard.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 import { SmallChicken } from "./small-chicken.js";
 
+// FIXME Endscreen should beautifull showed and enemies come back, when x cordinate is end.
+
 export class World {
   // #region Properties
   canvas;

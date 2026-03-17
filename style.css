@@ -18,6 +18,8 @@ button {
   cursor: pointer;
 }
 
+/* [ ] height: 100dvh, Screen should not be scrollbar */
+
 body {
   header {
     display: flex;
@@ -148,7 +150,7 @@ body {
         height: 50px;
         width: 50px;
         border: none;
-        background-color: transparent;
+        background-color: black;
         border-radius: 10px;
 
         img {

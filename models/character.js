@@ -39,6 +39,7 @@ export class Character extends MovableObject {
 
   // #endregion
 
+  // FIXME methods should not be more than 14 line of code
   // #region Methods
   animateMoving() {
     IntervalHub.startInterval(() => {
