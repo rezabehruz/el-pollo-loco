@@ -3,8 +3,6 @@ import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
-// TODO statusbar for EndBoss
-
 export class EndBoss extends MovableObject {
   // #region Properties
   height = 200;
@@ -34,7 +32,6 @@ export class EndBoss extends MovableObject {
   // #endregion
 
   // #region Methods
-  // FIXME Endboss animation should be beautifull
   animate() {
     IntervalHub.startInterval(() => {
       this.moveLeft();
@@ -56,7 +53,8 @@ export class EndBoss extends MovableObject {
   }
 
   hit() {
-    this.energy -= 25;
+    this.energy -= 20;
+    
     
     if(this.energy == 0) this.killed();
         

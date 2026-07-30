@@ -14,6 +14,7 @@ export class Level {
     backgrounds_,
     clouds_,
     enemies_,
+    endBossHealthStatus_,
     coins_,
     bottles_,
     healthStatus_,
@@ -24,6 +25,7 @@ export class Level {
     this.backgrounds = backgrounds_;
     this.clouds = clouds_;
     this.enemies = enemies_;
+    this.endBossHealthStatus = endBossHealthStatus_;
     this.coins = coins_;
     this.bottles = bottles_;
     this.healthStatus = healthStatus_;

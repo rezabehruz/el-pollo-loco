@@ -52,6 +52,7 @@ export function level1() {
       new Chicken(),
       new EndBoss(),
     ],
+    new StatusBar(500, 65, 100, ImageHub.STATUS_BAR.health),
     [new Coin(), new Coin(), new Coin(), new Coin(), new Coin()],
     [
       new Bottle(),

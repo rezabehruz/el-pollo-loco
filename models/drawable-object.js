@@ -69,7 +69,11 @@ export class DrawableObject {
     this.img = this.imageCache[images[i]];
     this.currentImg++;
 
-    if (i == images.length - 1) return true;
+    if (i == images.length - 1){
+      this.img = new Image();
+      this.img.src = '';
+      return true;
+    } 
     else return false;
   }
 

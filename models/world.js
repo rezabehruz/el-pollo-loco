@@ -57,8 +57,15 @@ export class World {
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy) => {
-        if (obj.isColliding(enemy) && enemy.energy != 0 && !obj.IS_COLLIDE) {
-          if (enemy instanceof EndBoss) enemy.hit();
+        if (
+          obj.isColliding(enemy) &&
+          enemy.energy != 0 &&
+          !obj.IS_COLLIDE
+        ) {
+          if (enemy instanceof EndBoss) {
+            enemy.hit();
+            this.level.endBossHealthStatus.setPercentage(enemy.energy);
+          }
           else enemy.killed();
 
           obj.IS_COLLIDE = true;
@@ -67,7 +74,10 @@ export class World {
 
       if (!obj.isAboveGround()) {
         if (!obj.IS_COLLIDE)
-          AudioHub.playSound(AudioHub.THROWABLE.broken, false);
+          AudioHub.playSound(
+            AudioHub.THROWABLE.broken,
+            false,
+          );
 
         this.throwableObjects.splice(objIndex, 1);
       }
@@ -78,10 +88,15 @@ export class World {
     this.level.bottles.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
         if (this.character.bottles < 100) {
-          AudioHub.playSound(AudioHub.COLLECTIBLE.collectBottle, false);
+          AudioHub.playSound(
+            AudioHub.COLLECTIBLE.collectBottle,
+            false,
+          );
           this.level.bottles.splice(index, 1);
           this.character.bottles += 20;
-          this.level.bottleStatus.setPercentage(this.character.bottles);
+          this.level.bottleStatus.setPercentage(
+            this.character.bottles,
+          );
         }
       }
     });
@@ -90,10 +105,15 @@ export class World {
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
-        AudioHub.playSound(AudioHub.COLLECTIBLE.collectCoin, false);
+        AudioHub.playSound(
+          AudioHub.COLLECTIBLE.collectCoin,
+          false,
+        );
         this.level.coins.splice(i, 1);
         this.character.coins += 20;
-        this.level.coinStatus.setPercentage(this.character.coins);
+        this.level.coinStatus.setPercentage(
+          this.character.coins,
+        );
       }
     }
   }
@@ -112,7 +132,9 @@ export class World {
       );
       this.throwableObjects.push(obj);
       this.character.bottles -= 20;
-      this.level.bottleStatus.setPercentage(this.character.bottles);
+      this.level.bottleStatus.setPercentage(
+        this.character.bottles,
+      );
     }
   }
 
@@ -123,17 +145,20 @@ export class World {
         else if (this.character.isKilling(enemy)) {
           if (enemy instanceof EndBoss) {
             enemy.hit();
+            this.level.endBossHealthStatus.setPercentage(enemy.energy);
           } else enemy.killed();
         } else {
           this.character.hit();
-          this.level.healthStatus.setPercentage(this.character.energy);
+          this.level.healthStatus.setPercentage(
+            this.character.energy,
+          );
         }
       }
     });
   }
 
   draw() {
-    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
     this.addObjectToMap(this.level.backgrounds);
     this.addObjectToMap(this.level.clouds);
@@ -145,6 +170,7 @@ export class World {
 
     this.ctx.translate(-this.camera_x, 0);
     // objects in fixed Position
+    this.addToMap(this.level.endBossHealthStatus);
     this.addToMap(this.level.healthStatus);
     this.addToMap(this.level.bottleStatus);
     this.addToMap(this.level.coinStatus);
@@ -182,7 +208,8 @@ export class World {
       object instanceof EndBoss ||
       object instanceof Coin ||
       object instanceof Bottle ||
-      object instanceof ThrowableObject || object instanceof SmallChicken
+      object instanceof ThrowableObject ||
+      object instanceof SmallChicken
     ) {
       object.getRealFrame();
       object.drawFrame(this.ctx);
