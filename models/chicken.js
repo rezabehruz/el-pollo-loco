@@ -35,11 +35,22 @@ export class Chicken extends MovableObject {
 
   // #region Methods
   animate() {
-    IntervalHub.startInterval(() => this.moveLeft(), 1000 / 60);
+    IntervalHub.startInterval(() => {
+      if (this.x > -720 && !this.otherDirection) {
+        this.moveLeft();
+      }
+
+      if (this.x < -715 || this.otherDirection) {
+        if (!this.otherDirection) this.otherDirection = true;
+        if (this.x > 2800) this.otherDirection = false;
+        this.moveRight();
+      }
+
+    }, 1000 / 60);
 
     IntervalHub.startInterval(() => {
       if (this.isDead()) this.playAnimation(ImageHub.CHICKEN.dead);
-      else if(this.speed == 0) this.playAnimation(ImageHub.CHICKEN.stop);
+      else if (this.speed == 0) this.playAnimation(ImageHub.CHICKEN.stop);
       else this.playAnimation(ImageHub.CHICKEN.walking);
     }, 300);
   }

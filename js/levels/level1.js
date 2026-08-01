@@ -12,10 +12,10 @@ import { SmallChicken } from "../../models/small-chicken.js";
 export function level1() {
   return new Level(
     [
-      new BackgroundObject(ImageHub.BACKGROUND.air, -719),
-      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[0], -719),
-      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[0], -719),
-      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[0], -719),
+      new BackgroundObject(ImageHub.BACKGROUND.air, -720),
+      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[0], -720),
+      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[0], -720),
+      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[0], -720),
 
       new BackgroundObject(ImageHub.BACKGROUND.air, 0),
       new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[1], 0),
@@ -27,15 +27,15 @@ export function level1() {
       new BackgroundObject(ImageHub.BACKGROUND.secondLayer[0], 719),
       new BackgroundObject(ImageHub.BACKGROUND.firstLayer[0], 719),
 
-      new BackgroundObject(ImageHub.BACKGROUND.air, 719 * 2),
-      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[1], 719 * 2),
-      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[1], 719 * 2),
-      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[1], 719 * 2),
+      new BackgroundObject(ImageHub.BACKGROUND.air, 1439),
+      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[1], 1439),
+      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[1], 1439),
+      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[1], 1439),
 
-      new BackgroundObject(ImageHub.BACKGROUND.air, 719 * 3),
-      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[0], 719 * 3),
-      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[0], 719 * 3),
-      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[0], 719 * 3),
+      new BackgroundObject(ImageHub.BACKGROUND.air, 2159),
+      new BackgroundObject(ImageHub.BACKGROUND.thirdLayer[0], 2159),
+      new BackgroundObject(ImageHub.BACKGROUND.secondLayer[0], 2159),
+      new BackgroundObject(ImageHub.BACKGROUND.firstLayer[0], 2159),
     ],
     [new Cloud()],
     [
@@ -67,6 +67,6 @@ export function level1() {
     new StatusBar(40, 0, 100, ImageHub.STATUS_BAR.health),
     new StatusBar(40, 40, 0, ImageHub.STATUS_BAR.bottle),
     new StatusBar(40, 80, 0, ImageHub.STATUS_BAR.coin),
-    2267,
+    2239,
   );
 }

@@ -50,7 +50,7 @@ export class Character extends MovableObject {
         this.otherDirection = false;
       }
 
-      if (Keyboard.LEFT && this.x > 0 && !this.GAME_OVER) {
+      if (Keyboard.LEFT && this.x > -615 && !this.GAME_OVER) {
         this.moveLeft();
         this.otherDirection = true;
       }

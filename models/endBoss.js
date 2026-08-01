@@ -35,7 +35,15 @@ export class EndBoss extends MovableObject {
   // #region Methods
   animate() {
     IntervalHub.startInterval(() => {
-      this.moveLeft();
+      if (this.x > -710 && !this.otherDirection) {
+        this.moveLeft();
+      }
+
+      if (this.x < -700 || this.otherDirection) {
+        if (!this.otherDirection) this.otherDirection = true;
+        if (this.x > 2780) this.otherDirection = false;
+        this.moveRight();
+      }
     }, 1000 / 25);
 
     IntervalHub.startInterval(() => {
