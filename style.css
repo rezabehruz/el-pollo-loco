@@ -31,8 +31,8 @@ body {
         display: inline-block;
         left: 100px;
         padding: 20px;
-        
-        a{
+
+        a {
           font-family: "blastroop", Arial, Helvetica, sans-serif;
           letter-spacing: 1px;
           font-weight: 900;
@@ -40,8 +40,12 @@ body {
         }
       }
     }
+
+    @media (max-width: 844px) {
+      display: none;
+    }
   }
-  
+
   .content {
     display: flex;
     flex-direction: column;
@@ -53,6 +57,10 @@ body {
     background-position: center;
     font-family: "blastroop", Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
+
+    @media screen AND (max-width: 844px) {
+      height: 100vh;
+    }
 
     h1 {
       height: 70px;
@@ -148,7 +156,7 @@ body {
         height: 50px;
         width: 50px;
         border: none;
-        background-color: black;
+        background: transparent;
         border-radius: 10px;
 
         img {
@@ -176,8 +184,7 @@ body {
   }
 }
 
-@media screen and (max-width: 900px),
-  (max-height: 480px) and (orientation: landscape) {
+@media screen and (max-width: 900px), (max-height: 480px) and (orientation: landscape) {
   .content {
     article {
       width: 100%;
@@ -212,8 +219,7 @@ body {
   }
 }
 
-@media screen and (max-height: 480px),
-  (max-width: 900px) and (orientation: landscape) {
+@media screen and (max-height: 480px), (max-width: 900px) and (orientation: landscape) {
   .content {
     article {
       h1 {
@@ -235,8 +241,7 @@ body {
   }
 }
 
-@media screen and (max-width: 480px),
-  (max-height: 900px) and (orientation: portrait) {
+@media screen and (max-width: 480px), (max-height: 900px) and (orientation: portrait) {
   .content {
     article {
       h1 {

@@ -22,6 +22,7 @@ export class Chicken extends MovableObject {
   // #region Constructor
   constructor() {
     super();
+    this.loadImages(ImageHub.CHICKEN.stop);
     this.loadImages(ImageHub.CHICKEN.dead);
     this.loadImages(ImageHub.CHICKEN.walking);
     this.x = 700 + Math.random() * 1800;
@@ -38,6 +39,7 @@ export class Chicken extends MovableObject {
 
     IntervalHub.startInterval(() => {
       if (this.isDead()) this.playAnimation(ImageHub.CHICKEN.dead);
+      else if(this.speed == 0) this.playAnimation(ImageHub.CHICKEN.stop);
       else this.playAnimation(ImageHub.CHICKEN.walking);
     }, 300);
   }

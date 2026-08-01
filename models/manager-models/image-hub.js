@@ -1,7 +1,5 @@
 export class ImageHub {
-  static START_SCREEN = [
-    "./assets/img/9_intro_outro_screens/start/startscreen_1.png",
-  ];
+  static START_SCREEN = ["./assets/img/9_intro_outro_screens/start/startscreen_1.png"];
 
   static BOTTLE = {
     onGround: [
@@ -24,10 +22,7 @@ export class ImageHub {
     ],
   };
 
-  static COIN = [
-    "./assets/img/8_coin/coin_1.png",
-    "./assets/img/8_coin/coin_2.png",
-  ];
+  static COIN = ["./assets/img/8_coin/coin_1.png", "./assets/img/8_coin/coin_2.png"];
 
   static STATUS_BAR = {
     health: [
@@ -104,6 +99,7 @@ export class ImageHub {
   };
 
   static SMALL_CHICKEN = {
+    idle: ["./assets/img/3_enemies_chicken/chicken_small/1_walk/2_w.png"],
     walking: [
       "./assets/img/3_enemies_chicken/chicken_small/1_walk/1_w.png",
       "./assets/img/3_enemies_chicken/chicken_small/1_walk/2_w.png",
@@ -113,6 +109,7 @@ export class ImageHub {
   };
 
   static CHICKEN = {
+    stop: ["./assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png"],
     walking: [
       "./assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png",
       "./assets/img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
@@ -122,6 +119,7 @@ export class ImageHub {
   };
 
   static ENDBOSS = {
+    idle: ["./assets/img/4_enemie_boss_chicken/1_walk/G2.png"],
     walk: [
       "./assets/img/4_enemie_boss_chicken/1_walk/G1.png",
       "./assets/img/4_enemie_boss_chicken/1_walk/G2.png",

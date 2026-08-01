@@ -22,6 +22,7 @@ export class SmallChicken extends MovableObject {
   // #region Constructor
   constructor() {
     super();
+    this.loadImages(ImageHub.SMALL_CHICKEN.idle);
     this.loadImages(ImageHub.SMALL_CHICKEN.walking);
     this.loadImages(ImageHub.SMALL_CHICKEN.dead);
     this.x = 700 + Math.random() * 1800;
@@ -38,6 +39,7 @@ export class SmallChicken extends MovableObject {
 
     IntervalHub.startInterval(() => {
       if (this.isDead()) this.playAnimation(ImageHub.SMALL_CHICKEN.dead);
+      else if (this.speed == 0) this.playAnimation(ImageHub.SMALL_CHICKEN.idle);
       else this.playAnimation(ImageHub.SMALL_CHICKEN.walking);
     }, 300);
   }

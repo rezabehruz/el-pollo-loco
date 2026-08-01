@@ -22,7 +22,8 @@ export class EndBoss extends MovableObject {
 
   // #region Constructor
   constructor() {
-    super().loadImages(ImageHub.ENDBOSS.walk);
+    super().loadImages(ImageHub.ENDBOSS.idle);
+    this.loadImages(ImageHub.ENDBOSS.walk);
     this.loadImages(ImageHub.ENDBOSS.hurt);
     this.loadImages(ImageHub.ENDBOSS.dead);
 
@@ -40,9 +41,9 @@ export class EndBoss extends MovableObject {
     IntervalHub.startInterval(() => {
       if (this.isHurt()) this.playAnimation(ImageHub.ENDBOSS.hurt);
       else if (this.isDead()) {
-        if (!this.DEAD_FLAG)
-          this.DEAD_FLAG = this.playDeadAnimation(ImageHub.ENDBOSS.dead);
-      } else this.playAnimation(ImageHub.ENDBOSS.walk);
+        if (!this.DEAD_FLAG) this.DEAD_FLAG = this.playDeadAnimation(ImageHub.ENDBOSS.dead);
+      } else if (this.speed == 0) this.playAnimation(ImageHub.ENDBOSS.idle);
+      else this.playAnimation(ImageHub.ENDBOSS.walk);
     }, 300);
   }
 
@@ -54,10 +55,7 @@ export class EndBoss extends MovableObject {
 
   hit() {
     this.energy -= 20;
-    
-    
-    if(this.energy == 0) this.killed();
-        
+    if (this.energy == 0) this.killed();
     if (this.energy > 0) this.lastHit = new Date().getTime();
   }
 

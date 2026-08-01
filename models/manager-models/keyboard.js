@@ -8,108 +8,158 @@ export class Keyboard {
   static D = false;
   static F = false;
 
-  static BTN_MOVE_L = document.getElementById("btn-move-left");
-  static BTN_MOVE_R = document.getElementById("btn-move-right");
-  static BTN_MOVE_UP = document.getElementById("btn-move-up");
+  static BTN_MOVE_L =
+    document.getElementById("btn-move-left");
+  static BTN_MOVE_R = document.getElementById(
+    "btn-move-right",
+  );
+  static BTN_MOVE_UP =
+    document.getElementById("btn-move-up");
   static BTN_THROW = document.getElementById("btn-throw");
 
   static addTouchEvents() {
-    Keyboard.BTN_MOVE_L.addEventListener("touchstart", (event) => {
-      event.preventDefault();
+    Keyboard.BTN_MOVE_L.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
 
-      Keyboard.LEFT = true;
-    });
+        Keyboard.LEFT = true;
+      },
+    );
 
-    Keyboard.BTN_MOVE_R.addEventListener("touchstart", (event) => {
-      event.preventDefault();
+    Keyboard.BTN_MOVE_R.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
 
+        Keyboard.RIGHT = true;
+      },
+    );
+
+    Keyboard.BTN_MOVE_UP.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
+
+        Keyboard.SPACE = true;
+      },
+    );
+
+    Keyboard.BTN_THROW.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
+
+        Keyboard.D = true;
+      },
+    );
+
+    Keyboard.BTN_MOVE_L.addEventListener(
+      "touchend",
+      (event) => {
+        event.preventDefault();
+
+        AudioHub.stopSound(AudioHub.CHARACTER.run);
+        Keyboard.LEFT = false;
+      },
+    );
+
+    Keyboard.BTN_MOVE_R.addEventListener(
+      "touchend",
+      (event) => {
+        event.preventDefault();
+        AudioHub.stopSound(AudioHub.CHARACTER.run);
+        Keyboard.RIGHT = false;
+      },
+    );
+
+    Keyboard.BTN_MOVE_UP.addEventListener(
+      "touchend",
+      (event) => {
+        event.preventDefault();
+
+        Keyboard.SPACE = false;
+      },
+    );
+
+    Keyboard.BTN_THROW.addEventListener(
+      "touchend",
+      (event) => {
+        event.preventDefault();
+        World.OBJ_THROWED = false;
+        Keyboard.D = false;
+      },
+    );
+  }
+
+  static handleKeydown(event) {
+    if (event.key == "ArrowRight") {
       Keyboard.RIGHT = true;
-    });
+    }
 
-    Keyboard.BTN_MOVE_UP.addEventListener("touchstart", (event) => {
-      event.preventDefault();
+    if (event.key == "ArrowLeft") {
+      Keyboard.LEFT = true;
+    }
 
+    if (event.key == " ") {
       Keyboard.SPACE = true;
-    });
+    }
 
-    Keyboard.BTN_THROW.addEventListener("touchstart", (event) => {
-      event.preventDefault();
-
+    if (event.key == "d") {
       Keyboard.D = true;
-    });
+    }
 
-    Keyboard.BTN_MOVE_L.addEventListener("touchend", (event) => {
-      event.preventDefault();
+    if (event.key == "f") {
+      Keyboard.F = true;
+    }
+  }
 
-      AudioHub.stopSound(AudioHub.CHARACTER.run);
-      Keyboard.LEFT = false;
-    });
-
-    Keyboard.BTN_MOVE_R.addEventListener("touchend", (event) => {
-      event.preventDefault();
+  static handleKeyup(event) {
+    if (event.key == "ArrowRight") {
       AudioHub.stopSound(AudioHub.CHARACTER.run);
       Keyboard.RIGHT = false;
-    });
+    }
 
-    Keyboard.BTN_MOVE_UP.addEventListener("touchend", (event) => {
-      event.preventDefault();
+    if (event.key == "ArrowLeft") {
+      AudioHub.stopSound(AudioHub.CHARACTER.run);
+      Keyboard.LEFT = false;
+    }
 
+    if (event.key == " ") {
       Keyboard.SPACE = false;
-    });
+    }
 
-    Keyboard.BTN_THROW.addEventListener("touchend", (event) => {
-      event.preventDefault();
-      World.OBJ_THROWED = false;
+    if (event.key == "d") {
       Keyboard.D = false;
-    });
+      World.OBJ_THROWED = false;
+    }
+
+    if (event.key == "f") {
+      Keyboard.F = false;
+    }
   }
 
   static addEvents() {
-    window.addEventListener("keydown", (event) => {
-      if (event.key == "ArrowRight") {
-        Keyboard.RIGHT = true;
-      }
+    window.addEventListener(
+      "keydown",
+      Keyboard.handleKeydown,
+    );
 
-      if (event.key == "ArrowLeft") {
-        Keyboard.LEFT = true;
-      }
+    window.addEventListener("keyup", Keyboard.handleKeyup);
+  }
 
-      if (event.key == " ") {
-        Keyboard.SPACE = true;
-      }
+  static removeEvents() {
 
-      if (event.key == "d") {
-        Keyboard.D = true;
-      }
+    window.removeEventListener(
+      "keydown",
+      Keyboard.handleKeydown,
+    );
+    
+    window.removeEventListener(
+      "keyup",
+      Keyboard.handleKeyup,
+    );
 
-      if (event.key == "f") {
-        Keyboard.F = true;
-      }
-    });
-
-    window.addEventListener("keyup", (event) => {
-      if (event.key == "ArrowRight") {
-        AudioHub.stopSound(AudioHub.CHARACTER.run);
-        Keyboard.RIGHT = false;
-      }
-
-      if (event.key == "ArrowLeft") {
-        AudioHub.stopSound(AudioHub.CHARACTER.run);
-        Keyboard.LEFT = false;
-      }
-
-      if (event.key == " ") {
-        Keyboard.SPACE = false;
-      }
-
-      if (event.key == "d") {
-        Keyboard.D = false;
-        World.OBJ_THROWED = false;
-      }
-
-      if (event.key == "f") {
-        Keyboard.F = false;
-      }
-    });
+    console.log("events removed!");
   }
 }

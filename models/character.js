@@ -21,6 +21,8 @@ export class Character extends MovableObject {
   coins = 0;
   bottles = 0;
 
+  GAME_OVER = false;
+
   // #endregion
 
   // #region Constructor
@@ -43,18 +45,18 @@ export class Character extends MovableObject {
   // #region Methods
   animateMoving() {
     IntervalHub.startInterval(() => {
-      if (Keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      if (Keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.GAME_OVER) {
         this.moveRight();
         this.otherDirection = false;
       }
 
-      if (Keyboard.LEFT && this.x > 0) {
+      if (Keyboard.LEFT && this.x > 0 && !this.GAME_OVER) {
         this.moveLeft();
         this.otherDirection = true;
       }
 
       if (Keyboard.SPACE) {
-        if (!this.isAboveGround() && this.energy > 0) {
+        if (!this.isAboveGround() && this.energy > 0 && !this.GAME_OVER) {
           AudioHub.playSound(AudioHub.CHARACTER.jump, false);
           this.jump();
         }
@@ -78,9 +80,11 @@ export class Character extends MovableObject {
         this.playAnimation(ImageHub.CHARACTER.jumping);
         AudioHub.stopSound(AudioHub.CHARACTER.run, true);
       } else if (Keyboard.RIGHT || Keyboard.LEFT) {
-        this.speed = 4;
-        AudioHub.playSound(AudioHub.CHARACTER.run, true);
-        this.playAnimation(ImageHub.CHARACTER.walking);
+        if (!this.GAME_OVER) {
+          this.speed = 4;
+          AudioHub.playSound(AudioHub.CHARACTER.run, true);
+          this.playAnimation(ImageHub.CHARACTER.walking);
+        } else this.speed = 0;
       } else {
         this.playAnimation(ImageHub.CHARACTER.idle);
       }

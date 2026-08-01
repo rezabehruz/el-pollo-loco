@@ -1,5 +1,4 @@
 import { DrawableObject } from "./drawable-object.js";
-import { AudioHub } from "./manager-models/audio-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
 export class MovableObject extends DrawableObject {

@@ -123,6 +123,10 @@ function youWin() {
   currentTime = new Date().getTime();
   imgWinRef.setAttribute("class", "img-control");
   contentActionRef.setAttribute("class", "d-none");
+
+  world.character.GAME_OVER = true;
+  world.character.speed = 0;
+  world.character.speedY = 0;
 }
 
 function youLost() {
@@ -130,6 +134,10 @@ function youLost() {
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
   contentActionRef.setAttribute("class", "d-none");
+
+  world.level.enemies.forEach((enemy) => {
+    enemy.speed = 0;
+  });
 }
 
 function gameOver() {
