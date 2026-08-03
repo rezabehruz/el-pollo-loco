@@ -14,6 +14,11 @@
   src: url("./assets/fonts/blastroop.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "shortstack";
+  src: url("./assets/fonts/shortstack.ttf") format("truetype");
+}
+
 button {
   cursor: pointer;
 }
@@ -23,30 +28,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 10vh;
-    background-color: #a47b30;
+    background: #f5a309;
+    border: 2px solid rgb(140, 101, 9);
 
     ul {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 1440px;
+      
+      
       li {
-        display: inline-block;
-        left: 100px;
-        padding: 20px;
+        padding: 38px 18px 18px 18px;
 
-        a {
+        button {
           font-family: "blastroop", Arial, Helvetica, sans-serif;
+          font-size: 22px;
           letter-spacing: 1px;
           font-weight: 900;
           color: black;
+          border: none;
+          background-color: transparent;
         }
       }
     }
 
-    @media (max-width: 844px) {
+    @media (orientation: landscape) {
       display: none;
     }
   }
 
-  .content {
+  .d-none {
+    display: none;
+  }
+
+  .content-1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,6 +91,10 @@ body {
       background-color: black;
       display: block;
     }
+
+    .d-none {
+        display: none;
+      }
 
     .content-controller {
       display: flex;
@@ -179,13 +201,57 @@ body {
     }
   }
 
+  .content-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    padding-left:12vw;
+    background-image: url("./assets/img/background/background.jpg");
+    background-position: center;
+    font-family: "shortstack", Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+
+    h2, h3 {
+      margin: 6vw 0 1vw 0;
+    }
+  }
+
+  .content-3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 90vh;
+    padding:0 12vw;
+    background-image: url("./assets/img/background/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: "shortstack", Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+
+    .section-help {
+      padding: 2vw 3vw;
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    h2, h3 {
+      margin: 3vw 0 1vw 0;
+    }
+
+    p {
+      max-width: 300px;
+    }
+  }
+
   .v-hidden {
     visibility: hidden;
   }
 }
 
 @media screen and (max-width: 900px), (max-height: 480px) and (orientation: landscape) {
-  .content {
+  .content-1 {
     article {
       width: 100%;
 
@@ -220,7 +286,7 @@ body {
 }
 
 @media screen and (max-height: 480px), (max-width: 900px) and (orientation: landscape) {
-  .content {
+  .content-1 {
     article {
       h1 {
         display: none;
@@ -242,7 +308,7 @@ body {
 }
 
 @media screen and (max-width: 480px), (max-height: 900px) and (orientation: portrait) {
-  .content {
+  .content-1 {
     article {
       h1 {
         display: none;

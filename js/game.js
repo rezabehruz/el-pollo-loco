@@ -15,6 +15,14 @@ const btnMuteSoundRef = document.getElementById("btn-mute");
 const btnUnMuteSoundRef = document.getElementById("btn-unmute");
 const contentActionRef = document.getElementById("content-action");
 
+const btnHeaderLegalNotice = document.getElementById("btn-legal-notice");
+const btnHeaderPlaying = document.getElementById("btn-start-playing");
+const btnHeaderHelp = document.getElementById("btn-help");
+
+const contentLegalNotice = document.getElementById("legal-notice");
+const contentHelp = document.getElementById("help");
+const contentCanvas = document.getElementById("content-canvas");
+
 let world;
 let currentTime;
 let IS_MUTE = "mute";
@@ -36,6 +44,10 @@ btnStartRef.addEventListener("click", startGame);
 btnRestartRef.addEventListener("click", startGame);
 btnMuteSoundRef.addEventListener("click", unmute);
 btnUnMuteSoundRef.addEventListener("click", mute);
+
+btnHeaderLegalNotice.addEventListener("click", renderLegalNotice);
+btnHeaderPlaying.addEventListener("click", renderPlaying);
+btnHeaderHelp.addEventListener("click", renderHelp);
 
 checkSound();
 
@@ -65,6 +77,24 @@ function unmute() {
   window.localStorage.setItem("isMute", "unmute");
 
   AudioHub.unMute();
+}
+
+function renderLegalNotice() {
+  contentCanvas.setAttribute("class", "d-none");
+  contentHelp.setAttribute("class", "d-none");
+  contentLegalNotice.setAttribute("class", "content-2");
+}
+
+function renderHelp() {
+  contentCanvas.setAttribute("class", "d-none");
+  contentLegalNotice.setAttribute("class", "d-none");
+  contentHelp.setAttribute("class", "content-3");
+}
+
+function renderPlaying() {
+  contentCanvas.setAttribute("class", "content-1");
+  contentLegalNotice.setAttribute("class", "d-none");
+  contentHelp.setAttribute("class", "d-none");
 }
 
 function startGame() {
