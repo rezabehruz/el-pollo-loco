@@ -1,6 +1,9 @@
 import { DrawableObject } from "./drawable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 
+/**
+ * Creates a new Bottle
+ */
 export class Bottle extends DrawableObject {
   // #region Properties
   y = 350;
@@ -18,6 +21,11 @@ export class Bottle extends DrawableObject {
   //   #endregion
 
   // #region Constructor
+
+  /**
+   * @constructor
+   * 
+   */
   constructor() {
     super();
 

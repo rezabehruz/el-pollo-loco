@@ -1,3 +1,7 @@
+/**
+ * creates a new DrawableObject. 
+ * @class
+ */
 export class DrawableObject {
   // #region Properties
   x;
@@ -27,10 +31,19 @@ export class DrawableObject {
   // #endregion
 
   // #region Methods
+
+  /**
+   * sets the image paths.
+   * @param {string} path - the image path. 
+   */
   loadImage(path) {
     this.img.src = path;
   }
 
+  /**
+   * Creates Images and saves it to imageCache with a key.
+   * @param {Array} imgArr Array containing image paths
+   */
   loadImages(imgArr) {
     imgArr.forEach((imgPath) => {
       let img = new Image();
@@ -39,10 +52,17 @@ export class DrawableObject {
     });
   }
 
+  /**
+   * Draw the image on the Canvas.
+   * @param {contextOfCanvas} cts - the context of the Canvas 
+   */
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
+  /**
+   * Sets the real Frame of Object
+   */
   getRealFrame() {
     this.rX = this.x + this.offset.left;
     this.rY = this.y + this.offset.top;
@@ -50,6 +70,10 @@ export class DrawableObject {
     this.rHeight = this.height - this.offset.top - this.offset.bottom;
   }
 
+  /**
+   * Draws the real Frame of Object
+   * @param {contextOfCanvas} ctx - the context of Canvas 
+   */
   drawFrame(ctx) {
     ctx.beginPath();
     ctx.lineWidth = "5";
@@ -58,12 +82,22 @@ export class DrawableObject {
     ctx.stroke();
   }
 
+  /**
+   * Changes the images one by one.
+   * @param {Array} images - Array of images
+   */
   playAnimation(images) {
     let i = this.currentImg % images.length;
     this.img = this.imageCache[images[i]];
     this.currentImg++;
   }
 
+
+  /**
+   * Ensure that every image is displayed only once.
+   * @param {Array} images - Array of images
+   * @returns {boolean} - true or false
+   */
   playDeadAnimation(images) {
     let i = this.currentImg % images.length;
     this.img = this.imageCache[images[i]];

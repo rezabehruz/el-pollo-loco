@@ -3,6 +3,10 @@ import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
+/**
+ * Creates a new Chicken.
+ * @class
+ */
 export class Chicken extends MovableObject {
   // #region Properties
   y = 340;
@@ -20,6 +24,12 @@ export class Chicken extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Loads images.
+   * Generate random x-coordinate and random speed
+   * @constructor
+   */
   constructor() {
     super();
     this.loadImages(ImageHub.CHICKEN.stop);
@@ -28,13 +38,19 @@ export class Chicken extends MovableObject {
     this.x = 700 + Math.random() * 1800;
     this.speed = this.speed + Math.random() * 0.25;
 
-    this.animate();
+    this.animateMoving();
+    this.animateImage();
   }
 
   // #endregion
 
   // #region Methods
-  animate() {
+
+  /**
+   * Starts a new interval
+   * Updates the Object x- and y-coordinate based on x-coordinate and direction.
+   */
+  animateMoving() {
     IntervalHub.startInterval(() => {
       if (this.x > -720 && !this.otherDirection) {
         this.moveLeft();
@@ -47,7 +63,13 @@ export class Chicken extends MovableObject {
       }
 
     }, 1000 / 60);
+  }
 
+  /**
+   * Starts a new interval
+   * Displays the Object based on Object Status
+   */
+  animateImage(){
     IntervalHub.startInterval(() => {
       if (this.isDead()) this.playAnimation(ImageHub.CHICKEN.dead);
       else if (this.speed == 0) this.playAnimation(ImageHub.CHICKEN.stop);
@@ -55,6 +77,10 @@ export class Chicken extends MovableObject {
     }, 300);
   }
 
+  /**
+   * 
+   * Changes the speed and energy to Zero and Increase y-coordinate.
+   */
   killed() {
     AudioHub.playSound(AudioHub.CHICKEN.dead, false);
     this.speed = 0;

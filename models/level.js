@@ -1,3 +1,16 @@
+import { BackgroundObject } from "./background-object";
+import { Bottle } from "./bottle";
+import { Cloud } from "./cloud";
+import { Coin } from "./coin";
+import { EndBoss } from "./endBoss";
+import { SmallChicken } from "./small-chicken";
+import { StatusBar } from "./status-bar";
+
+/**
+ * 
+ * Creates a new Level
+ * @class
+ */
 export class Level {
   // #region Properties
   backgrounds;
@@ -10,6 +23,21 @@ export class Level {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Initialises the properties
+   * 
+   * @param {BackgroundObject} backgrounds_ 
+   * @param {Cloud} clouds_ 
+   * @param {Chicken|SmallChicken|EndBoss} enemies_ 
+   * @param {healthStatus} endBossHealthStatus_ 
+   * @param {Coin} coins_ 
+   * @param {Bottle} bottles_ 
+   * @param {StatusBar} healthStatus_ 
+   * @param {StatusBar} bottleStatus_ 
+   * @param {StatusBar} coinStatus_ 
+   * @param {number} levelEndX_ 
+   */
   constructor(
     backgrounds_,
     clouds_,

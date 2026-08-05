@@ -1,4 +1,10 @@
 import { MyAudio } from "../myAudio.js";
+
+/**
+ * 
+ * Utility class.
+ * Contains only static properties and methods.
+ */
 export class AudioHub {
   // #region Properties
 
@@ -46,6 +52,12 @@ export class AudioHub {
   // #endregion
 
   // #region Methods
+  /**
+   * Checks the sound to play it.
+   * @param {truck} truck 
+   * @param {boolean} checkPaused 
+   * @returns retuns nothing, if the sound is not paused.
+   */
   static playSound(truck, checkPaused) {
     if (!AudioHub.MUTE_FLAG) {
       if (checkPaused == false) {
@@ -57,6 +69,10 @@ export class AudioHub {
     }
   }
 
+  /**
+   * Start to play the sound.
+   * @param {truck} truck 
+   */
   static startPlaying(truck) {
     if (truck.sound.readyState == 4 || truck.IS_LOADED == true) {
       truck.IS_LOADED = true;
@@ -66,21 +82,35 @@ export class AudioHub {
     }
   }
 
+  /**
+   * Stops the sound.
+   * @param {truck} truck 
+   */
   static stopSound(truck) {
     truck.sound.pause();
   }
 
+  /**
+   * Stops all sounds
+   */
   static stopAllSounds() {
     AudioHub.ALL_SOUNDS.forEach((truck) => {
       truck.sound.pause();
     });
   }
 
+  /**
+   * 
+   * Mutes all Sounds in System
+   */
   static mute() {
     AudioHub.ALL_SOUNDS.forEach((truck) => (truck.sound.volume = 0));
     AudioHub.MUTE_FLAG = true;
   }
 
+  /**
+   * Unmutes all Sounds in the System
+   */
   static unMute() {
     AudioHub.ALL_SOUNDS.forEach((truck) => (truck.sound.volume = 0.2));
     AudioHub.MUTE_FLAG = false;

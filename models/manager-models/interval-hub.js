@@ -1,3 +1,9 @@
+
+/**
+ * 
+ * Utility class.
+ * Contains only static properties and methods.
+ */
 export class IntervalHub {
 
   // #region Properties
@@ -7,11 +13,20 @@ export class IntervalHub {
 
 
   // #region Methods
+
+  /**
+   * Starts a new interval
+   * @param {function} func 
+   * @param {number} timer 
+   */
   static startInterval(func, timer) {
     const interval = setInterval(func, timer);
     this.ALL_INTERVALS.push(interval);
   }
 
+  /**
+   * Stops all intervals
+   */
   static stopAllInterval(){
     this.ALL_INTERVALS.forEach(clearInterval);
     this.ALL_INTERVALS = [];

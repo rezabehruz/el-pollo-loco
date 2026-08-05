@@ -1,5 +1,10 @@
 import { DrawableObject } from "./drawable-object.js";
 
+/**
+ * 
+ * Creates a new StatusBar
+ * @class
+ */
 export class StatusBar extends DrawableObject {
 
   // #region Properties
@@ -11,6 +16,16 @@ export class StatusBar extends DrawableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * 
+   * @param {number} x_ 
+   * @param {number} y_ 
+   * @param {number} percentage_ 
+   * @param {Array} images_ 
+   * 
+   * @constructor
+   */
   constructor(x_, y_, percentage_, images_) {
     super();
     this.x = x_;
@@ -25,12 +40,21 @@ export class StatusBar extends DrawableObject {
 
 
   // #region Methods
+
+  /**
+   * Determines the images path based on percentage.
+   * @param {string} percentage 
+   */
   setPercentage(percentage) {
     this.percentage = percentage;
     let path = this.images[this.resolveImageIndex()];
     this.img = this.imageCache[path];
   }
 
+  /**
+   * Resolves the images index
+   * @returns {number} 0 bis 5
+   */
   resolveImageIndex() {
     if (this.percentage > 80) return 5;
     else if (this.percentage > 60) return 4;

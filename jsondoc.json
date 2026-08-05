@@ -1,0 +1,8 @@
+{
+  "source": {
+    "include": ["./models/drawable-object.js", "./models/movable-object.js"]
+  },
+  "opts": {
+    "destination": "./out"
+  }
+}

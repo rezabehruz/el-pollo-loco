@@ -1,6 +1,11 @@
 import { World } from "../world.js";
 import { AudioHub } from "./audio-hub.js";
 
+/**
+ * 
+ * Utility class.
+ * Contains only static properties and methods.
+ */
 export class Keyboard {
   static RIGHT = false;
   static LEFT = false;
@@ -8,90 +13,71 @@ export class Keyboard {
   static D = false;
   static F = false;
 
-  static BTN_MOVE_L =
-    document.getElementById("btn-move-left");
-  static BTN_MOVE_R = document.getElementById(
-    "btn-move-right",
-  );
-  static BTN_MOVE_UP =
-    document.getElementById("btn-move-up");
+  static BTN_MOVE_L = document.getElementById("btn-move-left");
+  static BTN_MOVE_R = document.getElementById("btn-move-right");
+  static BTN_MOVE_UP = document.getElementById("btn-move-up");
   static BTN_THROW = document.getElementById("btn-throw");
 
+
+  /**
+   * 
+   * Adds Touchevents
+   */
   static addTouchEvents() {
-    Keyboard.BTN_MOVE_L.addEventListener(
-      "touchstart",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_MOVE_L.addEventListener("touchstart", (event) => {
+      event.preventDefault();
 
-        Keyboard.LEFT = true;
-      },
-    );
+      Keyboard.LEFT = true;
+    });
 
-    Keyboard.BTN_MOVE_R.addEventListener(
-      "touchstart",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_MOVE_R.addEventListener("touchstart", (event) => {
+      event.preventDefault();
 
-        Keyboard.RIGHT = true;
-      },
-    );
+      Keyboard.RIGHT = true;
+    });
 
-    Keyboard.BTN_MOVE_UP.addEventListener(
-      "touchstart",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_MOVE_UP.addEventListener("touchstart", (event) => {
+      event.preventDefault();
 
-        Keyboard.SPACE = true;
-      },
-    );
+      Keyboard.SPACE = true;
+    });
 
-    Keyboard.BTN_THROW.addEventListener(
-      "touchstart",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_THROW.addEventListener("touchstart", (event) => {
+      event.preventDefault();
 
-        Keyboard.D = true;
-      },
-    );
+      Keyboard.D = true;
+    });
 
-    Keyboard.BTN_MOVE_L.addEventListener(
-      "touchend",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_MOVE_L.addEventListener("touchend", (event) => {
+      event.preventDefault();
 
-        AudioHub.stopSound(AudioHub.CHARACTER.run);
-        Keyboard.LEFT = false;
-      },
-    );
+      AudioHub.stopSound(AudioHub.CHARACTER.run);
+      Keyboard.LEFT = false;
+    });
 
-    Keyboard.BTN_MOVE_R.addEventListener(
-      "touchend",
-      (event) => {
-        event.preventDefault();
-        AudioHub.stopSound(AudioHub.CHARACTER.run);
-        Keyboard.RIGHT = false;
-      },
-    );
+    Keyboard.BTN_MOVE_R.addEventListener("touchend", (event) => {
+      event.preventDefault();
+      AudioHub.stopSound(AudioHub.CHARACTER.run);
+      Keyboard.RIGHT = false;
+    });
 
-    Keyboard.BTN_MOVE_UP.addEventListener(
-      "touchend",
-      (event) => {
-        event.preventDefault();
+    Keyboard.BTN_MOVE_UP.addEventListener("touchend", (event) => {
+      event.preventDefault();
 
-        Keyboard.SPACE = false;
-      },
-    );
+      Keyboard.SPACE = false;
+    });
 
-    Keyboard.BTN_THROW.addEventListener(
-      "touchend",
-      (event) => {
-        event.preventDefault();
-        World.OBJ_THROWED = false;
-        Keyboard.D = false;
-      },
-    );
+    Keyboard.BTN_THROW.addEventListener("touchend", (event) => {
+      event.preventDefault();
+      World.OBJ_THROWED = false;
+      Keyboard.D = false;
+    });
   }
 
+  /**
+   * Adds Keydownevents
+   * @param {Event} event 
+   */
   static handleKeydown(event) {
     if (event.key == "ArrowRight") {
       Keyboard.RIGHT = true;
@@ -114,6 +100,11 @@ export class Keyboard {
     }
   }
 
+
+  /**
+   * Adds Keyupevents
+   * @param {Event} event 
+   */
   static handleKeyup(event) {
     if (event.key == "ArrowRight") {
       AudioHub.stopSound(AudioHub.CHARACTER.run);
@@ -139,27 +130,14 @@ export class Keyboard {
     }
   }
 
+
+  /**
+   * 
+   * Shorthand for calling adding events methods.
+   */
   static addEvents() {
-    window.addEventListener(
-      "keydown",
-      Keyboard.handleKeydown,
-    );
+    window.addEventListener("keydown", Keyboard.handleKeydown);
 
     window.addEventListener("keyup", Keyboard.handleKeyup);
-  }
-
-  static removeEvents() {
-
-    window.removeEventListener(
-      "keydown",
-      Keyboard.handleKeydown,
-    );
-    
-    window.removeEventListener(
-      "keyup",
-      Keyboard.handleKeyup,
-    );
-
-    console.log("events removed!");
   }
 }

@@ -4,6 +4,11 @@ import { IntervalHub } from "./manager-models/interval-hub.js";
 import { Keyboard } from "./manager-models/keyboard.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
+
+/**
+ * Creates a new Character
+ * @class
+ */
 export class Character extends MovableObject {
   // #region Properties
   x = 20;
@@ -26,6 +31,10 @@ export class Character extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * @constructor
+   */
   constructor() {
     super().loadImage("./assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(ImageHub.CHARACTER.hurt);
@@ -42,6 +51,11 @@ export class Character extends MovableObject {
   // #endregion
 
   // #region Methods
+
+  /**
+   * Starts a new interval
+   * Updates the Object x- and y-coordinate based on Keyboard reactions, Game status and level_end_x coordinate
+   */
   animateMoving() {
     IntervalHub.startInterval(() => {
       if (Keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.GAME_OVER) {
@@ -65,6 +79,10 @@ export class Character extends MovableObject {
     }, 1000 / 60);
   }
 
+   /**
+   * Starts a new interval
+   * Displays the Object based on Character Status, x- and y-coordinates, and Game status
+   */
   animateImage() {
     IntervalHub.startInterval(() => {
       if (this.isHurt()) {
@@ -90,6 +108,11 @@ export class Character extends MovableObject {
     }, 120);
   }
 
+
+   /**
+   * 
+   * Checks whether the object's energy should decrease based on lastHit property.
+   */
   hit() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
@@ -103,12 +126,21 @@ export class Character extends MovableObject {
     }
   }
 
+/** 
+ * Checks whether the object has taken damage.
+ * @returns {boolean} true or false
+ */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
     return timepassed < 2;
   }
 
+/**
+ * 
+ * Checks whether the object is above the Ground.
+ * @returns {boolean} true or false
+ */
   isAboveGround() {
     if (this.y < 235) {
       this.speed = 2;

@@ -3,6 +3,10 @@ import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
+/**
+ * Creates a new EndBoss
+ * @class
+ */
 export class EndBoss extends MovableObject {
   // #region Properties
   height = 200;
@@ -21,6 +25,12 @@ export class EndBoss extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   *
+   * Loads Images.
+   * @constructor
+   */
   constructor() {
     super().loadImages(ImageHub.ENDBOSS.idle);
     this.loadImages(ImageHub.ENDBOSS.walk);
@@ -33,7 +43,12 @@ export class EndBoss extends MovableObject {
   // #endregion
 
   // #region Methods
-  animate() {
+
+  /**
+   * Starts a new interval
+   * Updates the Object x- and y-coordinate based on x-coordinate and direction.
+   */
+  animateMoving() {
     IntervalHub.startInterval(() => {
       if (this.x > -710 && !this.otherDirection) {
         this.moveLeft();
@@ -45,7 +60,13 @@ export class EndBoss extends MovableObject {
         this.moveRight();
       }
     }, 1000 / 25);
+  }
 
+  /**
+   * Starts a new interval
+   * Displays the Object based on Object Status
+   */
+  animateImage() {
     IntervalHub.startInterval(() => {
       if (this.isHurt()) this.playAnimation(ImageHub.ENDBOSS.hurt);
       else if (this.isDead()) {
@@ -55,18 +76,30 @@ export class EndBoss extends MovableObject {
     }, 300);
   }
 
+  /**
+   * 
+   * Changes the speed to Zero and Increase y-coordinate.
+   */
   killed() {
     AudioHub.playSound(AudioHub.CHICKEN.dead, false);
     this.speed = 0;
     this.y = 300;
   }
 
+  /**
+   * 
+   * Decreases the Object's energy.
+   */
   hit() {
     this.energy -= 20;
     if (this.energy == 0) this.killed();
     if (this.energy > 0) this.lastHit = new Date().getTime();
   }
 
+  /**
+   * Checks whether the object has taken damage.
+   * @returns {boolean} true or false
+   */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;

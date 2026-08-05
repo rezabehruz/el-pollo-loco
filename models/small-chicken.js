@@ -3,6 +3,10 @@ import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
+/**
+ * Creates a new SmallChicken.
+ * @class
+ */
 export class SmallChicken extends MovableObject {
   // #region Properties
   y = 340;
@@ -20,6 +24,11 @@ export class SmallChicken extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Loads Images, Generates random x-coordinate and speed.
+   * @constructor
+   */
   constructor() {
     super();
     this.loadImages(ImageHub.SMALL_CHICKEN.idle);
@@ -34,7 +43,11 @@ export class SmallChicken extends MovableObject {
   // #endregion
 
   // #region Methods
-  animate() {
+  /**
+   * Starts a new interval
+   * Updates the Object x- and y-coordinate based on x-coordinate and direction.
+   */
+  animateMoving() {
     IntervalHub.startInterval(() => {
       if (this.x > -720 && !this.otherDirection) {
         this.moveLeft();
@@ -46,7 +59,13 @@ export class SmallChicken extends MovableObject {
         this.moveRight();
       }
     }, 1000 / 60);
+  }
 
+  /**
+   * Starts a new interval
+   * Displays the Object based on Object Status
+   */
+  animateImage() {
     IntervalHub.startInterval(() => {
       if (this.isDead()) this.playAnimation(ImageHub.SMALL_CHICKEN.dead);
       else if (this.speed == 0) this.playAnimation(ImageHub.SMALL_CHICKEN.idle);
@@ -54,6 +73,10 @@ export class SmallChicken extends MovableObject {
     }, 300);
   }
 
+  /**
+   *
+   * Changes the speed and energy to Zero and Increase y-coordinate.
+   */
   killed() {
     AudioHub.playSound(AudioHub.CHICKEN.dead, false);
     this.speed = 0;

@@ -2,6 +2,9 @@ import { MovableObject } from "./movable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
+/**
+ * Creates a new Cloud
+ */
 export class Cloud extends MovableObject {
   // #region Properties
   y = 10;
@@ -12,6 +15,12 @@ export class Cloud extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Loads images.
+   * Generate random x-coordinate
+   * @constructor
+   */
   constructor() {
     super().loadImage(ImageHub.CLOUDS[0]);
 
@@ -22,6 +31,10 @@ export class Cloud extends MovableObject {
   // #endregion
 
   // #region Methods
+  /**
+   * Starts a new interval
+   * Updates the x-coordinate
+   */
   animate() {
     IntervalHub.startInterval(() => this.moveLeft(), 1000 / 60);
   }

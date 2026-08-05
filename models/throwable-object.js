@@ -2,6 +2,11 @@ import { MovableObject } from "./movable-object.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 
+/**
+ * 
+ * Creates a new ThrowableObject
+ * @class
+ */
 export class ThrowableObject extends MovableObject {
   // #region Properties
   width = 50;
@@ -24,6 +29,16 @@ export class ThrowableObject extends MovableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Loads Images and calls throw() and animate() methods.
+   * 
+   * @param {number} x_ 
+   * @param {number} y_ 
+   * @param {boolean} otherDirection_ 
+   * 
+   * @constructor
+   */
   constructor(x_, y_, otherDirection_) {
     super();
     this.x = x_;
@@ -40,6 +55,10 @@ export class ThrowableObject extends MovableObject {
 
   // #region Methods
 
+  /**
+   * Starts a new interval
+   * Displays the Object based on Object Status
+   */
   animate() {
     IntervalHub.startInterval(() => {
       if (this.IS_COLLIDE) {
@@ -54,6 +73,11 @@ export class ThrowableObject extends MovableObject {
     }, 1000 / 60);
   }
 
+  /**
+   * 
+   * Throws the Object and Applies gravity. 
+   * Starts a new interval based on Object status and Direction.
+   */
   throw() {
     this.speedY = 20;
     this.applyGravity();
@@ -71,6 +95,11 @@ export class ThrowableObject extends MovableObject {
     }, 1000 / 60);
   }
 
+  /**
+   * 
+   * Checks wether the Object is above ground.
+   * @returns {boolean} true or false
+   */
   isAboveGround() {
     return this.y < 380;
   }

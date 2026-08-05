@@ -2,6 +2,10 @@ import { DrawableObject } from "./drawable-object.js";
 import { ImageHub } from "./manager-models/image-hub.js";
 import { IntervalHub } from "./manager-models/interval-hub.js";
 
+/**
+ * 
+ * Creates a new Coin
+ */
 export class Coin extends DrawableObject {
   // #region Properties
   width = 100;
@@ -17,6 +21,13 @@ export class Coin extends DrawableObject {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Loads images.
+   * Generate random x- and y-coordinate
+   * 
+   * @constructor
+   */
   constructor() {
     super();
     this.loadImages(ImageHub.COIN);
@@ -29,6 +40,11 @@ export class Coin extends DrawableObject {
   // #endregion
 
   // #region Methods
+
+  /**
+   * Starts a new interval
+   * Displays the Object
+   */
   animate() {
     IntervalHub.startInterval(() => this.playAnimation(ImageHub.COIN), 400);
   }

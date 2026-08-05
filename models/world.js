@@ -176,7 +176,6 @@ export class World {
       object instanceof SmallChicken
     ) {
       object.getRealFrame();
-      object.drawFrame(this.ctx);
     }
   }
 
