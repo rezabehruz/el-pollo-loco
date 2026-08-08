@@ -37,7 +37,8 @@ export class EndBoss extends MovableObject {
     this.loadImages(ImageHub.ENDBOSS.hurt);
     this.loadImages(ImageHub.ENDBOSS.dead);
 
-    this.animate();
+    this.animateMoving();
+    this.animateImage();
   }
 
   // #endregion

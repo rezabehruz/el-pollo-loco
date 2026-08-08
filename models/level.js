@@ -1,10 +1,10 @@
-import { BackgroundObject } from "./background-object";
-import { Bottle } from "./bottle";
-import { Cloud } from "./cloud";
-import { Coin } from "./coin";
-import { EndBoss } from "./endBoss";
-import { SmallChicken } from "./small-chicken";
-import { StatusBar } from "./status-bar";
+import { BackgroundObject } from "./background-object.js";
+import { Bottle } from "./bottle.js";
+import { Cloud } from "./cloud.js";
+import { Coin } from "./coin.js";
+import { EndBoss } from "./endBoss.js";
+import { SmallChicken } from "./small-chicken.js";
+import { StatusBar } from "./status-bar.js";
 
 /**
  * 
