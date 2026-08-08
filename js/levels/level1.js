@@ -9,6 +9,10 @@ import { Bottle } from "../../models/bottle.js";
 import { StatusBar } from "../../models/status-bar.js";
 import { SmallChicken } from "../../models/small-chicken.js";
 
+/**
+ * 
+ * @returns {Level} - the new level object
+ */
 export function level1() {
   return new Level(
     [

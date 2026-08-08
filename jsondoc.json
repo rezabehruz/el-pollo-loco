@@ -1,6 +1,28 @@
 {
   "source": {
-    "include": ["./models/drawable-object.js", "./models/movable-object.js"]
+    "include": [
+      "./js/levels/level1.js",
+      "./js/game.js",
+      "./models/manager-models/audio-hub.js",
+      "./models/manager-models/image-hub.js",
+      "./models/manager-models/interval-hub.js",
+      "./models/manager-models/keyboard.js",
+      "./models/background-object.js",
+      "./models/bottle.js",
+      "./models/character.js",
+      "./models/chicken.js",
+      "./models/cloud.js",
+      "./models/coin.js",
+      "./models/drawable-object.js",
+      "./models/endBoss.js",
+      "./models/level.js",
+      "./models/movable-object.js",
+      "./models/myAudio.js",
+      "./models/small-chicken.js",
+      "./models/status-bar.js",
+      "./models/throwable-object.js",
+      "./models/world.js"
+    ]
   },
   "opts": {
     "destination": "./out"

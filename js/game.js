@@ -51,6 +51,10 @@ btnHeaderHelp.addEventListener("click", renderHelp);
 
 checkSound();
 
+/**
+ * 
+ * Gets data from local Storage
+ */
 function checkSound() {
   let sound = window.localStorage.getItem("isMute");
 
@@ -63,6 +67,10 @@ function checkSound() {
   } else window.localStorage.setItem("isMute", IS_MUTE);
 }
 
+/**
+ * 
+ * Mutes the sound
+ */
 function mute() {
   btnUnMuteSoundRef.setAttribute("class", "d-none");
   btnMuteSoundRef.setAttribute("class", "btn-sound");
@@ -71,6 +79,10 @@ function mute() {
   AudioHub.mute();
 }
 
+/**
+ * 
+ * Unmutes the sound
+ */
 function unmute() {
   btnMuteSoundRef.setAttribute("class", "d-none");
   btnUnMuteSoundRef.setAttribute("class", "btn-sound");
@@ -79,24 +91,40 @@ function unmute() {
   AudioHub.unMute();
 }
 
+/**
+ * 
+ * Renders the legalNotice
+ */
 function renderLegalNotice() {
   contentCanvas.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
   contentLegalNotice.setAttribute("class", "content-2");
 }
 
+/**
+ * 
+ * Renders the help
+ */
 function renderHelp() {
   contentCanvas.setAttribute("class", "d-none");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "content-3");
 }
 
+/**
+ * 
+ * Renders the playing
+ */
 function renderPlaying() {
   contentCanvas.setAttribute("class", "content-1");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
 }
 
+/**
+ * 
+ * Starts the Game
+ */
 function startGame() {
   world = new World(canvas);
   currentTime = 0;
@@ -109,6 +137,11 @@ function startGame() {
   run();
 }
 
+/**
+ * 
+ * Starts a new interval
+ * Handles different scenarios based on the current situation 
+ */
 function run() {
   IntervalHub.startInterval(() => {
     if (world.character.DEAD_FLAG && !LOST_FLAG && !GAME_OVER_FLAG) youLost();
@@ -131,10 +164,19 @@ function run() {
   }, 1000 / 60);
 }
 
+/**
+ * 
+ * @param {Enemy} enemy 
+ * @returns {boolean} - true for dead and false for alive
+ */
 function checkDeadEnemy(enemy) {
   return enemy.energy == 0;
 }
 
+/**
+ * 
+ * Restarts the Game after lose and win
+ */
 function restartGame() {
   imgWinRef.setAttribute("class", "d-none");
   imgGameOverRef.setAttribute("class", "d-none");
@@ -147,6 +189,10 @@ function restartGame() {
   IntervalHub.stopAllInterval();
 }
 
+/**
+ * 
+ * Renders win Scenario
+ */
 function youWin() {
   WIN_FLAG = false;
   RESTART_FLAG = true;
@@ -159,6 +205,10 @@ function youWin() {
   world.character.speedY = 0;
 }
 
+/**
+ * 
+ * Render lose Scenario
+ */
 function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
@@ -170,6 +220,10 @@ function youLost() {
   });
 }
 
+/**
+ * 
+ * Renders gameOver Scenario
+ */
 function gameOver() {
   LOST_FLAG = false;
   GAME_OVER_FLAG = true;

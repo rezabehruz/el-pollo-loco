@@ -9,7 +9,13 @@ import { ThrowableObject } from "./throwable-object.js";
 import { Keyboard } from "./manager-models/keyboard.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 import { SmallChicken } from "./small-chicken.js";
+import { DrawableObject } from "./drawable-object.js";
 
+/**
+ * 
+ * Creates a new World Object
+ * @class
+ */
 export class World {
   // #region Properties
   canvas;
@@ -27,6 +33,14 @@ export class World {
   // #endregion
 
   // #region Constructor
+
+  /**
+   * Initialises the Properties
+   * Adds Events to the Keyboard and Touchevents
+   * Draws the objects on the canvas
+   * 
+   * @param {Canvas} canvas_ 
+   */
   constructor(canvas_) {
     this.canvas = canvas_;
     this.ctx = canvas_.getContext("2d");
@@ -42,6 +56,11 @@ export class World {
   // #endregion
 
   // #region Methods
+
+  /**
+   * Starts a new interval
+   * Calls the methods
+   */
   run() {
     IntervalHub.startInterval(() => {
       this.checkThrowObjEnemyCollision();
@@ -52,6 +71,10 @@ export class World {
     }, 1000 / 60);
   }
 
+  /**
+   * 
+   * Checks for Collision between Enemy and ThrowableObj
+   */
   checkThrowObjEnemyCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy) => {
@@ -73,6 +96,10 @@ export class World {
     });
   }
 
+  /**
+   * 
+   * Checks the Bottle to collect
+   */
   checkBottleCollection() {
     this.level.bottles.forEach((bottle, index) => {
       if (this.character.isColliding(bottle)) {
@@ -86,6 +113,10 @@ export class World {
     });
   }
 
+/**
+ * 
+ * Checks the Coin to collect
+ */
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
@@ -97,6 +128,10 @@ export class World {
     }
   }
 
+  /**
+   * 
+   * Checks wether the Object should be thrown
+   */
   checkThrowObjects() {
     if (Keyboard.D == true && this.character.bottles > 0 && !World.OBJ_THROWED) {
       World.OBJ_THROWED = true;
@@ -107,6 +142,10 @@ export class World {
     }
   }
 
+  /**
+   * 
+   * Checks for collision between Character and Enemies
+   */
   checkEnemyCollision() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
@@ -124,6 +163,10 @@ export class World {
     });
   }
 
+  /**
+   * 
+   * Draws the objects on the canvas
+   */
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
@@ -145,16 +188,31 @@ export class World {
     requestAnimationFrame(() => this.draw());
   }
 
+  /**
+   * 
+   * Sets the world property of Character
+   */
   setWorld() {
     this.character.world = this;
   }
 
+
+  /**
+   * 
+   * Draws objects on the canvas
+   * @param {DrawableObject[]} objectArr 
+   */
   addObjectToMap(objectArr) {
     objectArr.forEach((obj) => {
       this.addToMap(obj);
     });
   }
 
+  /**
+   * 
+   * Draws object on the canvas
+   * @param {DrawableObject} object 
+   */
   addToMap(object) {
     if (object.otherDirection && object.energy > 0) {
       this.flipImage(object);
@@ -179,6 +237,13 @@ export class World {
     }
   }
 
+  /**
+   * 
+   * Saves the context
+   * Changes the x-axis coordinate
+   * Changes the x-axis to negative
+   * @param {DrawableObject} object 
+   */
   flipImage(object) {
     this.ctx.save();
     this.ctx.translate(object.width, 0);
@@ -186,6 +251,12 @@ export class World {
     object.x = object.x * -1;
   }
 
+  /**
+   * 
+   * Changes the x-axis to positive
+   * Restores the context
+   * @param {DrawableObject} object 
+   */
   flipImageBack(object) {
     object.x = object.x * -1;
     this.ctx.restore();
