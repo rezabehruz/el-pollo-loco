@@ -17,12 +17,10 @@
         <li><button id="btn-start-playing">playing</button></li>
       </ul>
     </header>
-    <div class="content-1" id="content-canvas">
-      <article class="article-canvas">
+    <section class="section-canvas" id="content-canvas">
+      <div class="content-canvas">
         <h1>El Pollo Loco</h1>
-        <div class="content-canvas">
-          <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
-        </div>
+        <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
         <div id="controller" class="content-controller">
           <img
             id="img-start-game"
@@ -53,7 +51,6 @@
             <img src="./assets/img/icons/unmute-icon.png" alt="unmute-icon" />
           </button>
           <div id="content-action" class="d-none">
-            <!-- <a target="_blank" href="https://icons8.com/icon/63264/next-page">Next Page</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> -->
             <div class="panel-1">
               <button id="btn-move-left" class="btn-action move-left">
                 <img src="./assets/img/icons/move-up.png" alt="move left" />
@@ -76,33 +73,32 @@
         <div class="content-notice">
           <h2>Turn your Device to Play!</h2>
         </div>
-      </article>
-    </div>
+      </div>
+    </section>
 
-    <div class="d-none" id="legal-notice">
-      <section class="legal-notice">
-        <div class="content-legal-notice">
-          <h2>Legal Notice</h2>
-          <p>
-            Mohammad Reza Behruz <br />
-            Hindemithstraße 06<br />
-            85057 Ingolstadt
-          </p>
-          <h3>Contact</h3>
-          <p>
-            Telefon: +49 (0) 15751492254<br />
-            E-Mail: behruz.mreza@gmail.com
-          </p>
-          <p class="source">
-            Quelle:
-            <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
-          </p>
-        </div>
-      </section>
-    </div>
+    <section class="d-none" id="legal-notice">
+      <div class="content-legal-notice">
+        <h2>Legal Notice</h2>
+        <p>
+          Mohammad Reza Behruz <br />
+          Hindemithstraße 06<br />
+          85057 Ingolstadt
+        </p>
+        <h3>Contact</h3>
+        <p>
+          Telefon: +49 (0) 15751492254<br />
+          E-Mail: behruz.mreza@gmail.com
+        </p>
+        <p class="source">
+          Quelle:
+          <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
+        </p>
+        <p> Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+      </div>
+    </section>
 
-    <div class="d-none" id="help">
-      <section class="section-help">
+      <section class="d-none" id="help">
+        <div class="content-help">
         <h3>Welcome</h3>
         <p>
           El Pollo Loco is a 2D platform action game where you must defeat dangerous chickens, collect coins and salsa
@@ -126,6 +122,7 @@
           <br />
           Throw Salsa Bottle D
         </p>
+     
       </section>
     </div>
   </body>

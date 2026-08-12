@@ -52,7 +52,7 @@ btnHeaderHelp.addEventListener("click", renderHelp);
 checkSound();
 
 /**
- * 
+ *
  * Gets data from local Storage
  */
 function checkSound() {
@@ -68,7 +68,7 @@ function checkSound() {
 }
 
 /**
- * 
+ *
  * Mutes the sound
  */
 function mute() {
@@ -80,7 +80,7 @@ function mute() {
 }
 
 /**
- * 
+ *
  * Unmutes the sound
  */
 function unmute() {
@@ -92,37 +92,37 @@ function unmute() {
 }
 
 /**
- * 
+ *
  * Renders the legalNotice
  */
 function renderLegalNotice() {
   contentCanvas.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
-  contentLegalNotice.setAttribute("class", "content-2");
+  contentLegalNotice.setAttribute("class", "section-legal-notice");
 }
 
 /**
- * 
+ *
  * Renders the help
  */
 function renderHelp() {
   contentCanvas.setAttribute("class", "d-none");
   contentLegalNotice.setAttribute("class", "d-none");
-  contentHelp.setAttribute("class", "content-3");
+  contentHelp.setAttribute("class", "section-help");
 }
 
 /**
- * 
+ *
  * Renders the playing
  */
 function renderPlaying() {
-  contentCanvas.setAttribute("class", "content-1");
+  contentCanvas.setAttribute("class", "section-canvas");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
 }
 
 /**
- * 
+ *
  * Starts the Game
  */
 function startGame() {
@@ -138,9 +138,9 @@ function startGame() {
 }
 
 /**
- * 
+ *
  * Starts a new interval
- * Handles different scenarios based on the current situation 
+ * Handles different scenarios based on the current situation
  */
 function run() {
   IntervalHub.startInterval(() => {
@@ -165,8 +165,8 @@ function run() {
 }
 
 /**
- * 
- * @param {Enemy} enemy 
+ *
+ * @param {Enemy} enemy
  * @returns {boolean} - true for dead and false for alive
  */
 function checkDeadEnemy(enemy) {
@@ -174,7 +174,7 @@ function checkDeadEnemy(enemy) {
 }
 
 /**
- * 
+ *
  * Restarts the Game after lose and win
  */
 function restartGame() {
@@ -190,7 +190,7 @@ function restartGame() {
 }
 
 /**
- * 
+ *
  * Renders win Scenario
  */
 function youWin() {
@@ -206,7 +206,7 @@ function youWin() {
 }
 
 /**
- * 
+ *
  * Render lose Scenario
  */
 function youLost() {
@@ -221,7 +221,7 @@ function youLost() {
 }
 
 /**
- * 
+ *
  * Renders gameOver Scenario
  */
 function gameOver() {
