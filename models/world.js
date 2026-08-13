@@ -12,7 +12,7 @@ import { SmallChicken } from "./small-chicken.js";
 import { DrawableObject } from "./drawable-object.js";
 
 /**
- * 
+ *
  * Creates a new World Object
  * @class
  */
@@ -28,6 +28,7 @@ export class World {
 
   // #region Flags
   OBJ_THROWED = false;
+  ENDBOSS_ENTRANCE = false;
   // #endregion
 
   // #endregion
@@ -38,8 +39,8 @@ export class World {
    * Initialises the Properties
    * Adds Events to the Keyboard and Touchevents
    * Draws the objects on the canvas
-   * 
-   * @param {Canvas} canvas_ 
+   *
+   * @param {Canvas} canvas_
    */
   constructor(canvas_) {
     this.canvas = canvas_;
@@ -65,6 +66,7 @@ export class World {
     IntervalHub.startInterval(() => {
       this.checkThrowObjEnemyCollision();
       this.checkEnemyCollision();
+      this.checkEndBossEntrance();
       this.checkThrowObjects();
       this.checkCoinCollection();
       this.checkBottleCollection();
@@ -72,7 +74,7 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Checks for Collision between Enemy and ThrowableObj
    */
   checkThrowObjEnemyCollision() {
@@ -98,6 +100,19 @@ export class World {
 
   /**
    * 
+   * Checks for Endboss Entrance
+   */
+  checkEndBossEntrance() {
+    let x = this.character.x + 500;
+    this.level.enemies.forEach((enemy) => {
+      if (!this.ENDBOSS_ENTRANCE) {
+        if (enemy instanceof EndBoss && x > enemy.x) this.ENDBOSS_ENTRANCE = true;
+      }
+    });
+  }
+
+  /**
+   *
    * Checks the Bottle to collect
    */
   checkBottleCollection() {
@@ -113,10 +128,10 @@ export class World {
     });
   }
 
-/**
- * 
- * Checks the Coin to collect
- */
+  /**
+   *
+   * Checks the Coin to collect
+   */
   checkCoinCollection() {
     for (let i = 0; i < this.level.coins.length; i++) {
       if (this.character.isColliding(this.level.coins[i])) {
@@ -129,7 +144,7 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Checks wether the Object should be thrown
    */
   checkThrowObjects() {
@@ -143,7 +158,7 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Checks for collision between Character and Enemies
    */
   checkEnemyCollision() {
@@ -164,7 +179,7 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Draws the objects on the canvas
    */
   draw() {
@@ -180,7 +195,7 @@ export class World {
 
     this.ctx.translate(-this.camera_x, 0);
     // objects in fixed Position
-    this.addToMap(this.level.endBossHealthStatus);
+    if (this.ENDBOSS_ENTRANCE) this.addToMap(this.level.endBossHealthStatus);
     this.addToMap(this.level.healthStatus);
     this.addToMap(this.level.bottleStatus);
     this.addToMap(this.level.coinStatus);
@@ -189,18 +204,17 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Sets the world property of Character
    */
   setWorld() {
     this.character.world = this;
   }
 
-
   /**
-   * 
+   *
    * Draws objects on the canvas
-   * @param {DrawableObject[]} objectArr 
+   * @param {DrawableObject[]} objectArr
    */
   addObjectToMap(objectArr) {
     objectArr.forEach((obj) => {
@@ -209,9 +223,9 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Draws object on the canvas
-   * @param {DrawableObject} object 
+   * @param {DrawableObject} object
    */
   addToMap(object) {
     if (object.otherDirection && object.energy > 0) {
@@ -238,11 +252,11 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Saves the context
    * Changes the x-axis coordinate
    * Changes the x-axis to negative
-   * @param {DrawableObject} object 
+   * @param {DrawableObject} object
    */
   flipImage(object) {
     this.ctx.save();
@@ -252,10 +266,10 @@ export class World {
   }
 
   /**
-   * 
+   *
    * Changes the x-axis to positive
    * Restores the context
-   * @param {DrawableObject} object 
+   * @param {DrawableObject} object
    */
   flipImageBack(object) {
     object.x = object.x * -1;
