@@ -4,7 +4,6 @@ import { IntervalHub } from "./manager-models/interval-hub.js";
 import { Keyboard } from "./manager-models/keyboard.js";
 import { AudioHub } from "./manager-models/audio-hub.js";
 
-
 /**
  * Creates a new Character
  * @class
@@ -12,7 +11,7 @@ import { AudioHub } from "./manager-models/audio-hub.js";
 export class Character extends MovableObject {
   // #region Properties
   x = 20;
-  y = 130;
+  y = 220;
   height = 180;
   width = 100;
 
@@ -79,7 +78,7 @@ export class Character extends MovableObject {
     }, 1000 / 60);
   }
 
-   /**
+  /**
    * Starts a new interval
    * Displays the Object based on Character Status, x- and y-coordinates, and Game status
    */
@@ -88,29 +87,42 @@ export class Character extends MovableObject {
       if (this.isHurt()) {
         AudioHub.playSound(AudioHub.CHARACTER.damage);
         this.playAnimation(ImageHub.CHARACTER.hurt);
-      } else if (this.isDead()) {
-        if (this.DEAD_FLAG == false) {
-          AudioHub.playSound(AudioHub.CHARACTER.dead);
-          this.DEAD_FLAG = this.playDeadAnimation(ImageHub.CHARACTER.dead);
-        }
-      } else if (this.isAboveGround()) {
+      } else if (this.isDead()) this.handleIfNotDead();
+      else if (this.isAboveGround()) {
         this.playAnimation(ImageHub.CHARACTER.jumping);
         AudioHub.stopSound(AudioHub.CHARACTER.run, true);
-      } else if (Keyboard.RIGHT || Keyboard.LEFT) {
-        if (!this.GAME_OVER) {
-          this.speed = 4;
-          AudioHub.playSound(AudioHub.CHARACTER.run, true);
-          this.playAnimation(ImageHub.CHARACTER.walking);
-        } else this.speed = 0;
-      } else {
+      } else if (Keyboard.RIGHT || Keyboard.LEFT) this.handleKeyboardEvent();
+      else {
         this.playAnimation(ImageHub.CHARACTER.idle);
       }
     }, 120);
   }
 
-
-   /**
+  /**
    * 
+   * Displays the animation and plays the sound
+   */
+  handleIfNotDead() {
+    if (this.DEAD_FLAG == false) {
+      AudioHub.playSound(AudioHub.CHARACTER.dead);
+      this.DEAD_FLAG = this.playDeadAnimation(ImageHub.CHARACTER.dead);
+    }
+  }
+
+  /**
+   *
+   * Displays the animation and plays the sound
+   */
+  handleKeyboardEvent() {
+    if (!this.GAME_OVER) {
+      this.speed = 4;
+      AudioHub.playSound(AudioHub.CHARACTER.run, true);
+      this.playAnimation(ImageHub.CHARACTER.walking);
+    } else this.speed = 0;
+  }
+
+  /**
+   *
    * Checks whether the object's energy should decrease based on lastHit property.
    */
   hit() {
@@ -126,21 +138,21 @@ export class Character extends MovableObject {
     }
   }
 
-/** 
- * Checks whether the object has taken damage.
- * @returns {boolean} true or false
- */
+  /**
+   * Checks whether the object has taken damage.
+   * @returns {boolean} true or false
+   */
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000;
-    return timepassed < 2;
+    return timepassed < 0.2;
   }
 
-/**
- * 
- * Checks whether the object is above the Ground.
- * @returns {boolean} true or false
- */
+  /**
+   *
+   * Checks whether the object is above the Ground.
+   * @returns {boolean} true or false
+   */
   isAboveGround() {
     if (this.y < 235) {
       this.speed = 2;
