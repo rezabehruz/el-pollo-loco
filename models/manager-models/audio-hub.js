@@ -10,6 +10,8 @@ export class AudioHub {
 
   static START_GAME = new MyAudio("./assets/audio/game/gameStart.mp3");
 
+  static GAME_BACKGROUND = new MyAudio("./assets/audio/game/background.mp3");
+
   static CHARACTER = {
     run: new MyAudio("./assets/audio/character/characterRun.mp3"),
     jump: new MyAudio("./assets/audio/character/characterJump.wav"),
@@ -34,6 +36,7 @@ export class AudioHub {
 
   static ALL_SOUNDS = [
     AudioHub.START_GAME,
+    AudioHub.GAME_BACKGROUND,
     AudioHub.CHARACTER.run,
     AudioHub.CHARACTER.jump,
     AudioHub.CHARACTER.damage,

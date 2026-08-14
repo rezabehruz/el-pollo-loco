@@ -1,3 +1,4 @@
+import { EndBoss } from "../models/endBoss.js";
 import { AudioHub } from "../models/manager-models/audio-hub.js";
 import { IntervalHub } from "../models/manager-models/interval-hub.js";
 import { World } from "../models/world.js";
@@ -75,6 +76,7 @@ function mute() {
   btnUnMuteSoundRef.setAttribute("class", "d-none");
   btnMuteSoundRef.setAttribute("class", "btn-sound");
   window.localStorage.setItem("isMute", "mute");
+  AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   AudioHub.mute();
 }
@@ -87,6 +89,7 @@ function unmute() {
   btnMuteSoundRef.setAttribute("class", "d-none");
   btnUnMuteSoundRef.setAttribute("class", "btn-sound");
   window.localStorage.setItem("isMute", "unmute");
+  AudioHub.startPlaying(AudioHub.GAME_BACKGROUND);
 
   AudioHub.unMute();
 }
@@ -146,7 +149,7 @@ function run() {
   IntervalHub.startInterval(() => {
     if (world.character.DEAD_FLAG && !LOST_FLAG && !GAME_OVER_FLAG) youLost();
 
-    if (world.level.enemies.every(checkDeadEnemy) && !RESTART_FLAG) {
+    if (checkEndbossDead() && !RESTART_FLAG) {
       WIN_FLAG = true;
       if (currentTime == 0) currentTime = new Date().getTime();
     }
@@ -166,11 +169,16 @@ function run() {
 
 /**
  *
- * @param {Enemy} enemy
- * @returns {boolean} - true for dead and false for alive
+ * @returns  - true for Endboss dead and false for Endboss alive
  */
-function checkDeadEnemy(enemy) {
-  return enemy.energy == 0;
+function checkEndbossDead() {
+  let endBossDead = false;
+
+  world.level.enemies.forEach((enemy) => {
+    if (enemy instanceof EndBoss && enemy.energy == 0) endBossDead = true;
+  });
+
+  return endBossDead;
 }
 
 /**
@@ -199,6 +207,7 @@ function youWin() {
   currentTime = new Date().getTime();
   imgWinRef.setAttribute("class", "img-control");
   contentActionRef.setAttribute("class", "d-none");
+  AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   world.character.GAME_OVER = true;
   world.character.speed = 0;
@@ -214,6 +223,7 @@ function youLost() {
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
   contentActionRef.setAttribute("class", "d-none");
+  AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   world.level.enemies.forEach((enemy) => {
     enemy.speed = 0;

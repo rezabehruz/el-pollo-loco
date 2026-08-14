@@ -49,6 +49,7 @@ export class World {
     Keyboard.addEvents();
     Keyboard.addTouchEvents();
     AudioHub.playSound(AudioHub.START_GAME, false);
+    AudioHub.playSound(AudioHub.GAME_BACKGROUND, false);
     this.draw();
     this.setWorld();
     this.run();
