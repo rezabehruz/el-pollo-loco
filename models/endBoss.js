@@ -24,8 +24,6 @@ export class EndBoss extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    *
    * Loads Images.
@@ -40,8 +38,6 @@ export class EndBoss extends MovableObject {
     this.animateMoving();
     this.animateImage();
   }
-
-  // #endregion
 
   // #region Methods
 

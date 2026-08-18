@@ -23,8 +23,6 @@ export class SmallChicken extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Loads Images, Generates random x-coordinate and speed.
    * @constructor
@@ -40,8 +38,6 @@ export class SmallChicken extends MovableObject {
     this.animateMoving();
     this.animateImage();
   }
-
-  // #endregion
 
   // #region Methods
   /**

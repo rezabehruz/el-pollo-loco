@@ -20,8 +20,6 @@ export class Bottle extends DrawableObject {
 
   //   #endregion
 
-  // #region Constructor
-
   /**
    * @constructor
    * 
@@ -39,9 +37,4 @@ export class Bottle extends DrawableObject {
     this.x = 100 + Math.random() * 1200;
   }
 
-  //   #endregion
-
-  // region Methods
-
-  // endregion
 }

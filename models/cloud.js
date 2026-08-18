@@ -14,8 +14,6 @@ export class Cloud extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Loads images.
    * Generate random x-coordinate
@@ -27,8 +25,6 @@ export class Cloud extends MovableObject {
     this.x = Math.random() * 500;
     this.animate();
   }
-
-  // #endregion
 
   // #region Methods
   /**

@@ -12,8 +12,6 @@ export class BackgroundObject extends DrawableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * @constructor
    * @param {string} path - source of Image 
@@ -25,9 +23,4 @@ export class BackgroundObject extends DrawableObject {
     this.x = x_;
   }
 
-  // #endregion
-
-  // #region Methods
-
-  // #endregion
 }

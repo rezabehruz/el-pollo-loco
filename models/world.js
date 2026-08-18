@@ -33,8 +33,6 @@ export class World {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Initialises the Properties
    * Adds Events to the Keyboard and Touchevents
@@ -55,8 +53,6 @@ export class World {
     this.run();
   }
 
-  // #endregion
-
   // #region Methods
 
   /**
@@ -65,7 +61,7 @@ export class World {
    */
   run() {
     IntervalHub.startInterval(() => {
-      this.checkThrowObjEnemyCollision();
+      this.checkThrowObjEnemiesCollision();
       this.checkEnemyCollision();
       this.checkEndBossEntrance();
       this.checkThrowObjects();
@@ -76,19 +72,12 @@ export class World {
 
   /**
    *
-   * Checks for Collision between Enemy and ThrowableObj
+   * Checks for Collision between Enemies and ThrowableObj
    */
-  checkThrowObjEnemyCollision() {
+  checkThrowObjEnemiesCollision() {
     this.throwableObjects.forEach((obj, objIndex) => {
       this.level.enemies.forEach((enemy) => {
-        if (obj.isColliding(enemy) && enemy.energy != 0 && !obj.IS_COLLIDE) {
-          if (enemy instanceof EndBoss) {
-            enemy.hit();
-            this.level.endBossHealthStatus.setPercentage(enemy.energy);
-          } else enemy.killed();
-
-          obj.IS_COLLIDE = true;
-        }
+        this.checkThrowObjEnemyCollision(obj, enemy);
       });
 
       if (!obj.isAboveGround()) {
@@ -100,7 +89,22 @@ export class World {
   }
 
   /**
-   * 
+   *
+   * Checks for Collision between Enemy and ThrowableObj
+   */
+  checkThrowObjEnemyCollision(obj, enemy) {
+    if (obj.isColliding(enemy) && enemy.energy != 0 && !obj.IS_COLLIDE) {
+      if (enemy instanceof EndBoss) {
+        enemy.hit();
+        this.level.endBossHealthStatus.setPercentage(enemy.energy);
+      } else enemy.killed();
+
+      obj.IS_COLLIDE = true;
+    }
+  }
+
+  /**
+   *
    * Checks for Endboss Entrance
    */
   checkEndBossEntrance() {
@@ -194,14 +198,22 @@ export class World {
     this.addObjectToMap(this.level.bottles);
     this.addToMap(this.character);
 
+    this.drawFixedObjects();
+
+    requestAnimationFrame(() => this.draw());
+  }
+
+  /**
+   *
+   * Draws the fixed objects on the canvas
+   */
+  drawFixedObjects() {
     this.ctx.translate(-this.camera_x, 0);
     // objects in fixed Position
     if (this.ENDBOSS_ENTRANCE) this.addToMap(this.level.endBossHealthStatus);
     this.addToMap(this.level.healthStatus);
     this.addToMap(this.level.bottleStatus);
     this.addToMap(this.level.coinStatus);
-
-    requestAnimationFrame(() => this.draw());
   }
 
   /**
@@ -229,27 +241,21 @@ export class World {
    * @param {DrawableObject} object
    */
   addToMap(object) {
-    if (object.otherDirection && object.energy > 0) {
-      this.flipImage(object);
-    }
+    if (object.otherDirection && object.energy > 0) this.flipImage(object);
 
     object.draw(this.ctx);
-
-    if (object.otherDirection && object.energy > 0) {
-      this.flipImageBack(object);
-    }
-
+    if (object.otherDirection && object.energy > 0) this.flipImageBack(object);
     if (
-      object instanceof Character ||
       object instanceof Chicken ||
       object instanceof EndBoss ||
       object instanceof Coin ||
       object instanceof Bottle ||
       object instanceof ThrowableObject ||
       object instanceof SmallChicken
-    ) {
+    )
       object.getRealFrame();
-    }
+
+    if (object instanceof Character) object.getRealFrameInDirection(object);
   }
 
   /**

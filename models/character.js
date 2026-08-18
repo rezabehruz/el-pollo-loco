@@ -29,8 +29,6 @@ export class Character extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * @constructor
    */
@@ -46,8 +44,6 @@ export class Character extends MovableObject {
     this.animateMoving();
     this.animateImage();
   }
-
-  // #endregion
 
   // #region Methods
 
@@ -96,6 +92,22 @@ export class Character extends MovableObject {
         this.playAnimation(ImageHub.CHARACTER.idle);
       }
     }, 120);
+  }
+
+    /**
+   *
+   * Gets Character's Real Frame
+   * @param {Character} object
+   */
+  getRealFrameInDirection() {
+    if (this.otherDirection) {
+      this.offset.right = 20;
+      this.offset.left = 30;
+    } else {
+      this.offset.right = 30;
+      this.offset.left = 20;
+    }
+    this.getRealFrame();
   }
 
   /**

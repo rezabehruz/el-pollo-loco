@@ -8,7 +8,6 @@ export class MyAudio {
   IS_LOADED = false;
   // #endregion
 
-  // #region Constructor
   /**
    * Intialises the parameter
    * @param {string} sound_ 
@@ -17,5 +16,4 @@ export class MyAudio {
     this.sound = new Audio(sound_);
   }
 
-  // #endregion
 }

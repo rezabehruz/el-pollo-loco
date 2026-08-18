@@ -23,8 +23,6 @@ export class Chicken extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Loads images.
    * Generate random x-coordinate and random speed
@@ -41,8 +39,6 @@ export class Chicken extends MovableObject {
     this.animateMoving();
     this.animateImage();
   }
-
-  // #endregion
 
   // #region Methods
 

@@ -22,8 +22,6 @@ export class Level {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Initialises the properties
    * 
@@ -62,8 +60,4 @@ export class Level {
     this.level_end_x = levelEndX_;
   }
 
-  // #endregion
-
-  // #region Methods
-  // #endregion
 }

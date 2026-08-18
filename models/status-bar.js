@@ -15,8 +15,6 @@ export class StatusBar extends DrawableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * 
    * @param {number} x_ 
@@ -35,9 +33,6 @@ export class StatusBar extends DrawableObject {
     this.loadImages(images_);
     this.setPercentage(percentage_);
   }
-  
-  // #endregion
-
 
   // #region Methods
 

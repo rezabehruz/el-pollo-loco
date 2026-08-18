@@ -20,8 +20,6 @@ export class Coin extends DrawableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Loads images.
    * Generate random x- and y-coordinate
@@ -36,8 +34,6 @@ export class Coin extends DrawableObject {
 
     this.animate();
   }
-
-  // #endregion
 
   // #region Methods
 

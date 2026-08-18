@@ -28,8 +28,6 @@ export class ThrowableObject extends MovableObject {
 
   // #endregion
 
-  // #region Constructor
-
   /**
    * Loads Images and calls throw() and animate() methods.
    * 
@@ -50,8 +48,6 @@ export class ThrowableObject extends MovableObject {
     this.throw();
     this.animate();
   }
-
-  // #endregion
 
   // #region Methods
 
