@@ -2,7 +2,7 @@ import { World } from "../world.js";
 import { AudioHub } from "./audio-hub.js";
 
 /**
- * 
+ *
  * Utility class.
  * Contains only static properties and methods.
  */
@@ -13,126 +13,137 @@ export class Keyboard {
   static D = false;
   static F = false;
 
-  static BTN_MOVE_L = document.getElementById("btn-move-left");
-  static BTN_MOVE_R = document.getElementById("btn-move-right");
-  static BTN_MOVE_UP = document.getElementById("btn-move-up");
-  static BTN_THROW = document.getElementById("btn-throw");
-
+  static BTN_MOVE_L = document.querySelectorAll(".btn-move-left");
+  static BTN_MOVE_R = document.querySelectorAll(".btn-move-right");
+  static BTN_MOVE_UP = document.querySelectorAll(".btn-move-up");
+  static BTN_THROW = document.querySelectorAll(".btn-throw");
 
   /**
-   * 
-   * Adds Touchevents
+   *
+   * Adds Touchstart event and switches Keyboard static Properties
+   * @param {HTMLElement} el
+   * @param {String} keyboard
+   */
+  static addTouchStartEvent(el, keyboard) {
+    el.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+
+      if (keyboard === "LEFT") Keyboard.LEFT = true;
+      if (keyboard === "RIGHT") Keyboard.RIGHT = true;
+      if (keyboard === "SPACE") Keyboard.SPACE = true;
+      if (keyboard === "D") Keyboard.D = true;
+    });
+  }
+
+  /**
+   *
+   * Adds Touchstart events
+   */
+  static addTouchStartEvents() {
+    Keyboard.BTN_MOVE_L.forEach((el) => {
+      Keyboard.addTouchStartEvent(el, "LEFT");
+    });
+
+    Keyboard.BTN_MOVE_R.forEach((el) => {
+      Keyboard.addTouchStartEvent(el, "RIGHT");
+    });
+
+    Keyboard.BTN_MOVE_UP.forEach((el) => {
+      Keyboard.addTouchStartEvent(el, "SPACE");
+    });
+
+    Keyboard.BTN_THROW.forEach((el) => {
+      Keyboard.addTouchStartEvent(el, "D");
+    });
+  }
+
+  /**
+   *
+   * Adds Touchend event and switches Keyboard static Properties
+   * @param {HTMLElement} el
+   * @param {String} keyboard
+   */
+  static addTouchEndEvent(el, keyboard) {
+    el.addEventListener("touchend", (event) => {
+      event.preventDefault();
+
+      if (keyboard === "LEFT" || keyboard === "RIGHT") AudioHub.stopSound(AudioHub.CHARACTER.run);
+
+      if (keyboard === "LEFT") Keyboard.LEFT = false;
+
+      if (keyboard === "RIGHT") Keyboard.RIGHT = false;
+
+      if (keyboard === "SPACE") Keyboard.SPACE = false;
+      if (keyboard === "D") {
+        World.OBJ_THROWED = false;
+        Keyboard.D = false;
+      }
+    });
+  }
+
+  /**
+   *
+   * Adds Touchend events
+   */
+  static addTouchEndEvents() {
+    Keyboard.BTN_MOVE_L.forEach((el) => Keyboard.addTouchEndEvent(el, "LEFT"));
+
+    Keyboard.BTN_MOVE_R.forEach((el) => Keyboard.addTouchEndEvent(el, "RIGHT"));
+
+    Keyboard.BTN_MOVE_UP.forEach((el) => Keyboard.addTouchEndEvent(el, "SPACE"));
+
+    Keyboard.BTN_THROW.forEach((el) => Keyboard.addTouchEndEvent(el, "D"));
+  }
+
+  /**
+   *
+   * Shorthand for calling adding Touchevents methods
    */
   static addTouchEvents() {
-    Keyboard.BTN_MOVE_L.addEventListener("touchstart", (event) => {
-      event.preventDefault();
+    Keyboard.addTouchStartEvents();
 
-      Keyboard.LEFT = true;
-    });
-
-    Keyboard.BTN_MOVE_R.addEventListener("touchstart", (event) => {
-      event.preventDefault();
-
-      Keyboard.RIGHT = true;
-    });
-
-    Keyboard.BTN_MOVE_UP.addEventListener("touchstart", (event) => {
-      event.preventDefault();
-
-      Keyboard.SPACE = true;
-    });
-
-    Keyboard.BTN_THROW.addEventListener("touchstart", (event) => {
-      event.preventDefault();
-
-      Keyboard.D = true;
-    });
-
-    Keyboard.BTN_MOVE_L.addEventListener("touchend", (event) => {
-      event.preventDefault();
-
-      AudioHub.stopSound(AudioHub.CHARACTER.run);
-      Keyboard.LEFT = false;
-    });
-
-    Keyboard.BTN_MOVE_R.addEventListener("touchend", (event) => {
-      event.preventDefault();
-      AudioHub.stopSound(AudioHub.CHARACTER.run);
-      Keyboard.RIGHT = false;
-    });
-
-    Keyboard.BTN_MOVE_UP.addEventListener("touchend", (event) => {
-      event.preventDefault();
-
-      Keyboard.SPACE = false;
-    });
-
-    Keyboard.BTN_THROW.addEventListener("touchend", (event) => {
-      event.preventDefault();
-      World.OBJ_THROWED = false;
-      Keyboard.D = false;
-    });
+    Keyboard.addTouchEndEvents();
   }
 
   /**
    * Adds Keydownevents
-   * @param {Event} event 
+   * @param {Event} event
    */
   static handleKeydown(event) {
-    if (event.key == "ArrowRight") {
-      Keyboard.RIGHT = true;
-    }
+    if (event.key == "ArrowRight") Keyboard.RIGHT = true;
 
-    if (event.key == "ArrowLeft") {
-      Keyboard.LEFT = true;
-    }
+    if (event.key == "ArrowLeft") Keyboard.LEFT = true;
 
-    if (event.key == " ") {
-      Keyboard.SPACE = true;
-    }
+    if (event.key == " ") Keyboard.SPACE = true;
 
-    if (event.key == "d") {
-      Keyboard.D = true;
-    }
+    if (event.key == "d") Keyboard.D = true;
 
-    if (event.key == "f") {
-      Keyboard.F = true;
-    }
+    if (event.key == "f") Keyboard.F = true;
   }
-
 
   /**
    * Adds Keyupevents
-   * @param {Event} event 
+   * @param {Event} event
    */
   static handleKeyup(event) {
-    if (event.key == "ArrowRight") {
-      AudioHub.stopSound(AudioHub.CHARACTER.run);
-      Keyboard.RIGHT = false;
-    }
+    if (event.key == "ArrowRight" || event.key == "ArrowLeft") AudioHub.stopSound(AudioHub.CHARACTER.run);
 
-    if (event.key == "ArrowLeft") {
-      AudioHub.stopSound(AudioHub.CHARACTER.run);
-      Keyboard.LEFT = false;
-    }
+    if (event.key == "ArrowRight") Keyboard.RIGHT = false;
 
-    if (event.key == " ") {
-      Keyboard.SPACE = false;
-    }
+    if (event.key == "ArrowLeft") Keyboard.LEFT = false;
+
+    if (event.key == " ") Keyboard.SPACE = false;
 
     if (event.key == "d") {
       Keyboard.D = false;
       World.OBJ_THROWED = false;
     }
 
-    if (event.key == "f") {
-      Keyboard.F = false;
-    }
+    if (event.key == "f") Keyboard.F = false;
   }
 
-
   /**
-   * 
+   *
    * Shorthand for calling adding events methods.
    */
   static addEvents() {

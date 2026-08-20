@@ -10,120 +10,169 @@
     <title>El Pollo Loco</title>
   </head>
   <body>
-    <header>
-      <ul>
-        <li><button id="btn-legal-notice">Legal Notice</button></li>
-        <li><button id="btn-help">Help</button></li>
-        <li><button id="btn-start-playing">playing</button></li>
-      </ul>
-    </header>
-    <section class="section-canvas" id="content-canvas">
-      <div class="content-canvas">
-        <h1>El Pollo Loco</h1>
-        <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
-        <div id="controller" class="content-controller">
-          <img
-            id="img-start-game"
-            class="img-control"
-            src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
-            alt="start Game"
-          />
+    <section class="section-home" id="home">
+      <div class="content-home">
+        <h1>Welcome to El Pollo Loco Game !</h1>
+        <div class="header">
+          <button class="btn-start-playing">playing</button>
+          <button class="btn-help">Help</button>
+          <button class="btn-legal-notice">Legal Notice</button>
+        </div>
+      </div>
+    </section>
 
-          <img id="img-win-game" class="d-none" src="./assets/img/You won, you lost/You Win A.png" alt="win game" />
-          <img
-            id="img-lost-game"
-            class="d-none"
-            src="./assets/img/9_intro_outro_screens/game_over/you lost.png"
-            alt="lost game"
-          />
-          <img
-            id="img-game-over"
-            class="d-none"
-            src="./assets/img/9_intro_outro_screens/game_over/game over.png"
-            alt="game over"
-          />
-          <button id="btn-start" class="btn-start">Let's Go!</button>
-          <button id="btn-restart" class="d-none">Restart!</button>
-          <button id="btn-mute" class="btn-sound">
-            <img src="./assets/img/icons/mute-icon.png" alt="mute-icon" />
-          </button>
-          <button id="btn-unmute" class="d-none">
-            <img src="./assets/img/icons/unmute-icon.png" alt="unmute-icon" />
-          </button>
-          <div id="content-action" class="d-none">
-            <div class="panel-1">
-              <button id="btn-move-left" class="btn-action move-left">
-                <img src="./assets/img/icons/move-up.png" alt="move left" />
-              </button>
-              <button id="btn-move-right" class="btn-action move-right">
-                <img src="./assets/img/icons/move-up.png" alt="move right" />
-              </button>
-            </div>
+    <section class="d-none" id="content-canvas">
+      <div class="content-playing">
+        <div id="content-action-1" class="d-none">
+          <div class="panel-1">
+            <button class="btn-move-left btn-action move-left">
+              <img src="./assets/img/icons/move-up.png" alt="move left" />
+            </button>
+            <button class="btn-move-right btn-action move-right">
+              <img src="./assets/img/icons/move-up.png" alt="move right" />
+            </button>
+          </div>
 
-            <div class="panel-2">
-              <button id="btn-move-up" class="btn-action">
-                <img src="./assets/img/icons/move-up.png" alt="jump" />
-              </button>
-              <button id="btn-throw" class="btn-action btn-throw">
-                <img src="./assets/img/icons/throw-arrow.png" alt="throw" />
-              </button>
-            </div>
+          <div class="panel-2">
+            <button class="btn-move-up btn-action">
+              <img src="./assets/img/icons/move-up.png" alt="jump" />
+            </button>
+            <button class="btn-throw btn-action btn-throw">
+              <img src="./assets/img/icons/throw-arrow.png" alt="throw" />
+            </button>
           </div>
         </div>
-        <div class="content-notice">
-          <h2>Turn your Device to Play!</h2>
+        <div class="content-canvas">
+          <h1>El Pollo Loco</h1>
+          <canvas id="canvas" class="canvas" width="720" height="480"> </canvas>
+          <div id="controller" class="content-controller">
+            <img
+              id="img-start-game"
+              class="img-control"
+              src="./assets/img/9_intro_outro_screens/start/startscreen_1.png"
+              alt="start Game"
+            />
+
+            <img id="img-win-game" class="d-none" src="./assets/img/You won, you lost/You Win A.png" alt="win game" />
+            <img
+              id="img-lost-game"
+              class="d-none"
+              src="./assets/img/9_intro_outro_screens/game_over/you lost.png"
+              alt="lost game"
+            />
+            <img
+              id="img-game-over"
+              class="d-none"
+              src="./assets/img/9_intro_outro_screens/game_over/game over.png"
+              alt="game over"
+            />
+            <button id="btn-start" class="btn-start">Let's Go!</button>
+            <button id="btn-restart" class="d-none">Restart!</button>
+            <button id="btn-mute" class="btn-sound">
+              <img src="./assets/img/icons/mute-icon.png" alt="mute-icon" />
+            </button>
+            <button id="btn-unmute" class="d-none">
+              <img src="./assets/img/icons/unmute-icon.png" alt="unmute-icon" />
+            </button>
+            <div id="header-mobile" class="header">
+              <button class="btn-home">Home</button>
+              <button class="btn-help">Help</button>
+              <button class="btn-legal-notice">Legal Notice</button>
+            </div>
+            <div id="content-action-2" class="d-none">
+              <div class="panel-1">
+                <button class="btn-move-left btn-action move-left">
+                  <img src="./assets/img/icons/move-up.png" alt="move left" />
+                </button>
+                <button class="btn-move-right btn-action move-right">
+                  <img src="./assets/img/icons/move-up.png" alt="move right" />
+                </button>
+              </div>
+
+              <div class="panel-2">
+                <button class="btn-move-up btn-action">
+                  <img src="./assets/img/icons/move-up.png" alt="jump" />
+                </button>
+                <button class="btn-throw btn-action btn-throw">
+                  <img src="./assets/img/icons/throw-arrow.png" alt="throw" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="content-notice">
+            <h2>Turn your Device to Play!</h2>
+          </div>
+        </div>
+        <div class="header">
+          <button class="btn-home">Home</button>
+          <button class="btn-help">Help</button>
+          <button class="btn-legal-notice">Legal Notice</button>
         </div>
       </div>
     </section>
 
     <section class="d-none" id="legal-notice">
       <div class="content-legal-notice">
-        <h2>Legal Notice</h2>
-        <p>
-          Mohammad Reza Behruz <br />
-          Hindemithstraße 06<br />
-          85057 Ingolstadt
-        </p>
-        <h3>Contact</h3>
-        <p>
-          Telefon: +49 (0) 15751492254<br />
-          E-Mail: behruz.mreza@gmail.com
-        </p>
-        <p class="source">
-          Quelle:
-          <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
-        </p>
-        <p> Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+        <div>
+          <h2>Legal Notice</h2>
+          <p>
+            Mohammad Reza Behruz <br />
+            Hindemithstraße 06<br />
+            85057 Ingolstadt
+          </p>
+          <h3>Contact</h3>
+          <p>
+            Telefon: +49 (0) 15751492254<br />
+            E-Mail: behruz.mreza@gmail.com
+          </p>
+          <p class="source">
+            Quelle:
+            <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
+          </p>
+          <p>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
+        </div>
+        <div class="header">
+          <button class="btn-home">Home</button>
+          <button class="btn-start-playing">playing</button>
+          <button class="btn-help">Help</button>
+        </div>
       </div>
     </section>
 
-      <section class="d-none" id="help">
-        <div class="content-help">
-        <h3>Welcome</h3>
-        <p>
-          El Pollo Loco is a 2D platform action game where you must defeat dangerous chickens, collect coins and salsa
-          bottles, and overcome obstacles to reach the final boss.
-        </p>
-        <h3>Objective</h3>
-        <p>
-          Your mission is to explore the level, collect as many coins and salsa bottles as possible, avoid or defeat
-          enemies, and defeat the final boss to win the game.
-        </p>
+    <section class="d-none" id="help">
+      <div class="content-help">
+        <div>
+          <h3>Welcome</h3>
+          <p>
+            El Pollo Loco is a 2D platform action game where you must defeat dangerous chickens, collect coins and salsa
+            bottles, and overcome obstacles to reach the final boss.
+          </p>
+          <h3>Objective</h3>
+          <p>
+            Your mission is to explore the level, collect as many coins and salsa bottles as possible, avoid or defeat
+            enemies, and defeat the final boss to win the game.
+          </p>
 
-        <h3>Controls</h3>
-        <p>
-          Action Key
-          <br />
-          Move Left ← Left Arrow
-          <br />
-          Move Right → Right Arrow
-          <br />
-          Jump Space
-          <br />
-          Throw Salsa Bottle D
-        </p>
-     
-      </section>
-    </div>
+          <h3>Controls</h3>
+          <p>
+            Action Key
+            <br />
+            Move Left ← Left Arrow
+            <br />
+            Move Right → Right Arrow
+            <br />
+            Jump Space
+            <br />
+            Throw Salsa Bottle D
+          </p>
+        </div>
+
+        <div class="header">
+          <button class="btn-home">Home</button>
+          <button class="btn-start-playing">playing</button>
+          <button class="btn-legal-notice">Legal Notice</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

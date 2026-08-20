@@ -14,15 +14,19 @@ const btnStartRef = document.getElementById("btn-start");
 const btnRestartRef = document.getElementById("btn-restart");
 const btnMuteSoundRef = document.getElementById("btn-mute");
 const btnUnMuteSoundRef = document.getElementById("btn-unmute");
-const contentActionRef = document.getElementById("content-action");
+const contentActionRef_1 = document.getElementById("content-action-1");
+const contentActionRef_2 = document.getElementById("content-action-2");
+const headerMobile = document.getElementById("header-mobile");
 
-const btnHeaderLegalNotice = document.getElementById("btn-legal-notice");
-const btnHeaderPlaying = document.getElementById("btn-start-playing");
-const btnHeaderHelp = document.getElementById("btn-help");
+const btnHeaderHome = document.querySelectorAll(".btn-home");
+const btnHeaderLegalNotice = document.querySelectorAll(".btn-legal-notice");
+const btnHeaderPlaying = document.querySelectorAll(".btn-start-playing");
+const btnHeaderHelp = document.querySelectorAll(".btn-help");
 
 const contentLegalNotice = document.getElementById("legal-notice");
 const contentHelp = document.getElementById("help");
 const contentCanvas = document.getElementById("content-canvas");
+const contentHome = document.getElementById("home");
 
 let world;
 let currentTime;
@@ -46,9 +50,10 @@ btnRestartRef.addEventListener("click", startGame);
 btnMuteSoundRef.addEventListener("click", unmute);
 btnUnMuteSoundRef.addEventListener("click", mute);
 
-btnHeaderLegalNotice.addEventListener("click", renderLegalNotice);
-btnHeaderPlaying.addEventListener("click", renderPlaying);
-btnHeaderHelp.addEventListener("click", renderHelp);
+btnHeaderHome.forEach((el) => el.addEventListener("click", renderHome));
+btnHeaderLegalNotice.forEach((el) => el.addEventListener("click", renderLegalNotice));
+btnHeaderPlaying.forEach((el) => el.addEventListener("click", renderPlaying));
+btnHeaderHelp.forEach((el) => el.addEventListener("click", renderHelp));
 
 checkSound();
 
@@ -94,11 +99,19 @@ function unmute() {
   AudioHub.unMute();
 }
 
+function renderHome() {
+  contentHome.setAttribute("class", "section-home");
+  contentCanvas.setAttribute("class", "d-none");
+  contentHelp.setAttribute("class", "d-none");
+  contentLegalNotice.setAttribute("class", "d-none");
+}
+
 /**
  *
  * Renders the legalNotice
  */
 function renderLegalNotice() {
+  contentHome.setAttribute("class", "d-none");
   contentCanvas.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
   contentLegalNotice.setAttribute("class", "section-legal-notice");
@@ -109,6 +122,7 @@ function renderLegalNotice() {
  * Renders the help
  */
 function renderHelp() {
+  contentHome.setAttribute("class", "d-none");
   contentCanvas.setAttribute("class", "d-none");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "section-help");
@@ -119,6 +133,7 @@ function renderHelp() {
  * Renders the playing
  */
 function renderPlaying() {
+  contentHome.setAttribute("class", "d-none");
   contentCanvas.setAttribute("class", "section-canvas");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
@@ -135,7 +150,9 @@ function startGame() {
   btnStartRef.setAttribute("class", "v-hidden");
   btnRestartRef.setAttribute("class", "v-hidden");
   imgStartRef.setAttribute("class", "d-none");
-  contentActionRef.setAttribute("class", "content-action");
+  contentActionRef_1.setAttribute("class", "content-action");
+  contentActionRef_2.setAttribute("class", "content-action");
+  headerMobile.setAttribute("class", "d-none");
 
   run();
 }
@@ -191,6 +208,7 @@ function restartGame() {
   imgStartRef.setAttribute("class", "img-control");
   btnStartRef.setAttribute("class", "d-none");
   btnRestartRef.setAttribute("class", "btn-start");
+  headerMobile.setAttribute("class", "header");
   RESTART_FLAG = false;
   LOST_FLAG = false;
   GAME_OVER_FLAG = false;
@@ -206,7 +224,8 @@ function youWin() {
   RESTART_FLAG = true;
   currentTime = new Date().getTime();
   imgWinRef.setAttribute("class", "img-control");
-  contentActionRef.setAttribute("class", "d-none");
+  contentActionRef_1.setAttribute("class", "d-none");
+  contentActionRef_2.setAttribute("class", "d-none");
   AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   world.character.GAME_OVER = true;
@@ -222,7 +241,8 @@ function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
-  contentActionRef.setAttribute("class", "d-none");
+  contentActionRef_1.setAttribute("class", "d-none");
+  contentActionRef_2.setAttribute("class", "d-none");
   AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   world.level.enemies.forEach((enemy) => {
