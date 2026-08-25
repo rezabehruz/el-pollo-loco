@@ -231,6 +231,10 @@ function youWin() {
   world.character.GAME_OVER = true;
   world.character.speed = 0;
   world.character.speedY = 0;
+
+   world.level.enemies.forEach((enemy) => {
+    enemy.speed = 0;
+  });
 }
 
 /**
@@ -241,8 +245,8 @@ function youLost() {
   LOST_FLAG = true;
   currentTime = new Date().getTime();
   imgLostRef.setAttribute("class", "img-control");
-  contentActionRef_1.setAttribute("class", "d-none");
-  contentActionRef_2.setAttribute("class", "d-none");
+  contentActionRef_1.setAttribute("class", "v-hidden");
+  contentActionRef_2.setAttribute("class", "v-hidden");
   AudioHub.stopSound(AudioHub.GAME_BACKGROUND);
 
   world.level.enemies.forEach((enemy) => {
