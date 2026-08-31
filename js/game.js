@@ -137,6 +137,8 @@ function renderPlaying() {
   contentCanvas.setAttribute("class", "section-canvas");
   contentLegalNotice.setAttribute("class", "d-none");
   contentHelp.setAttribute("class", "d-none");
+
+  startGame();
 }
 
 /**

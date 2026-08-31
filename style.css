@@ -51,7 +51,7 @@ body {
     font-family: "shortstack", Arial, Helvetica, sans-serif;
     color: antiquewhite;
 
-    @media (max-width: 440px) and (orientation: portrait) {
+    @media (max-width: 540px) and (orientation: portrait) {
       display: block;
     }
   }
@@ -228,13 +228,13 @@ body {
       #content-action-1 {
         height: 100px;
 
-         @media (max-width: 956px) and (orientation: landscape) {
+        @media (max-width: 956px) and (orientation: landscape) {
           display: none;
-         }
+        }
 
-         @media (min-width: 1369px) {
+        @media (min-width: 1369px) {
           display: none;
-         }
+        }
       }
 
       .content-action {
@@ -311,8 +311,7 @@ body {
         height: 100vh;
 
         .content-action {
-         visibility: hidden;
-
+          visibility: hidden;
         }
 
         .content-canvas {
@@ -364,7 +363,7 @@ body {
         }
       }
 
-      @media (max-width: 440px) AND (orientation: portrait) {
+      @media (max-width: 540px) AND (orientation: portrait) {
         .content-action {
           visibility: hidden;
         }
@@ -516,7 +515,7 @@ body {
   .v-hidden {
     visibility: hidden;
     @media (max-width: 956px) and (orientation: landscape) {
-          display: none;
-         }
+      display: none;
+    }
   }
 }
