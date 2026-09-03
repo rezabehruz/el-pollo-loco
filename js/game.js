@@ -12,6 +12,7 @@ const imgLostRef = document.getElementById("img-lost-game");
 const imgGameOverRef = document.getElementById("img-game-over");
 const btnStartRef = document.getElementById("btn-start");
 const btnRestartRef = document.getElementById("btn-restart");
+const btnHomeRef = document.getElementById("btn-home");
 const btnMuteSoundRef = document.getElementById("btn-mute");
 const btnUnMuteSoundRef = document.getElementById("btn-unmute");
 const contentActionRef_1 = document.getElementById("content-action-1");
@@ -151,6 +152,7 @@ function startGame() {
 
   btnStartRef.setAttribute("class", "v-hidden");
   btnRestartRef.setAttribute("class", "v-hidden");
+  btnHomeRef.classList.add("v-hidden");
   imgStartRef.setAttribute("class", "d-none");
   contentActionRef_1.setAttribute("class", "content-action");
   contentActionRef_2.setAttribute("class", "content-action");
@@ -210,6 +212,7 @@ function restartGame() {
   imgStartRef.setAttribute("class", "img-control");
   btnStartRef.setAttribute("class", "d-none");
   btnRestartRef.setAttribute("class", "btn-start");
+  btnHomeRef.classList.remove("v-hidden");
   headerMobile.setAttribute("class", "header");
   RESTART_FLAG = false;
   LOST_FLAG = false;

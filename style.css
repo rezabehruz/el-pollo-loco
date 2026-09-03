@@ -193,6 +193,17 @@ body {
             background-color: #ffa500;
           }
 
+          #btn-home {
+            top: 110px;
+            left: 76px;
+            width: 180px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 30px;
+            background-color: #ffa500;
+          }
+
           .btn-sound {
             position: absolute;
             top: 20px;
@@ -334,6 +345,10 @@ body {
             .btn-start {
               top: 25px;
               left: 35%;
+            }
+
+            #btn-home {
+              display: none;
             }
 
             .btn-sound {
